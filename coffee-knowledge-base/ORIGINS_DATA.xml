@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<origins_species_database version="1.0" created="2025">
+
+  <metadata>
+    <title>Coffee Origins &amp; Species Structured Database</title>
+    <description>Machine-readable origin profiles, species data, processing methods, and flavour mappings for RAG and AI use</description>
+  </metadata>
+
+  <!-- ═══════════════════════════════════
+       SPECIES DATA
+  ═══════════════════════════════════ -->
+  <species>
+
+    <species_entry id="arabica">
+      <scientific_name>Coffea arabica L.</scientific_name>
+      <common_name>Arabica</common_name>
+      <chromosomes>44 (allotetraploid)</chromosomes>
+      <parents>Coffea canephora × Coffea eugenioides</parents>
+      <origin>Ethiopian highlands; South Sudan</origin>
+      <global_share_percent>~60</global_share_percent>
+      <caffeine_percent>1.2–1.5</caffeine_percent>
+      <lipids_percent>15–17</lipids_percent>
+      <sucrose_percent>6–9</sucrose_percent>
+      <chlorogenic_acids_percent>5.5–8</chlorogenic_acids_percent>
+      <altitude_masl_min>600</altitude_masl_min>
+      <altitude_masl_max>2200</altitude_masl_max>
+      <temperature_optimal_celsius>15–24</temperature_optimal_celsius>
+      <self_fertile>yes</self_fertile>
+      <disease_resistance>Low (CLR susceptible)</disease_resistance>
+      <flavour_character>Complex, fruity, floral, bright acidity, medium-full body</flavour_character>
+
+      <key_varietals>
+        <varietal name="Typica" origin="Yemen via India and Java" cup="Clean, sweet, delicate, nutty"/>
+        <varietal name="Bourbon" origin="Réunion Island" cup="Complex, fruity, brown sugar, cherry"/>
+        <varietal name="Gesha/Geisha" origin="Ethiopia (Gori Gesha)" cup="Jasmine, bergamot, peach, tea-like"/>
+        <varietal name="SL-28" origin="Kenya (Scott Labs)" cup="Blackcurrant, tomato, full body, phosphoric"/>
+        <varietal name="Caturra" origin="Brazil (Bourbon mutation)" cup="Citrus, bright, medium body"/>
+        <varietal name="Catuai" origin="Brazil (Caturra × Mundo Novo)" cup="Balanced, mild, nutty, caramel"/>
+        <varietal name="Pacamara" origin="El Salvador (Pacas × Maragogipe)" cup="Floral, herbal, complex"/>
+        <varietal name="Castillo" origin="Colombia (FNC)" cup="Clean, balanced, disease resistant"/>
+        <varietal name="Heirloom Ethiopian" origin="Ethiopia (wild)" cup="Enormous range: berry to floral"/>
+        <varietal name="Pink Bourbon" origin="Colombia (natural mutation)" cup="Floral, complex fruit, exceptional"/>
+      </key_varietals>
+    </species_entry>
+
+    <species_entry id="robusta">
+      <scientific_name>Coffea canephora Pierre ex A.Froehner</scientific_name>
+      <common_name>Robusta</common_name>
+      <chromosomes>22 (diploid)</chromosomes>
+      <origin>Congo River Basin; Western Africa</origin>
+      <global_share_percent>~40</global_share_percent>
+      <caffeine_percent>2.2–2.7</caffeine_percent>
+      <lipids_percent>10–11.5</lipids_percent>
+      <sucrose_percent>3–7</sucrose_percent>
+      <chlorogenic_acids_percent>7–10</chlorogenic_acids_percent>
+      <altitude_masl_max>800</altitude_masl_max>
+      <self_fertile>no (cross-pollination required)</self_fertile>
+      <disease_resistance>High</disease_resistance>
+      <flavour_character>Earthy, woody, harsh; good crema; lower complexity than Arabica</flavour_character>
+      <top_producers>Vietnam, Brazil (Conillon), Indonesia, Uganda, India</top_producers>
+    </species_entry>
+
+    <species_entry id="liberica">
+      <scientific_name>Coffea liberica W.Bull ex Hiern</scientific_name>
+      <common_name>Liberica</common_name>
+      <chromosomes>22 (diploid)</chromosomes>
+      <origin>Western Africa (Liberia)</origin>
+      <global_share_percent>less than 1</global_share_percent>
+      <altitude_masl_max>500</altitude_masl_max>
+      <disease_resistance>High</disease_resistance>
+      <flavour_character>Smoky, woody, floral, unusual; very large irregular bean</flavour_character>
+      <primary_regions>Philippines (Batangas), Malaysia, Indonesia</primary_regions>
+      <famous_product>Kapeng Barako (Philippines)</famous_product>
+    </species_entry>
+
+    <species_entry id="excelsa">
+      <scientific_name>Coffea liberica W.Bull ex Hiern var. dewevrei</scientific_name>
+      <common_name>Excelsa</common_name>
+      <chromosomes>22 (diploid)</chromosomes>
+      <reclassified_from>Coffea dewevrei (2006, Davis et al.)</reclassified_from>
+      <global_share_percent>less than 1</global_share_percent>
+      <flavour_character>Tart, dark fruit, wine-like, complex; used in blends</flavour_character>
+      <primary_regions>Philippines, Vietnam, Central Africa</primary_regions>
+    </species_entry>
+
+  </species>
+
+  <!-- ═══════════════════════════════════
+       ORIGIN PROFILES
+  ═══════════════════════════════════ -->
+  <origins>
+
+    <origin id="ethiopia">
+      <country>Ethiopia</country>
+      <continent>Africa</continent>
+      <production_rank>5</production_rank>
+      <annual_bags_60kg_approx>7500000–8500000</annual_bags_60kg_approx>
+      <primary_species>Arabica (heirloom)</primary_species>
+      <altitude_range_masl>1400–2300</altitude_range_masl>
+      <harvest_season>October–January (main); September in some regions</harvest_season>
+      <processing>Washed and Natural</processing>
+      <significance>Birthplace of Coffea arabica; highest genetic diversity on Earth</significance>
+
+      <sub_regions>
+        <sub_region name="Yirgacheffe" altitude="1700–2200" processing="Washed" cup_notes="Jasmine, bergamot, lemon, black tea, peach"/>
+        <sub_region name="Sidama" altitude="1400–2200" processing="Washed/Natural" cup_notes="Blueberry, lemon, brown spice, florals"/>
+        <sub_region name="Guji" altitude="1800–2200" processing="Washed/Natural" cup_notes="Stone fruit, tropical, jasmine, wine-like"/>
+        <sub_region name="Harrar" altitude="1400–2000" processing="Natural" cup_notes="Wild berry, blueberry, wine, chocolate, ferment"/>
+        <sub_region name="Limu" altitude="1400–2000" processing="Washed" cup_notes="Mild, balanced, spice, fruit, wine"/>
+        <sub_region name="Kaffa" altitude="1500–2000" processing="Natural" cup_notes="Forest fruit, herbal, mild spice"/>
+      </sub_regions>
+    </origin>
+
+    <origin id="brazil">
+      <country>Brazil</country>
+      <continent>South America</continent>
+      <production_rank>1</production_rank>
+      <annual_bags_60kg_approx>55000000–65000000</annual_bags_60kg_approx>
+      <primary_species>Arabica 75%; Robusta (Conillon) 25%</primary_species>
+      <altitude_range_masl>600–1400</altitude_range_masl>
+      <harvest_season>May–September</harvest_season>
+      <processing>Natural, Pulped Natural, Washed</processing>
+      <significance>World's largest producer; 1/3 of global supply; pioneered pulped natural processing</significance>
+
+      <sub_regions>
+        <sub_region name="Sul de Minas" altitude="700–1300" cup_notes="Chocolate, caramel, hazelnut, clean"/>
+        <sub_region name="Cerrado Mineiro" altitude="800–1200" cup_notes="Dark chocolate, caramel, full body, very low acidity"/>
+        <sub_region name="Chapada Diamantina" altitude="900–1200" cup_notes="Tropical fruit, caramel, brighter than typical Brazil"/>
+        <sub_region name="Mogiana" altitude="900–1200" cup_notes="Balanced, nutty, caramel, mild fruit"/>
+      </sub_regions>
+
+      <key_varietals>Bourbon, Yellow Bourbon, Catuai, Mundo Novo, Acaiá</key_varietals>
+    </origin>
+
+    <origin id="colombia">
+      <country>Colombia</country>
+      <continent>South America</continent>
+      <production_rank>3</production_rank>
+      <annual_bags_60kg_approx>12000000–14000000</annual_bags_60kg_approx>
+      <primary_species>100% Arabica</primary_species>
+      <altitude_range_masl>1200–2300</altitude_range_masl>
+      <harvest_season>Main: October–February; Mitaca: April–June</harvest_season>
+      <processing>Predominantly Washed; Natural growing</processing>
+      <regulatory_body>FNC (Federación Nacional de Cafeteros)</regulatory_body>
+      <unique_feature>Two harvest seasons per year due to equatorial position</unique_feature>
+
+      <sub_regions>
+        <sub_region name="Huila" altitude="1500–2100" cup_notes="Red fruit, citrus, floral, bright"/>
+        <sub_region name="Nariño" altitude="1700–2300" cup_notes="Citrus, stone fruit, tea-like, crisp acidity"/>
+        <sub_region name="Cauca" altitude="1700–2100" cup_notes="Clean, sweet, citrus, tropical fruit"/>
+        <sub_region name="Antioquia" altitude="1200–2000" cup_notes="Chocolate, mild fruit, balanced"/>
+        <sub_region name="Sierra Nevada" altitude="1000–2000" cup_notes="Chocolate, herbal, balanced; indigenous grown"/>
+      </sub_regions>
+
+      <key_varietals>Caturra, Castillo, Colombia, Tabi, Bourbon, Pink Bourbon, Gesha</key_varietals>
+    </origin>
+
+    <origin id="india">
+      <country>India</country>
+      <continent>Asia</continent>
+      <production_rank>6</production_rank>
+      <annual_bags_60kg_approx>5000000–6000000</annual_bags_60kg_approx>
+      <primary_species>Robusta 70%; Arabica 30%</primary_species>
+      <altitude_range_masl>600–1900</altitude_range_masl>
+      <harvest_season>November–February</harvest_season>
+      <processing>Washed, Natural, Monsooned Malabar</processing>
+      <regulatory_body>Coffee Board of India</regulatory_body>
+      <historical_note>Coffee introduced by Baba Budan ~1670 from Yemen to Karnataka</historical_note>
+
+      <sub_regions>
+        <sub_region name="Coorg (Kodagu)" state="Karnataka" cup_notes="Spice, chocolate, earthy, medium body"/>
+        <sub_region name="Chikmagalur" state="Karnataka" cup_notes="Fruity, mild acidity, chocolatey, balanced"/>
+        <sub_region name="Wayanad" state="Kerala" cup_notes="Earthy, woody, chocolate, full body (Robusta dominant)"/>
+        <sub_region name="Nilgiris" state="Tamil Nadu" cup_notes="Mild, floral, light acidity"/>
+        <sub_region name="Araku Valley" state="Andhra Pradesh" cup_notes="Chocolate, mild spice, clean; tribal organic"/>
+      </sub_regions>
+
+      <unique_processing name="Monsooned Malabar">
+        <description>Green beans exposed to monsoon winds 12–16 weeks; swell 2× size; lose acidity</description>
+        <cup_notes>Very heavy body, near-zero acidity, earthy, woody, tobacco, spice</cup_notes>
+        <use>Espresso blends (body); South Indian filter coffee</use>
+      </unique_processing>
+
+      <key_varietals>S795, Cauvery (Catimor), Selection 9, Kent, Robusta</key_varietals>
+    </origin>
+
+  </origins>
+
+  <!-- ═══════════════════════════════════
+       PROCESSING METHODS
+  ═══════════════════════════════════ -->
+  <processing_methods>
+
+    <method id="washed">
+      <name>Washed (Wet)</name>
+      <steps>Depulp → Ferment in water tank (12–72h) → Wash → Dry on raised beds</steps>
+      <cup_impact>Clean, bright, terroir-forward; lower body than natural</cup_impact>
+      <acidity>High, pronounced</acidity>
+      <body>Medium</body>
+      <ferment_risk>Low (mucilage removed before drying)</ferment_risk>
+      <common_regions>Ethiopia (Yirgacheffe), Colombia, Kenya, Central America</common_regions>
+    </method>
+
+    <method id="natural">
+      <name>Natural (Dry/Unwashed)</name>
+      <steps>Dry whole cherry on raised beds 3–6 weeks → Mill</steps>
+      <cup_impact>Fruity, wine-like, heavy body, complex; higher ferment risk</cup_impact>
+      <acidity>Low–medium</acidity>
+      <body>Heavy, syrupy</body>
+      <ferment_risk>High (moisture in cherry over long drying)</ferment_risk>
+      <common_regions>Ethiopia (Harrar), Brazil, some Colombia</common_regions>
+    </method>
+
+    <method id="honey">
+      <name>Honey / Pulped Natural</name>
+      <steps>Depulp → Dry with mucilage (parchment) remaining → Mill</steps>
+      <variants>Yellow (little mucilage), Red (medium), Black (maximum)</variants>
+      <cup_impact>Between washed and natural; sweet, fruity, balanced</cup_impact>
+      <common_regions>Costa Rica, Brazil, Colombia (growing), El Salvador</common_regions>
+    </method>
+
+    <method id="anaerobic">
+      <name>Anaerobic Fermentation</name>
+      <steps>Cherries sealed in tank → controlled fermentation → Then washed or natural drying</steps>
+      <cup_impact>Intense fruit, complex, novel flavours; wine-like, tropical, fermented notes</cup_impact>
+      <origin>Competition coffee; specialty innovation; 2010s+</origin>
+    </method>
+
+    <method id="wet_hulled">
+      <name>Wet-Hulled (Giling Basah)</name>
+      <steps>Partial wet process → Hull while still wet → Dry at high moisture</steps>
+      <cup_impact>Heavy body, low acidity, earthy, cedar, tobacco</cup_impact>
+      <common_regions>Indonesia (Sumatra, Sulawesi, Flores)</common_regions>
+    </method>
+
+    <method id="monsooned">
+      <name>Monsooned (India-specific)</name>
+      <steps>Green beans exposed to monsoon winds in open warehouses 12–16 weeks</steps>
+      <cup_impact>Near-zero acidity, very heavy body, earthy, woody, tobacco, spice</cup_impact>
+      <common_regions>Malabar Coast, Karnataka, Kerala (India)</common_regions>
+    </method>
+
+  </processing_methods>
+
+  <!-- ═══════════════════════════════════
+       FLAVOUR DESCRIPTOR MAPPING
+  ═══════════════════════════════════ -->
+  <flavour_origin_matrix>
+    <!-- Quick lookup: flavour note → likely origin/process -->
+    <mapping flavour="Jasmine" likely_origin="Ethiopia Yirgacheffe" likely_process="Washed"/>
+    <mapping flavour="Bergamot" likely_origin="Ethiopia Yirgacheffe" likely_process="Washed"/>
+    <mapping flavour="Blueberry" likely_origin="Ethiopia Harrar" likely_process="Natural"/>
+    <mapping flavour="Blackcurrant" likely_origin="Kenya SL-28" likely_process="Washed"/>
+    <mapping flavour="Tomato" likely_origin="Kenya" likely_process="Washed"/>
+    <mapping flavour="Dark chocolate" likely_origin="Brazil" likely_process="Natural/Pulped Natural"/>
+    <mapping flavour="Caramel" likely_origin="Brazil/Colombia" likely_process="Medium roast"/>
+    <mapping flavour="Hazelnut" likely_origin="Brazil" likely_process="Natural/medium roast"/>
+    <mapping flavour="Red apple" likely_origin="Colombia" likely_process="Washed"/>
+    <mapping flavour="Citrus orange" likely_origin="Colombia" likely_process="Washed"/>
+    <mapping flavour="Spice/pepper" likely_origin="India Coorg/Chikmagalur" likely_process="Washed"/>
+    <mapping flavour="Tobacco/woody" likely_origin="Monsooned Malabar/dark roast" likely_process="Monsooned"/>
+    <mapping flavour="Earthy/cedar" likely_origin="Indonesia Sumatra" likely_process="Wet-hulled"/>
+    <mapping flavour="Wine/fruit-forward" likely_origin="Any origin" likely_process="Natural or Anaerobic"/>
+    <mapping flavour="Peach/stone fruit" likely_origin="Ethiopia Yirgacheffe/Guatemala" likely_process="Washed"/>
+    <mapping flavour="Tropical fruit" likely_origin="Ethiopia Guji/Panama Gesha" likely_process="Natural/Washed"/>
+  </flavour_origin_matrix>
+
+</origins_species_database>

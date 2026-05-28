@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<equipment_database version="1.0" created="2025">
+
+  <metadata>
+    <title>Coffee Equipment Intelligence Database</title>
+    <description>Structured equipment data — espresso machines, grinders, brewers, with specifications and comparison matrices</description>
+  </metadata>
+
+  <!-- ═══════════════════════════════════
+       ESPRESSO MACHINES
+  ═══════════════════════════════════ -->
+  <espresso_machines>
+
+    <machine id="mach-001">
+      <brand>La Marzocco</brand>
+      <model>Linea PB</model>
+      <type>Commercial dual-boiler multi-group</type>
+      <boiler_brew_L>1.75 per group</boiler_brew_L>
+      <boiler_steam_L>11</boiler_steam_L>
+      <temperature_control>PID dual independent</temperature_control>
+      <pressure_bar>9 (adjustable)</pressure_bar>
+      <pre_infusion>Paddle-actuated mechanical</pre_infusion>
+      <groups>1, 2, 3, or 4</groups>
+      <power_W>3000–5500</power_W>
+      <best_for>Specialty cafés; high-volume quality service</best_for>
+      <price_range_usd>8000–25000</price_range_usd>
+      <rating_temperature_stability>5</rating_temperature_stability>
+      <rating_milk_capability>5</rating_milk_capability>
+      <rating_pressure_control>4</rating_pressure_control>
+      <rating_value>3</rating_value>
+    </machine>
+
+    <machine id="mach-002">
+      <brand>La Marzocco</brand>
+      <model>GS3 MP</model>
+      <type>Dual boiler prosumer single-group</type>
+      <boiler_brew_L>0.75</boiler_brew_L>
+      <boiler_steam_L>3.5</boiler_steam_L>
+      <temperature_control>Dual PID</temperature_control>
+      <pressure_bar>Variable (flow control paddle)</pressure_bar>
+      <pre_infusion>Full flow control paddle</pre_infusion>
+      <best_for>Advanced home; competition preparation</best_for>
+      <price_range_usd>7000–9000</price_range_usd>
+      <rating_temperature_stability>5</rating_temperature_stability>
+      <rating_pressure_control>5</rating_pressure_control>
+      <rating_value>3</rating_value>
+    </machine>
+
+    <machine id="mach-003">
+      <brand>Nuova Simonelli</brand>
+      <model>Aurelia Wave</model>
+      <type>Commercial multi-boiler</type>
+      <temperature_control>T3 independent thermal systems</temperature_control>
+      <pre_infusion>Soft infusion (electronic)</pre_infusion>
+      <notable_features>Official WBC machine; raised group heads; ergonomic design</notable_features>
+      <best_for>High-volume specialty cafés; barista comfort</best_for>
+      <price_range_usd>12000–22000</price_range_usd>
+    </machine>
+
+    <machine id="mach-004">
+      <brand>Breville</brand>
+      <model>Barista Express (BES870)</model>
+      <type>Home semi-auto with integrated grinder</type>
+      <boiler>Thermocoil single boiler</boiler>
+      <temperature_control>PID ±1°C</temperature_control>
+      <grinder_integrated>Conical burr — 54mm</grinder_integrated>
+      <best_for>Home beginner to intermediate</best_for>
+      <price_range_usd>700–900</price_range_usd>
+      <pros>All-in-one; fast heat-up; great entry value</pros>
+      <cons>Single boiler; no simultaneous brew+steam</cons>
+      <rating_value>5</rating_value>
+      <rating_temperature_stability>3</rating_temperature_stability>
+    </machine>
+
+    <machine id="mach-005">
+      <brand>Breville</brand>
+      <model>Dual Boiler (BES920)</model>
+      <type>Dual boiler prosumer</type>
+      <boiler_brew_L>0.3</boiler_brew_L>
+      <boiler_steam_L>2.0</boiler_steam_L>
+      <temperature_control>Dual PID</temperature_control>
+      <pre_infusion>Programmable</pre_infusion>
+      <best_for>Serious home barista</best_for>
+      <price_range_usd>1400–1700</price_range_usd>
+      <rating_value>4</rating_value>
+      <rating_temperature_stability>4</rating_temperature_stability>
+    </machine>
+
+    <machine id="mach-006">
+      <brand>Rocket Espresso</brand>
+      <model>Appartamento</model>
+      <type>Heat exchange prosumer</type>
+      <boiler_L>1.8</boiler_L>
+      <boiler_material>Copper</boiler_material>
+      <group_head>E61 (thermal mass)</group_head>
+      <best_for>Home; office; medium daily volume</best_for>
+      <price_range_usd>1800–2200</price_range_usd>
+      <notes>Italian design; stainless + copper aesthetics; E61 requires warm-up time</notes>
+    </machine>
+
+    <machine id="mach-007">
+      <brand>Decent</brand>
+      <model>DE1 Pro</model>
+      <type>Smart espresso machine — full profile control</type>
+      <pressure_control>Full electronic; community profile library</pressure_control>
+      <temperature_control>±0.1°C</temperature_control>
+      <app>Bluetooth; visualise profiles in real time</app>
+      <best_for>Data-driven home baristas; profile experimentation</best_for>
+      <price_range_usd>2700–3500</price_range_usd>
+    </machine>
+
+  </espresso_machines>
+
+  <!-- ═══════════════════════════════════
+       GRINDERS
+  ═══════════════════════════════════ -->
+  <grinders>
+
+    <grinder id="grnd-001">
+      <brand>Mahlkönig</brand>
+      <model>EK43 / EK43S</model>
+      <burr_type>Flat steel</burr_type>
+      <burr_diameter_mm>98</burr_diameter_mm>
+      <rpm>1400</rpm>
+      <motor_W>1200</motor_W>
+      <single_dose>No (hopper standard; mods available)</single_dose>
+      <retention_g>1–3</retention_g>
+      <best_for>Filter coffee; retail grinding; reference standard</best_for>
+      <price_range_usd>3000–3500</price_range_usd>
+      <rating_filter>5</rating_filter>
+      <rating_espresso>3</rating_espresso>
+      <notes>Industry reference for filter clarity since ~2012. EK43S adds stepless adjustment.</notes>
+    </grinder>
+
+    <grinder id="grnd-002">
+      <brand>Mahlkönig</brand>
+      <model>E65S GBW</model>
+      <burr_type>Flat steel</burr_type>
+      <burr_diameter_mm>65</burr_diameter_mm>
+      <automation>Auto-dosing by weight</automation>
+      <best_for>Commercial espresso; high-volume cafés</best_for>
+      <price_range_usd>2800–3500</price_range_usd>
+      <rating_espresso>5</rating_espresso>
+    </grinder>
+
+    <grinder id="grnd-003">
+      <brand>Niche</brand>
+      <model>Zero</model>
+      <burr_type>Conical</burr_type>
+      <burr_diameter_mm>63</burr_diameter_mm>
+      <rpm>100</rpm>
+      <single_dose>Yes — defining feature</single_dose>
+      <retention_g>near-zero</retention_g>
+      <best_for>Home espresso + filter; single-origin switching</best_for>
+      <price_range_usd>700–800</price_range_usd>
+      <rating_value>4</rating_value>
+      <rating_espresso>5</rating_espresso>
+      <rating_filter>4</rating_filter>
+      <notes>Transformed home espresso; defined single-dose conical category</notes>
+    </grinder>
+
+    <grinder id="grnd-004">
+      <brand>DF Grinders (Turin)</brand>
+      <model>DF64 Gen 2</model>
+      <burr_type>Flat steel (swappable)</burr_type>
+      <burr_diameter_mm>64</burr_diameter_mm>
+      <single_dose>Yes</single_dose>
+      <retention_g>0.1–0.3</retention_g>
+      <best_for>Home espresso; value single-dose</best_for>
+      <price_range_usd>350–500</price_range_usd>
+      <rating_value>5</rating_value>
+      <notes>High value; active mod community; SSP burr upgrades available</notes>
+    </grinder>
+
+    <grinder id="grnd-005">
+      <brand>Eureka</brand>
+      <model>Mignon Specialita</model>
+      <burr_type>Flat steel</burr_type>
+      <burr_diameter_mm>55</burr_diameter_mm>
+      <noise_level>Very low (quietest home class)</noise_level>
+      <best_for>Home espresso; quiet environments</best_for>
+      <price_range_usd>500–700</price_range_usd>
+    </grinder>
+
+    <grinder id="grnd-006">
+      <brand>Comandante</brand>
+      <model>C40 MK4</model>
+      <type>Hand grinder</type>
+      <burr_type>Conical (Nitrosweet steel)</burr_type>
+      <burr_diameter_mm>39</burr_diameter_mm>
+      <best_for>Travel; filter; excellent quality</best_for>
+      <price_range_usd>240–280</price_range_usd>
+      <rating_filter>5</rating_filter>
+      <notes>Best-in-class hand grinder for filter; consistent; durable</notes>
+    </grinder>
+
+  </grinders>
+
+  <!-- ═══════════════════════════════════
+       BREWING EQUIPMENT
+  ═══════════════════════════════════ -->
+  <brewing_equipment>
+
+    <brewer id="brew-001">
+      <name>Hario V60 02</name>
+      <type>Pour-over cone</type>
+      <filter>Hario V60 paper (01/02/03)</filter>
+      <flow_control>High (barista-controlled)</flow_control>
+      <best_for>Bright, nuanced coffees; intermediate barista</best_for>
+      <materials>Plastic, ceramic, glass, copper, stainless</materials>
+      <price_range_usd>10–60</price_range_usd>
+    </brewer>
+
+    <brewer id="brew-002">
+      <name>Chemex 6-Cup</name>
+      <type>Pour-over carafe</type>
+      <filter>Chemex proprietary thick paper</filter>
+      <best_for>Ultra-clean cup; guests; delicate origins</best_for>
+      <capacity_cups>6</capacity_cups>
+      <price_range_usd>40–60</price_range_usd>
+    </brewer>
+
+    <brewer id="brew-003">
+      <name>AeroPress Original</name>
+      <type>Hybrid pressure + immersion</type>
+      <filter>AeroPress paper (round); optional metal</filter>
+      <best_for>Travel; versatility; beginners</best_for>
+      <price_range_usd>35–45</price_range_usd>
+    </brewer>
+
+    <scale id="scl-001">
+      <brand>Acaia</brand>
+      <model>Pearl</model>
+      <precision_g>0.1</precision_g>
+      <response_per_second>10</response_per_second>
+      <timer>Yes</timer>
+      <flow_rate_display>Yes</flow_rate_display>
+      <best_for>Espresso; pour-over</best_for>
+      <price_usd>225</price_usd>
+    </scale>
+
+    <scale id="scl-002">
+      <brand>Timemore</brand>
+      <model>Black Mirror Basic+</model>
+      <precision_g>0.1</precision_g>
+      <response_per_second>5</response_per_second>
+      <timer>Yes</timer>
+      <best_for>Home espresso and filter; great value</best_for>
+      <price_usd>75–85</price_usd>
+    </scale>
+
+    <kettle id="ket-001">
+      <brand>Fellow</brand>
+      <model>Stagg EKG</model>
+      <type>Electric gooseneck</type>
+      <temperature_control>±1°C PID variable</temperature_control>
+      <capacity_L>0.9</capacity_L>
+      <hold_temperature>Yes</hold_temperature>
+      <best_for>Home specialty; precise pour-over</best_for>
+      <price_usd>165</price_usd>
+    </kettle>
+
+    <refractometer id="ref-001">
+      <brand>VST</brand>
+      <model>LAB Coffee III</model>
+      <type>Digital coffee-calibrated</type>
+      <accuracy>±0.01% Brix</accuracy>
+      <best_for>Professional TDS measurement; café calibration</best_for>
+      <price_usd>600</price_usd>
+    </refractometer>
+
+    <refractometer id="ref-002">
+      <brand>Atago</brand>
+      <model>PAL-COFFEE</model>
+      <type>Digital coffee-calibrated</type>
+      <accuracy>±0.05% Brix</accuracy>
+      <best_for>Home and prosumer TDS measurement</best_for>
+      <price_usd>250</price_usd>
+    </refractometer>
+
+  </brewing_equipment>
+
+</equipment_database>

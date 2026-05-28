@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coffee_knowledge_ontology version="1.0" standard="SCA-aligned" created="2025">
+
+  <metadata>
+    <title>Coffee Intelligence Knowledge Base — Taxonomy &amp; Ontology</title>
+    <description>Complete topic graph, concept relationships, and ontology for the Coffee KB</description>
+    <version>1.0.0</version>
+    <license>Open Educational Use</license>
+  </metadata>
+
+  <!-- ═══════════════════════════════════════════════
+       DOMAIN 1: COFFEE FUNDAMENTALS
+  ═══════════════════════════════════════════════ -->
+  <domain id="fundamentals" label="Coffee Fundamentals &amp; History">
+    <topic id="history" file="coffee-fundamentals/history-of-coffee.md">
+      <label>History of Coffee</label>
+      <subtopics>
+        <subtopic>Origins in Ethiopia (Kaffa region, 9th century legend)</subtopic>
+        <subtopic>Spread to Yemen and Arabian Peninsula</subtopic>
+        <subtopic>Coffeehouses (Qahveh Khaneh) in Middle East</subtopic>
+        <subtopic>Arrival in Europe (17th century)</subtopic>
+        <subtopic>Colonial plantation systems</subtopic>
+        <subtopic>First, Second, Third Wave coffee movements</subtopic>
+      </subtopics>
+      <related_topics>
+        <ref domain="fundamentals" topic="specialty-coffee-movement"/>
+        <ref domain="beans" topic="ethiopia"/>
+      </related_topics>
+    </topic>
+
+    <topic id="specialty-coffee-movement" file="coffee-fundamentals/specialty-coffee-movement.md">
+      <label>Specialty Coffee Movement</label>
+      <subtopics>
+        <subtopic>First Wave (mass commodity)</subtopic>
+        <subtopic>Second Wave (Starbucks era, espresso culture)</subtopic>
+        <subtopic>Third Wave (origin, terroir, craft)</subtopic>
+        <subtopic>Fourth Wave (science, precision, transparency)</subtopic>
+        <subtopic>SCA founding and mission</subtopic>
+        <subtopic>Cup of Excellence program</subtopic>
+      </subtopics>
+      <related_topics>
+        <ref domain="fundamentals" topic="certifications"/>
+        <ref domain="sensory" topic="cupping-protocol"/>
+      </related_topics>
+    </topic>
+
+    <topic id="supply-chain" file="coffee-fundamentals/supply-chain.md">
+      <label>Coffee Supply Chain</label>
+      <subtopics>
+        <subtopic>Farm → Mill → Export → Import → Roaster → Café</subtopic>
+        <subtopic>Direct trade models</subtopic>
+        <subtopic>Fair Trade certification</subtopic>
+        <subtopic>Rainforest Alliance</subtopic>
+        <subtopic>UTZ/SCA standards</subtopic>
+        <subtopic>Price volatility (C-market)</subtopic>
+      </subtopics>
+    </topic>
+
+    <topic id="certifications" file="coffee-fundamentals/certifications-standards.md">
+      <label>Certifications &amp; Standards</label>
+      <subtopics>
+        <subtopic>SCA Green Coffee Standards</subtopic>
+        <subtopic>SCA Cupping Protocol</subtopic>
+        <subtopic>Fair Trade</subtopic>
+        <subtopic>Organic Certification</subtopic>
+        <subtopic>Rainforest Alliance</subtopic>
+        <subtopic>Q Grader Program</subtopic>
+        <subtopic>Coffee Quality Institute (CQI)</subtopic>
+      </subtopics>
+    </topic>
+
+    <topic id="economics" file="coffee-fundamentals/coffee-economics.md">
+      <label>Coffee Economics</label>
+      <subtopics>
+        <subtopic>C-market (ICE Futures)</subtopic>
+        <subtopic>Commodity pricing</subtopic>
+        <subtopic>Specialty premiums</subtopic>
+        <subtopic>Producer economics</subtopic>
+        <subtopic>Global production statistics</subtopic>
+        <subtopic>Climate change impact on supply</subtopic>
+      </subtopics>
+    </topic>
+  </domain>
+
+  <!-- ═══════════════════════════════════════════════
+       DOMAIN 2: BEAN INTELLIGENCE
+  ═══════════════════════════════════════════════ -->
+  <domain id="beans" label="Bean Intelligence System">
+
+    <topic id="species-overview" file="beans/species-overview.md">
+      <label>Coffee Species Overview</label>
+      <species>
+        <species_entry id="arabica" file="beans/profiles/arabica.md">
+          <scientific_name>Coffea arabica</scientific_name>
+          <chromosome_count>44 (tetraploid)</chromosome_count>
+          <caffeine_percent>1.2–1.5%</caffeine_percent>
+          <altitude_range_masl>600–2200</altitude_range_masl>
+          <flavor_profile>Complex, fruity, floral, acidic</flavor_profile>
+          <market_share>~60% global production</market_share>
+          <key_varietals>
+            <varietal>Typica</varietal>
+            <varietal>Bourbon</varietal>
+            <varietal>Gesha/Geisha</varietal>
+            <varietal>SL-28</varietal>
+            <varietal>Pacamara</varietal>
+            <varietal>Caturra</varietal>
+            <varietal>Catuai</varietal>
+            <varietal>Heirloom Ethiopian</varietal>
+          </key_varietals>
+        </species_entry>
+
+        <species_entry id="robusta" file="beans/profiles/robusta.md">
+          <scientific_name>Coffea canephora</scientific_name>
+          <chromosome_count>22 (diploid)</chromosome_count>
+          <caffeine_percent>2.2–2.7%</caffeine_percent>
+          <altitude_range_masl>0–800</altitude_range_masl>
+          <flavor_profile>Harsh, earthy, rubbery, woody; good crema</flavor_profile>
+          <market_share>~40% global production</market_share>
+        </species_entry>
+
+        <species_entry id="liberica" file="beans/profiles/liberica.md">
+          <scientific_name>Coffea liberica</scientific_name>
+          <flavor_profile>Smoky, woody, floral, unusual; large irregular bean</flavor_profile>
+          <market_share>&lt;1% global production</market_share>
+        </species_entry>
+
+        <species_entry id="excelsa" file="beans/profiles/excelsa.md">
+          <scientific_name>Coffea liberica var. dewevrei</scientific_name>
+          <flavor_profile>Tart, fruity, dark, complex; used in blends</flavor_profile>
+        </species_entry>
+      </species>
+    </topic>
+
+    <topic id="processing-methods" file="beans/species-overview.md#processing">
+      <label>Processing Methods</label>
+      <method id="washed">
+        <label>Washed (Wet)</label>
+        <description>Pulp removed before drying. Clean, bright, terroir-forward.</description>
+      </method>
+      <method id="natural">
+        <label>Natural (Dry)</label>
+        <description>Dried whole. Fruity, heavy body, complex, ferment notes.</description>
+      </method>
+      <method id="honey">
+        <label>Honey / Pulped Natural</label>
+        <description>Partial mucilage remaining. Balanced between washed and natural.</description>
+        <variants>Yellow / Red / Black Honey</variants>
+      </method>
+      <method id="anaerobic">
+        <label>Anaerobic Fermentation</label>
+        <description>Controlled fermentation in sealed tanks. Novel, intense flavor.</description>
+      </method>
+      <method id="wet-hulled">
+        <label>Wet-Hulled (Giling Basah)</label>
+        <description>Indonesian method. Earthy, low acid, heavy body.</description>
+      </method>
+    </topic>
+
+    <topic id="ethiopia" file="beans/regions/ethiopia.md">
+      <label>Ethiopia — Origin Profile</label>
+      <regions>
+        <region>Yirgacheffe</region>
+        <region>Sidama / Sidamo</region>
+        <region>Guji</region>
+        <region>Harrar</region>
+        <region>Limu</region>
+        <region>Kaffa</region>
+      </regions>
+      <flavor_profile>Jasmine, bergamot, stone fruit, blueberry, lemon, tea-like</flavor_profile>
+      <altitude_masl>1500–2200</altitude_masl>
+    </topic>
+
+    <topic id="brazil" file="beans/regions/brazil.md">
+      <label>Brazil — Origin Profile</label>
+      <regions>
+        <region>Minas Gerais (Sul de Minas, Cerrado, Chapada Diamantina)</region>
+        <region>São Paulo (Mogiana)</region>
+        <region>Espírito Santo</region>
+        <region>Bahia</region>
+      </regions>
+      <flavor_profile>Chocolate, nuts, caramel, low acidity, heavy body</flavor_profile>
+      <altitude_masl>600–1200</altitude_masl>
+    </topic>
+
+    <topic id="colombia" file="beans/regions/colombia.md">
+      <label>Colombia — Origin Profile</label>
+      <regions>
+        <region>Huila</region>
+        <region>Nariño</region>
+        <region>Antioquia</region>
+        <region>Cauca</region>
+        <region>Sierra Nevada</region>
+      </regions>
+      <flavor_profile>Red fruit, citrus, caramel, medium body, clean finish</flavor_profile>
+      <altitude_masl>1200–2000</altitude_masl>
+    </topic>
+
+    <topic id="india" file="beans/regions/india.md">
+      <label>India — Origin Profile</label>
+      <regions>
+        <region>Coorg (Karnataka)</region>
+        <region>Chikmagalur</region>
+        <region>Araku Valley (Andhra Pradesh)</region>
+        <region>Nilgiris</region>
+        <region>Wayanad (Kerala)</region>
+      </regions>
+      <flavor_profile>Spice, wood, dark chocolate, earthy, low-to-medium acidity</flavor_profile>
+      <altitude_masl>600–1800</altitude_masl>
+      <special_notes>Monsooned Malabar — unique humidity-processed bean with heavy body</special_notes>
+    </topic>
+  </domain>
+
+  <!-- ═══════════════════════════════════════════════
+       DOMAIN 3: ESPRESSO SCIENCE
+  ═══════════════════════════════════════════════ -->
+  <domain id="espresso" label="Espresso Science &amp; Extraction Engineering">
+    <topic id="extraction-theory" file="espresso/extraction-theory.md">
+      <label>Extraction Theory</label>
+      <key_variables>
+        <variable name="Dose" unit="g" typical_range="14–22g"/>
+        <variable name="Yield" unit="g" typical_range="25–50g"/>
+        <variable name="Brew Ratio" unit="ratio" typical_range="1:1.5 to 1:3"/>
+        <variable name="Extraction Time" unit="seconds" typical_range="25–35s"/>
+        <variable name="Extraction Yield" unit="%" optimal_range="18–22%"/>
+        <variable name="TDS" unit="%" espresso_range="8–12%"/>
+        <variable name="Pressure" unit="bar" typical="9 bar"/>
+        <variable name="Temperature" unit="°C" typical_range="90–96°C"/>
+      </key_variables>
+      <formulas>
+        <formula id="brew-ratio">Yield / Dose</formula>
+        <formula id="extraction-yield">(TDS × Beverage Mass) / Dry Coffee Mass × 100</formula>
+      </formulas>
+    </topic>
+
+    <topic id="pressure-profiling" file="espresso/pressure-flow-profiling.md">
+      <label>Pressure &amp; Flow Profiling</label>
+      <concepts>
+        <concept>Pre-infusion (low pressure soak: 2–4 bar)</concept>
+        <concept>Ramp to 9 bar extraction</concept>
+        <concept>Declining pressure profile (9→6 bar)</concept>
+        <concept>Turbo shots (high flow, fast extraction)</concept>
+        <concept>Blooming (AeroPress-style in espresso)</concept>
+      </concepts>
+    </topic>
+
+    <topic id="puck-preparation" file="espresso/puck-preparation.md">
+      <label>Puck Preparation</label>
+      <steps>
+        <step order="1">Dose (weigh into portafilter)</step>
+        <step order="2">Distribute (WDT tool or Stockfleth)</step>
+        <step order="3">Level</step>
+        <step order="4">Tamp (15–20 kg force, level)</step>
+        <step order="5">Insert portafilter and brew</step>
+      </steps>
+    </topic>
+
+    <topic id="shot-diagnosis" file="espresso/shot-diagnosis.md">
+      <label>Shot Diagnosis</label>
+      <defects>
+        <defect id="under-extraction">
+          <symptoms>Sour, thin, fast shot, pale crema</symptoms>
+          <causes>Too coarse, too low dose, too hot water, short time</causes>
+          <fixes>Grind finer, increase dose, lower temperature</fixes>
+        </defect>
+        <defect id="over-extraction">
+          <symptoms>Bitter, dry, harsh, dark crema</symptoms>
+          <causes>Too fine, too long, too high temperature</causes>
+          <fixes>Grind coarser, reduce time, lower temp</fixes>
+        </defect>
+        <defect id="channeling">
+          <symptoms>Uneven flow, blonde early, streaky puck</symptoms>
+          <causes>Poor distribution, uneven tamp, cracked puck</causes>
+          <fixes>WDT tool, even tamp, proper dosing</fixes>
+        </defect>
+      </defects>
+    </topic>
+  </domain>
+
+  <!-- ═══════════════════════════════════════════════
+       DOMAIN 4: BREWING METHODS
+  ═══════════════════════════════════════════════ -->
+  <domain id="brewing" label="Brewing Methods &amp; Science">
+    <method id="pour-over" file="brewing-methods/pour-over.md">
+      <label>Pour Over</label>
+      <equipment>Hario V60, Chemex, Kalita Wave, Origami</equipment>
+      <typical_ratio>1:15 to 1:17 (coffee:water by weight)</typical_ratio>
+      <grind>Medium-fine (V60), Medium (Chemex)</grind>
+      <temperature_c>90–96</temperature_c>
+      <brew_time_min>2.5–4</brew_time_min>
+      <technique>Bloom 2× coffee weight for 30–45s, then pour in pulses or continuous spiral</technique>
+    </method>
+
+    <method id="french-press" file="brewing-methods/french-press.md">
+      <label>French Press</label>
+      <brew_type>Full immersion</brew_type>
+      <typical_ratio>1:15 to 1:17</typical_ratio>
+      <grind>Coarse</grind>
+      <temperature_c>90–96</temperature_c>
+      <brew_time_min>4</brew_time_min>
+    </method>
+
+    <method id="aeropress" file="brewing-methods/aeropress.md">
+      <label>AeroPress</label>
+      <brew_type>Hybrid pressure + immersion</brew_type>
+      <typical_ratio>1:6 to 1:15 (highly variable)</typical_ratio>
+      <grind>Fine to medium</grind>
+      <temperature_c>80–96</temperature_c>
+      <brew_time_min>1–3</brew_time_min>
+      <techniques>Standard, Inverted, Fellow Prismo method</techniques>
+    </method>
+
+    <method id="cold-brew" file="brewing-methods/cold-brew.md">
+      <label>Cold Brew</label>
+      <brew_type>Cold immersion</brew_type>
+      <typical_ratio>1:8 (concentrate) to 1:15 (ready-to-drink)</typical_ratio>
+      <grind>Coarse</grind>
+      <temperature_c>4–20</temperature_c>
+      <brew_time_hours>12–24</brew_time_hours>
+    </method>
+
+    <method id="moka-pot" file="brewing-methods/moka-pot.md">
+      <label>Moka Pot</label>
+      <brew_type>Stovetop pressure percolation (~1.5 bar)</brew_type>
+      <grind>Fine-medium</grind>
+      <temperature_c>Boiling water in chamber ~92–96</temperature_c>
+    </method>
+
+    <method id="siphon" file="brewing-methods/siphon.md">
+      <label>Siphon (Vacuum Pot)</label>
+      <brew_type>Vapor pressure + immersion</brew_type>
+      <grind>Medium</grind>
+      <temperature_c>90–93</temperature_c>
+      <brew_time_min>1–2</brew_time_min>
+    </method>
+  </domain>
+
+  <!-- ═══════════════════════════════════════════════
+       DOMAIN 5: WATER SCIENCE
+  ═══════════════════════════════════════════════ -->
+  <domain id="water" label="Water Science">
+    <sca_recommended_water_profile>
+      <parameter name="TDS" unit="mg/L" target="150" acceptable_range="75–250"/>
+      <parameter name="Calcium Hardness" unit="mg/L as CaCO3" target="50–175"/>
+      <parameter name="Total Alkalinity" unit="mg/L as CaCO3" target="40" acceptable_range="40–75"/>
+      <parameter name="pH" target="7.0" acceptable_range="6.5–7.5"/>
+      <parameter name="Sodium" unit="mg/L" max="10"/>
+      <parameter name="Chlorine" unit="mg/L" target="0"/>
+    </sca_recommended_water_profile>
+
+    <minerals>
+      <mineral name="Magnesium (Mg²⁺)">
+        <role>Enhances extraction efficiency; improves flavor clarity and brightness</role>
+        <optimal_mg_per_L>10–30</optimal_mg_per_L>
+      </mineral>
+      <mineral name="Calcium (Ca²⁺)">
+        <role>Contributes to hardness; aids extraction but can cause scale</role>
+        <optimal_mg_per_L>40–80</optimal_mg_per_L>
+      </mineral>
+      <mineral name="Bicarbonate (HCO₃⁻)">
+        <role>Buffer — neutralizes acids; too high = flat coffee; too low = sour</role>
+        <optimal_mg_per_L>40–80</optimal_mg_per_L>
+      </mineral>
+      <mineral name="Sodium (Na⁺)">
+        <role>Enhances sweetness perception in small amounts; tastes salty if high</role>
+        <optimal_mg_per_L>0–10</optimal_mg_per_L>
+      </mineral>
+    </minerals>
+  </domain>
+
+  <!-- ═══════════════════════════════════════════════
+       DOMAIN 6: ROASTING SCIENCE
+  ═══════════════════════════════════════════════ -->
+  <domain id="roasting" label="Roasting Science">
+    <roast_stages>
+      <stage order="1" name="Drying Phase">
+        <temp_range_c>100–160</temp_range_c>
+        <description>Moisture evaporation (green bean ~10–12% moisture → ~1–2%)</description>
+      </stage>
+      <stage order="2" name="Maillard Reaction Phase">
+        <temp_range_c>150–200</temp_range_c>
+        <description>Amino acids + reducing sugars → complex aroma compounds, brown color</description>
+      </stage>
+      <stage order="3" name="First Crack">
+        <temp_range_c>196–205</temp_range_c>
+        <description>Steam + CO₂ build-up causes audible crack. Light roasts finish here.</description>
+      </stage>
+      <stage order="4" name="Development Phase">
+        <temp_range_c>205–220</temp_range_c>
+        <description>Critical flavor development. DTR (Development Time Ratio) = time after 1st crack / total roast time. Target: 20–25%.</description>
+      </stage>
+      <stage order="5" name="Second Crack">
+        <temp_range_c>224–230</temp_range_c>
+        <description>CO₂ release, oily surface. Dark roasts. Caramelization dominant.</description>
+      </stage>
+    </roast_stages>
+
+    <roast_levels>
+      <level name="Light" agtron="~75–95" temp_finish_c="196–205" notes="Origin flavors preserved; high acidity"/>
+      <level name="Medium-Light" agtron="~65–75" temp_finish_c="205–210" notes="Balanced; some roast character"/>
+      <level name="Medium" agtron="~55–65" temp_finish_c="210–220" notes="Classic balance; caramel, nuts"/>
+      <level name="Medium-Dark" agtron="~45–55" temp_finish_c="220–225" notes="Bittersweet, lower acidity"/>
+      <level name="Dark" agtron="~25–45" temp_finish_c="225–240" notes="Roast dominates; smoky, bold"/>
+    </roast_levels>
+  </domain>
+
+  <!-- ═══════════════════════════════════════════════
+       DOMAIN 7: SENSORY & CUPPING
+  ═══════════════════════════════════════════════ -->
+  <domain id="sensory" label="Sensory Analysis &amp; Cupping">
+    <sca_cupping_protocol>
+      <grind_ratio>8.25g per 150mL water</grind_ratio>
+      <grind_size>Medium-coarse (consistent)</grind_size>
+      <water_temp_c>93</water_temp_c>
+      <steep_time_min>4</steep_time_min>
+      <evaluation_steps>
+        <step order="1">Dry fragrance (ground coffee aroma)</step>
+        <step order="2">Wet aroma (after pour, first 4 min)</step>
+        <step order="3">Break crust at 4 min, evaluate aroma</step>
+        <step order="4">Clean cups at 8–10 min</step>
+        <step order="5">Slurp and evaluate when ~70°C</step>
+        <step order="6">Score at warm (~70°C) and cool (~40°C)</step>
+      </evaluation_steps>
+    </sca_cupping_protocol>
+
+    <sca_score_form>
+      <attribute name="Fragrance/Aroma" max_score="10"/>
+      <attribute name="Flavor" max_score="10"/>
+      <attribute name="Aftertaste" max_score="10"/>
+      <attribute name="Acidity" max_score="10"/>
+      <attribute name="Body" max_score="10"/>
+      <attribute name="Balance" max_score="10"/>
+      <attribute name="Uniformity" max_score="10"/>
+      <attribute name="Clean Cup" max_score="10"/>
+      <attribute name="Sweetness" max_score="10"/>
+      <attribute name="Overall" max_score="10"/>
+      <attribute name="Defects" max_score="-2 per taint, -4 per fault"/>
+      <specialty_threshold>Score ≥ 80 points</specialty_threshold>
+    </sca_score_form>
+
+    <flavor_wheel_primary_categories>
+      <category>Fruity</category>
+      <category>Sour/Fermented</category>
+      <category>Green/Vegetative</category>
+      <category>Other</category>
+      <category>Roasted</category>
+      <category>Spices</category>
+      <category>Nutty/Cocoa</category>
+      <category>Sweet</category>
+      <category>Floral</category>
+    </flavor_wheel_primary_categories>
+  </domain>
+
+  <!-- ═══════════════════════════════════════════════
+       DOMAIN 8: EQUIPMENT
+  ═══════════════════════════════════════════════ -->
+  <domain id="equipment" label="Equipment Intelligence">
+    <espresso_machines>
+      <machine brand="La Marzocco" model="Linea PB">
+        <type>Commercial dual-boiler</type>
+        <boiler_size_L>Brew: 1.75L, Steam: 11L</boiler_size_L>
+        <pressure_bar>9 (adjustable)</pressure_bar>
+        <notable_features>PID temperature control, paddle actuated pre-infusion</notable_features>
+      </machine>
+      <machine brand="Nuova Simonelli" model="Aurelia Wave">
+        <type>Commercial volumetric</type>
+        <notable_features>Soft pre-infusion, T3 technology, ergonomic design</notable_features>
+      </machine>
+      <machine brand="Breville" model="Barista Express">
+        <type>Prosumer all-in-one</type>
+        <notable_features>Integrated conical burr grinder, thermocoil heating</notable_features>
+      </machine>
+    </espresso_machines>
+
+    <grinders>
+      <burr_types>
+        <type name="Flat Burr">
+          <description>Uniform particle size; bright, clarity-forward flavor</description>
+          <examples>Mahlkönig EK43, Mazzer Robur</examples>
+        </type>
+        <type name="Conical Burr">
+          <description>Bimodal distribution; balanced, round flavor; less heat</description>
+          <examples>Niche Zero, Ek43S, Breville Smart Grinder Pro</examples>
+        </type>
+      </burr_types>
+    </grinders>
+  </domain>
+
+  <!-- ═══════════════════════════════════════════════
+       DOMAIN 9: CAFE OPERATIONS
+  ═══════════════════════════════════════════════ -->
+  <domain id="operations" label="Café Operations">
+    <key_formulas>
+      <formula id="beverage-cost-percent">
+        <expression>(Total Ingredient Cost / Menu Price) × 100</expression>
+        <target_percent>25–35%</target_percent>
+      </formula>
+      <formula id="gross-margin">
+        <expression>((Menu Price - COGS) / Menu Price) × 100</expression>
+      </formula>
+      <formula id="labor-cost-percent">
+        <expression>(Labor Cost / Revenue) × 100</expression>
+        <target_percent>30–35%</target_percent>
+      </formula>
+      <formula id="inventory-turnover">
+        <expression>COGS / Average Inventory Value</expression>
+        <note>Higher = less waste; specialty coffee typically 2–4 weeks inventory cycle</note>
+      </formula>
+    </key_formulas>
+  </domain>
+
+</coffee_knowledge_ontology>

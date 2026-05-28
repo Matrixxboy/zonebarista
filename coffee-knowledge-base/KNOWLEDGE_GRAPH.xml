@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coffee_knowledge_graph version="1.0" total_files="83" created="2025">
+
+  <metadata>
+    <title>Coffee Intelligence Knowledge Base — Master Knowledge Graph</title>
+    <description>Complete topic graph, file relationships, learning dependency map, and cross-domain connections for all 83 KB files</description>
+    <format>XML knowledge graph for RAG, vector DB, and AI training use</format>
+    <standard>SCA-aligned</standard>
+  </metadata>
+
+  <!-- ═══════════════════════════════════
+       DOMAIN NODES
+  ═══════════════════════════════════ -->
+  <domains>
+    <domain id="D01" label="Coffee Fundamentals" file_count="7"/>
+    <domain id="D02" label="Bean Intelligence" file_count="15"/>
+    <domain id="D03" label="Espresso Science" file_count="7"/>
+    <domain id="D04" label="Brewing Methods" file_count="8"/>
+    <domain id="D05" label="Milk and Latte Art" file_count="3"/>
+    <domain id="D06" label="Chemistry and Physics" file_count="6"/>
+    <domain id="D07" label="Water Science" file_count="4"/>
+    <domain id="D08" label="Roasting Science" file_count="5"/>
+    <domain id="D09" label="Sensory and Cupping" file_count="3"/>
+    <domain id="D10" label="Equipment" file_count="6"/>
+    <domain id="D11" label="Cafe Operations" file_count="7"/>
+    <domain id="D12" label="Learning Paths" file_count="4"/>
+    <domain id="D13" label="Formulas" file_count="1"/>
+    <domain id="D14" label="Data Files (XML)" file_count="7"/>
+  </domains>
+
+  <!-- ═══════════════════════════════════
+       ALL FILE NODES
+  ═══════════════════════════════════ -->
+  <files>
+
+    <!-- INDEX AND TAXONOMY -->
+    <file id="F00" path="INDEX.md" domain="root" difficulty="all" type="index">
+      <title>Master Index</title>
+      <connects_to>All files</connects_to>
+    </file>
+    <file id="F00b" path="TAXONOMY.xml" domain="root" type="data">
+      <title>Full Ontology and Taxonomy</title>
+    </file>
+    <file id="F00c" path="KNOWLEDGE_GRAPH.xml" domain="root" type="data">
+      <title>Knowledge Graph (this file)</title>
+    </file>
+    <file id="F00d" path="RECIPES_DATA.xml" domain="root" type="data">
+      <title>Brew Recipes and Parameters Database</title>
+    </file>
+    <file id="F00e" path="EQUIPMENT_DATA.xml" domain="root" type="data">
+      <title>Equipment Specifications Database</title>
+    </file>
+    <file id="F00f" path="ORIGINS_DATA.xml" domain="root" type="data">
+      <title>Origins and Species Structured Data</title>
+    </file>
+
+    <!-- DOMAIN 1: COFFEE FUNDAMENTALS -->
+    <file id="F01" path="coffee-fundamentals/history-of-coffee.md" domain="D01" difficulty="beginner">
+      <title>History of Coffee</title>
+      <key_topics>Origins, waves, SCA, timeline</key_topics>
+      <prereqs>None</prereqs>
+      <feeds_into>F02, F03, F04, F05</feeds_into>
+    </file>
+    <file id="F02" path="coffee-fundamentals/specialty-coffee-movement.md" domain="D01" difficulty="beginner">
+      <title>Specialty Coffee Movement</title>
+      <key_topics>Waves, SCA scoring, direct trade, quality standards</key_topics>
+      <prereqs>F01</prereqs>
+      <feeds_into>F09, F25</feeds_into>
+    </file>
+    <file id="F03" path="coffee-fundamentals/supply-chain.md" domain="D01" difficulty="beginner">
+      <title>Coffee Supply Chain</title>
+      <key_topics>Farm to cup, actors, FIFO, processing overview</key_topics>
+      <prereqs>F01</prereqs>
+      <feeds_into>F05, F06</feeds_into>
+    </file>
+    <file id="F04" path="coffee-fundamentals/certifications-standards.md" domain="D01" difficulty="beginner">
+      <title>Certifications and Standards</title>
+      <key_topics>Fair Trade, Organic, RA, Q Grade, SCA Grade 1</key_topics>
+      <prereqs>F01, F03</prereqs>
+    </file>
+    <file id="F05" path="coffee-fundamentals/coffee-economics.md" domain="D01" difficulty="intermediate">
+      <title>Coffee Economics</title>
+      <key_topics>C-market, pricing tiers, producer economics, specialty premium</key_topics>
+      <prereqs>F01, F03</prereqs>
+    </file>
+    <file id="F06" path="coffee-fundamentals/sustainability-climate.md" domain="D01" difficulty="intermediate">
+      <title>Sustainability and Climate Change</title>
+      <key_topics>CLR, climate adaptation, shade-grown, agroforestry, future scenarios</key_topics>
+      <prereqs>F01, F03, F07</prereqs>
+    </file>
+    <file id="F07" path="coffee-fundamentals/sourcing-direct-trade.md" domain="D01" difficulty="intermediate">
+      <title>Sourcing and Direct Trade</title>
+      <key_topics>Importers, sample evaluation, contracts, farm visits, transparency pricing</key_topics>
+      <prereqs>F03, F04, F05</prereqs>
+    </file>
+
+    <!-- DOMAIN 2: BEAN INTELLIGENCE -->
+    <file id="F08" path="beans/species-overview.md" domain="D02" difficulty="intermediate">
+      <title>Coffee Species Overview</title>
+      <key_topics>Arabica, Robusta, Liberica, Excelsa, varietals, terroir, altitude</key_topics>
+      <prereqs>F01</prereqs>
+      <feeds_into>F09, F10, F11, F12, F13, F14, F15, F16, F17, F18, F19, F20, F21</feeds_into>
+    </file>
+    <file id="F09" path="beans/profiles/arabica.md" domain="D02" difficulty="intermediate">
+      <title>Arabica — Complete Profile</title>
+      <key_topics>Genetics, varietals (Typica, Bourbon, Gesha, SL-28), roast guide</key_topics>
+      <prereqs>F08</prereqs>
+    </file>
+    <file id="F10" path="beans/profiles/robusta.md" domain="D02" difficulty="intermediate">
+      <title>Robusta — Complete Profile</title>
+      <key_topics>Chemistry, blending role, Fine Robusta, Vietnamese coffee</key_topics>
+      <prereqs>F08</prereqs>
+    </file>
+    <file id="F11" path="beans/profiles/liberica.md" domain="D02" difficulty="intermediate">
+      <title>Liberica — Profile</title>
+      <key_topics>Kapeng Barako, Philippines, flavor, history</key_topics>
+      <prereqs>F08</prereqs>
+    </file>
+    <file id="F12" path="beans/profiles/excelsa.md" domain="D02" difficulty="intermediate">
+      <title>Excelsa — Profile</title>
+      <key_topics>C. liberica var. dewevrei, taxonomy, blending, flavor</key_topics>
+      <prereqs>F08</prereqs>
+    </file>
+    <file id="F13" path="beans/regions/ethiopia.md" domain="D02" difficulty="intermediate">
+      <title>Ethiopia — Origin Profile</title>
+      <key_topics>Yirgacheffe, Sidama, Guji, Harrar, heirloom varietals</key_topics>
+      <prereqs>F08</prereqs>
+    </file>
+    <file id="F14" path="beans/regions/brazil.md" domain="D02" difficulty="intermediate">
+      <title>Brazil — Origin Profile</title>
+      <key_topics>Sul de Minas, Cerrado, natural/pulped natural, Catuai, Bourbon</key_topics>
+      <prereqs>F08</prereqs>
+    </file>
+    <file id="F15" path="beans/regions/colombia.md" domain="D02" difficulty="intermediate">
+      <title>Colombia — Origin Profile</title>
+      <key_topics>Huila, Nariño, Cauca, FNC, Castillo, Pink Bourbon</key_topics>
+      <prereqs>F08</prereqs>
+    </file>
+    <file id="F16" path="beans/regions/india.md" domain="D02" difficulty="intermediate">
+      <title>India — Origin Profile</title>
+      <key_topics>Coorg, Chikmagalur, Araku, Monsooned Malabar, S795</key_topics>
+      <prereqs>F08</prereqs>
+    </file>
+    <file id="F17" path="beans/regions/extended-origins.md" domain="D02" difficulty="intermediate">
+      <title>Extended Origins — Kenya, Guatemala, Indonesia, Panama, Rwanda, El Salvador</title>
+      <key_topics>SL-28, Gesha, wet-hulled, Bourbon, potato defect</key_topics>
+      <prereqs>F08</prereqs>
+    </file>
+    <file id="F18" path="beans/regions/africa-extended.md" domain="D02" difficulty="intermediate">
+      <title>African Origins — Rwanda, Burundi, Uganda, Tanzania</title>
+      <key_topics>Great Lakes, Bourbon, washing stations, potato defect, Fine Robusta</key_topics>
+      <prereqs>F08, F13</prereqs>
+    </file>
+    <file id="F19" path="beans/regions/central-america-mexico.md" domain="D02" difficulty="intermediate">
+      <title>Central America and Mexico — Honduras, Costa Rica, Mexico</title>
+      <key_topics>SHG/HB grading, honey processing, Tarrazú, micro-mills, Chiapas</key_topics>
+      <prereqs>F08</prereqs>
+    </file>
+    <file id="F20" path="beans/green-coffee-grading.md" domain="D02" difficulty="advanced">
+      <title>Green Coffee Grading and Storage</title>
+      <key_topics>SCA defect classification, moisture, density, screen size, sourcing</key_topics>
+      <prereqs>F08, F07</prereqs>
+      <feeds_into>F47, F48</feeds_into>
+    </file>
+    <file id="F21" path="beans/processing-methods.md" domain="D02" difficulty="advanced">
+      <title>Coffee Processing Methods</title>
+      <key_topics>Washed, natural, honey, anaerobic, wet-hulled, fermentation science</key_topics>
+      <prereqs>F08</prereqs>
+    </file>
+    <file id="F22" path="beans/terroir-science.md" domain="D02" difficulty="advanced">
+      <title>Terroir Science</title>
+      <key_topics>Altitude, soil, climate, shade, microclimate, varietal interaction</key_topics>
+      <prereqs>F08, F21</prereqs>
+    </file>
+    <file id="F22b" path="beans/barista-workflow-science.md" domain="D02" difficulty="advanced">
+      <title>Barista Workflow Science</title>
+      <key_topics>Cognitive load, movement economy, multi-order, ergonomics, speed</key_topics>
+      <prereqs>F61, F62</prereqs>
+      <feeds_into>F61, F62, F64</feeds_into>
+    </file>
+
+    <!-- DOMAIN 3: ESPRESSO SCIENCE -->
+    <file id="F23" path="espresso/extraction-theory.md" domain="D03" difficulty="advanced">
+      <title>Espresso Extraction Theory</title>
+      <key_topics>EY, TDS, brew ratio, pressure, temperature, refractometry, SCA chart</key_topics>
+      <prereqs>F08, F35</prereqs>
+      <feeds_into>F24, F25, F26, F27, F28</feeds_into>
+    </file>
+    <file id="F24" path="espresso/pressure-flow-profiling.md" domain="D03" difficulty="advanced">
+      <title>Pressure and Flow Profiling</title>
+      <key_topics>Pre-infusion, declining pressure, turbo shots, Darcy's Law</key_topics>
+      <prereqs>F23</prereqs>
+    </file>
+    <file id="F25" path="espresso/puck-preparation.md" domain="D03" difficulty="intermediate">
+      <title>Puck Preparation, Dialing In and Shot Diagnosis</title>
+      <key_topics>WDT, tamping, distribution, channeling, calibration</key_topics>
+      <prereqs>F23</prereqs>
+    </file>
+    <file id="F26" path="espresso/dialing-in.md" domain="D03" difficulty="intermediate">
+      <title>Dialing In — Systematic Protocol</title>
+      <key_topics>Variable hierarchy, decision tree, grind drift, refractometer</key_topics>
+      <prereqs>F23, F25</prereqs>
+    </file>
+    <file id="F27" path="espresso/shot-diagnosis.md" domain="D03" difficulty="intermediate">
+      <title>Shot Diagnosis</title>
+      <key_topics>Under/over extraction, channeling, crema, flow anomalies, naked portafilter</key_topics>
+      <prereqs>F23, F25, F26</prereqs>
+    </file>
+    <file id="F28" path="espresso/espresso-blending.md" domain="D03" difficulty="advanced">
+      <title>Espresso Blending Theory</title>
+      <key_topics>Component roles, pre/post-blend roasting, seasonal consistency, trial matrix</key_topics>
+      <prereqs>F23, F47, F48</prereqs>
+    </file>
+    <file id="F29" path="espresso/espresso-machine-technology.md" domain="D03" difficulty="advanced">
+      <title>Espresso Machine Technology</title>
+      <key_topics>Boiler types, pumps, PID, group heads, solenoid, flowmeter</key_topics>
+      <prereqs>F23, F53</prereqs>
+    </file>
+
+    <!-- DOMAIN 4: BREWING METHODS -->
+    <file id="F30" path="brewing-methods/brewing-science-overview.md" domain="D04" difficulty="intermediate">
+      <title>Brewing Science Overview</title>
+      <key_topics>Immersion vs percolation, 6 variables, bloom, turbulence, SCA golden cup</key_topics>
+      <prereqs>F23</prereqs>
+      <feeds_into>F31, F32, F33, F34, F35, F36, F37</feeds_into>
+    </file>
+    <file id="F31" path="brewing-methods/pour-over.md" domain="D04" difficulty="intermediate">
+      <title>Pour Over — V60, Chemex, Kalita</title>
+      <key_topics>All pour-over methods; recipes; troubleshooting; SCA golden cup</key_topics>
+      <prereqs>F30</prereqs>
+    </file>
+    <file id="F32" path="brewing-methods/french-press.md" domain="D04" difficulty="beginner">
+      <title>French Press</title>
+      <key_topics>Immersion science, Hoffman method, coarse grind, oils</key_topics>
+      <prereqs>F30</prereqs>
+    </file>
+    <file id="F33" path="brewing-methods/aeropress.md" domain="D04" difficulty="beginner">
+      <title>AeroPress</title>
+      <key_topics>Standard, inverted, WAC recipes, filter types</key_topics>
+      <prereqs>F30</prereqs>
+    </file>
+    <file id="F34" path="brewing-methods/cold-brew.md" domain="D04" difficulty="beginner">
+      <title>Cold Brew</title>
+      <key_topics>Cold extraction science, concentrate, RTD, nitro, serving styles</key_topics>
+      <prereqs>F30</prereqs>
+    </file>
+    <file id="F35" path="brewing-methods/moka-pot.md" domain="D04" difficulty="beginner">
+      <title>Moka Pot</title>
+      <key_topics>Stovetop pressure, physics, critical rules, troubleshooting</key_topics>
+      <prereqs>F30</prereqs>
+    </file>
+    <file id="F36" path="brewing-methods/siphon.md" domain="D04" difficulty="intermediate">
+      <title>Siphon (Vacuum Pot)</title>
+      <key_topics>Vacuum physics, technique, Japanese tradition, clarity</key_topics>
+      <prereqs>F30</prereqs>
+    </file>
+    <file id="F37" path="brewing-methods/batch-brewing.md" domain="D04" difficulty="beginner">
+      <title>Batch Brewing</title>
+      <key_topics>SCA standards, freshness windows, café workflow, grinder setup</key_topics>
+      <prereqs>F30</prereqs>
+    </file>
+
+    <!-- DOMAIN 5: MILK AND LATTE ART -->
+    <file id="F38" path="milk-latte-art/milk-science.md" domain="D05" difficulty="intermediate">
+      <title>Milk Science</title>
+      <key_topics>Chemistry, proteins, fats, foam mechanics, temperature, plant milks</key_topics>
+      <prereqs>None</prereqs>
+      <feeds_into>F39, F40</feeds_into>
+    </file>
+    <file id="F39" path="milk-latte-art/steaming-technique.md" domain="D05" difficulty="intermediate">
+      <title>Steaming Technique</title>
+      <key_topics>Two-phase method, wand position, non-dairy adjustments, troubleshooting</key_topics>
+      <prereqs>F38</prereqs>
+    </file>
+    <file id="F40" path="milk-latte-art/latte-art-patterns.md" domain="D05" difficulty="intermediate">
+      <title>Latte Art Patterns</title>
+      <key_topics>Heart, rosetta, tulip, swan, physics, competition WLAC</key_topics>
+      <prereqs>F38, F39</prereqs>
+    </file>
+
+    <!-- DOMAIN 6: CHEMISTRY AND PHYSICS -->
+    <file id="F41" path="chemistry-physics/extraction-chemistry.md" domain="D06" difficulty="advanced">
+      <title>Extraction Chemistry</title>
+      <key_topics>Compound classes, CGAs, caffeine, acids, lipids, volatile aromatics</key_topics>
+      <prereqs>F23</prereqs>
+      <feeds_into>F42, F43, F44, F45</feeds_into>
+    </file>
+    <file id="F42" path="chemistry-physics/maillard-caramelization.md" domain="D06" difficulty="advanced">
+      <title>Maillard Reaction, Caramelization and Thermal Chemistry</title>
+      <key_topics>Maillard mechanism, Strecker, caramelization, pyrolysis, CGA transformation</key_topics>
+      <prereqs>F41, F47</prereqs>
+    </file>
+    <file id="F43" path="chemistry-physics/solubility-science.md" domain="D06" difficulty="advanced">
+      <title>Solubility Science</title>
+      <key_topics>Fick's Law, diffusion, particle size, bimodal distribution, concentration gradient</key_topics>
+      <prereqs>F41</prereqs>
+    </file>
+    <file id="F44" path="chemistry-physics/thermal-fluid-dynamics.md" domain="D06" difficulty="advanced">
+      <title>Thermal and Fluid Dynamics</title>
+      <key_topics>Heat transfer, Darcy's Law, Reynolds number, viscosity, crema physics, PID</key_topics>
+      <prereqs>F41, F23</prereqs>
+    </file>
+    <file id="F45" path="chemistry-physics/co2-degassing-freshness.md" domain="D06" difficulty="advanced">
+      <title>CO2 Degassing and Freshness</title>
+      <key_topics>CO2 production, release kinetics, bloom, crema, staling chemistry, storage</key_topics>
+      <prereqs>F41, F47</prereqs>
+    </file>
+    <file id="F46" path="chemistry-physics/coffee-health-science.md" domain="D06" difficulty="intermediate">
+      <title>Coffee and Health Science</title>
+      <key_topics>Caffeine, CGAs, antioxidants, health research, safe limits, decaf</key_topics>
+      <prereqs>F41</prereqs>
+    </file>
+
+    <!-- DOMAIN 7: WATER SCIENCE -->
+    <file id="F50" path="water-science/water-chemistry.md" domain="D07" difficulty="advanced">
+      <title>Water Chemistry for Coffee</title>
+      <key_topics>SCA targets, Mg/Ca/HCO3/pH/Na, hardness, Henry's Law</key_topics>
+      <prereqs>F23</prereqs>
+      <feeds_into>F51, F52</feeds_into>
+    </file>
+    <file id="F51" path="water-science/water-recipes.md" domain="D07" difficulty="intermediate">
+      <title>Water Recipes and Remineralisation</title>
+      <key_topics>SCA benchmark, Aqua Magica, espresso profile, Third Wave Water</key_topics>
+      <prereqs>F50</prereqs>
+    </file>
+    <file id="F52" path="water-science/filtration-systems.md" domain="D07" difficulty="intermediate">
+      <title>Filtration Systems</title>
+      <key_topics>Carbon, TAC, RO, BWT Bestmax, Everpure, ion exchange, descaling</key_topics>
+      <prereqs>F50</prereqs>
+    </file>
+    <file id="F52b" path="water-science/WATER_DATA.xml" domain="D07" type="data">
+      <title>Water Science Structured Data</title>
+    </file>
+
+    <!-- DOMAIN 8: ROASTING SCIENCE -->
+    <file id="F47" path="roasting/roast-science.md" domain="D08" difficulty="advanced">
+      <title>Roasting Science</title>
+      <key_topics>Phases, Maillard, DTR, degassing, freshness, heat transfer, CO2</key_topics>
+      <prereqs>F08, F41</prereqs>
+      <feeds_into>F48, F49, F49b, F49c</feeds_into>
+    </file>
+    <file id="F48" path="roasting/roast-curves-profiles.md" domain="D08" difficulty="advanced">
+      <title>Roast Curves and Profiles</title>
+      <key_topics>Profile architecture, RoR management, turning points, DTR, Cropster, Artisan</key_topics>
+      <prereqs>F47</prereqs>
+    </file>
+    <file id="F49" path="roasting/roast-defects.md" domain="D08" difficulty="advanced">
+      <title>Roast Defects</title>
+      <key_topics>Scorching, baked, underdeveloped, quakers, tipping, green grading</key_topics>
+      <prereqs>F47, F48</prereqs>
+    </file>
+    <file id="F49b" path="roasting/roastery-operations.md" domain="D08" difficulty="advanced">
+      <title>Roastery Operations</title>
+      <key_topics>Equipment, production planning, blend development, QC, packaging, economics</key_topics>
+      <prereqs>F47, F48, F20</prereqs>
+    </file>
+    <file id="F49c" path="roasting/roast-color-agtron.md" domain="D08" difficulty="intermediate">
+      <title>Roast Color and Agtron</title>
+      <key_topics>Agtron scale, SCA tiles, colorimeters, ground vs whole bean, measurement protocol</key_topics>
+      <prereqs>F47</prereqs>
+    </file>
+
+    <!-- DOMAIN 9: SENSORY AND CUPPING -->
+    <file id="F55" path="sensory-cupping/cupping-protocol.md" domain="D09" difficulty="intermediate">
+      <title>Cupping Protocol and Sensory Analysis</title>
+      <key_topics>Full SCA protocol, scorecard, 10 attributes, defects, specialty threshold</key_topics>
+      <prereqs>F30</prereqs>
+      <feeds_into>F56, F57</feeds_into>
+    </file>
+    <file id="F56" path="sensory-cupping/flavor-wheel-guide.md" domain="D09" difficulty="intermediate">
+      <title>Coffee Flavour Wheel Guide</title>
+      <key_topics>All 9 categories, every descriptor, origin mapping, roast mapping, tasting notes</key_topics>
+      <prereqs>F55</prereqs>
+    </file>
+    <file id="F57" path="sensory-cupping/sensory-training.md" domain="D09" difficulty="advanced">
+      <title>Sensory Training Exercises</title>
+      <key_topics>Taste thresholds, acid identification, aroma kit, triangle tests, Q Grader prep</key_topics>
+      <prereqs>F55, F56</prereqs>
+    </file>
+
+    <!-- DOMAIN 10: EQUIPMENT -->
+    <file id="F53" path="equipment/espresso-machines.md" domain="D10" difficulty="intermediate">
+      <title>Espresso Machines — Equipment Guide</title>
+      <key_topics>La Marzocco, Nuova Simonelli, Breville, Rocket; boiler types; comparison</key_topics>
+      <prereqs>F23</prereqs>
+    </file>
+    <file id="F54" path="equipment/grinders.md" domain="D10" difficulty="intermediate">
+      <title>Grinders — Complete Guide</title>
+      <key_topics>Flat vs conical burr, EK43, Niche Zero, DF64, RDT, single-dose</key_topics>
+      <prereqs>F23</prereqs>
+    </file>
+    <file id="F54b" path="equipment/brewing-equipment.md" domain="D10" difficulty="beginner">
+      <title>Brewing Equipment</title>
+      <key_topics>V60, Chemex, Kalita, kettles, scales, refractometers, filters</key_topics>
+      <prereqs>F30</prereqs>
+    </file>
+    <file id="F54c" path="equipment/maintenance-cleaning.md" domain="D10" difficulty="intermediate">
+      <title>Maintenance and Cleaning</title>
+      <key_topics>Daily/weekly/monthly protocols, backflush, descaling, grinder care</key_topics>
+      <prereqs>F53, F54</prereqs>
+    </file>
+    <file id="F54d" path="equipment/coffee-lab-tools.md" domain="D10" difficulty="advanced">
+      <title>Coffee Lab Tools</title>
+      <key_topics>VST refractometer, Agtron, moisture meters, pH meters, Cropster, Artisan</key_topics>
+      <prereqs>F23, F47</prereqs>
+    </file>
+    <file id="F54e" path="equipment/espresso-machine-technology.md" domain="D10" difficulty="advanced">
+      <title>Espresso Machine Technology Deep Dive</title>
+      <key_topics>Boiler systems, pumps, PID, group heads, E61, solenoid, flowmeter</key_topics>
+      <prereqs>F53, F23</prereqs>
+    </file>
+
+    <!-- DOMAIN 11: CAFE OPERATIONS -->
+    <file id="F60" path="cafe-operations/workflow-sop.md" domain="D11" difficulty="intermediate">
+      <title>Café Workflow SOP</title>
+      <key_topics>Opening/closing, multi-order sequencing, station setup, hygiene, calibration</key_topics>
+      <prereqs>F23, F38</prereqs>
+    </file>
+    <file id="F61" path="cafe-operations/beverage-costing.md" domain="D11" difficulty="intermediate">
+      <title>Beverage Costing and Menu Engineering</title>
+      <key_topics>COGS, margins, prime cost, menu engineering matrix, P&amp;L template</key_topics>
+      <prereqs>F60</prereqs>
+    </file>
+    <file id="F62" path="cafe-operations/staff-training.md" domain="D11" difficulty="intermediate">
+      <title>Staff Training System</title>
+      <key_topics>Onboarding, competency assessments, progression, coaching, SBI feedback</key_topics>
+      <prereqs>F60</prereqs>
+    </file>
+    <file id="F63" path="cafe-operations/menu-development.md" domain="D11" difficulty="intermediate">
+      <title>Menu Development and Drink Recipes</title>
+      <key_topics>Core drinks, signature development, seasonal, non-coffee, menu engineering</key_topics>
+      <prereqs>F60, F61, F38</prereqs>
+    </file>
+    <file id="F64" path="cafe-operations/inventory-management.md" domain="D11" difficulty="intermediate">
+      <title>Inventory Management and Waste Reduction</title>
+      <key_topics>FIFO, par stock, ordering schedules, waste tracking, stocktaking</key_topics>
+      <prereqs>F61</prereqs>
+    </file>
+    <file id="F65" path="cafe-operations/marketing-branding.md" domain="D11" difficulty="intermediate">
+      <title>Marketing, Branding and Customer Experience</title>
+      <key_topics>Brand identity, storytelling, social media, loyalty, community building</key_topics>
+      <prereqs>F60, F63</prereqs>
+    </file>
+    <file id="F66" path="cafe-operations/cafe-design-layout.md" domain="D11" difficulty="intermediate">
+      <title>Café Design and Layout</title>
+      <key_topics>Bar layout, customer flow, sensory design, seating, accessibility, technology</key_topics>
+      <prereqs>F53, F60</prereqs>
+    </file>
+
+    <!-- DOMAIN 12: LEARNING PATHS -->
+    <file id="F70" path="learning-paths/learning-paths.md" domain="D12" difficulty="all">
+      <title>Learning Paths</title>
+      <key_topics>7 pathways: beginner, professional, science, competition, roasting, café management, Q Grader</key_topics>
+      <prereqs>None — entry point</prereqs>
+    </file>
+    <file id="F71" path="learning-paths/competition-guide.md" domain="D12" difficulty="advanced">
+      <title>Competition Guide — WBC, WBrC, WLAC, WAC</title>
+      <key_topics>All major competitions, judging criteria, scoring, preparation, presentation</key_topics>
+      <prereqs>F23, F38, F55</prereqs>
+    </file>
+    <file id="F72" path="learning-paths/q-grader-study-plan.md" domain="D12" difficulty="advanced">
+      <title>Q Grader Certification Study Plan</title>
+      <key_topics>All 22 modules, 6-month study programme, tools, resources</key_topics>
+      <prereqs>F55, F56, F57, F20, F47</prereqs>
+    </file>
+    <file id="F73" path="learning-paths/sca-curriculum-map.md" domain="D12" difficulty="all">
+      <title>SCA Curriculum Map</title>
+      <key_topics>All 6 modules, 3 levels, point system, diploma pathway, approved trainer</key_topics>
+      <prereqs>None — reference document</prereqs>
+    </file>
+
+    <!-- DOMAIN 13: FORMULAS -->
+    <file id="F80" path="formulas/formula-library.md" domain="D13" difficulty="all">
+      <title>Master Formula Library</title>
+      <key_topics>24 formulas: brewing, water, roasting, café business, sensory scoring</key_topics>
+      <prereqs>None — reference document</prereqs>
+    </file>
+
+  </files>
+
+  <!-- ═══════════════════════════════════
+       LEARNING DEPENDENCY GRAPH
+  ═══════════════════════════════════ -->
+  <learning_paths>
+
+    <path id="LP-A" name="Beginner Barista (8 weeks)">
+      <sequence>F01 → F08 → F30 → F31 → F50 → F23 → F38 → F55 → F80</sequence>
+    </path>
+
+    <path id="LP-B" name="Professional Barista (3-6 months)">
+      <sequence>LP-A → F25 → F26 → F27 → F39 → F40 → F60 → F61 → F62 → F63</sequence>
+    </path>
+
+    <path id="LP-C" name="Coffee Scientist">
+      <sequence>F23 → F41 → F42 → F43 → F44 → F50 → F51 → F47 → F80</sequence>
+    </path>
+
+    <path id="LP-D" name="Competition Barista">
+      <sequence>LP-B → F24 → F29 → F55 → F56 → F71</sequence>
+    </path>
+
+    <path id="LP-E" name="Roasting Specialization">
+      <sequence>F08 → F09 → F20 → F21 → F47 → F48 → F49 → F49b → F49c → F55</sequence>
+    </path>
+
+    <path id="LP-F" name="Café Management">
+      <sequence>F60 → F61 → F62 → F63 → F64 → F65 → F66 → F07 → F05</sequence>
+    </path>
+
+    <path id="LP-G" name="Q Grader Certification">
+      <sequence>F55 → F56 → F57 → F20 → F47 → F49c → F72</sequence>
+    </path>
+
+  </learning_paths>
+
+  <!-- ═══════════════════════════════════
+       CROSS-DOMAIN CONNECTIONS
+  ═══════════════════════════════════ -->
+  <cross_domain_edges>
+    <edge from="D06" to="D03" relationship="Chemistry informs extraction parameters"/>
+    <edge from="D06" to="D04" relationship="Chemistry informs all brewing methods"/>
+    <edge from="D06" to="D08" relationship="Chemistry is the science of roasting"/>
+    <edge from="D07" to="D03" relationship="Water directly affects espresso extraction"/>
+    <edge from="D07" to="D04" relationship="Water directly affects filter brewing"/>
+    <edge from="D08" to="D02" relationship="Roasting transforms green bean character"/>
+    <edge from="D08" to="D09" relationship="Roast level shapes sensory profile"/>
+    <edge from="D09" to="D03" relationship="Cupping calibrates espresso dialing in"/>
+    <edge from="D09" to="D04" relationship="Cupping evaluates filter brew quality"/>
+    <edge from="D10" to="D03" relationship="Machine technology enables extraction"/>
+    <edge from="D10" to="D04" relationship="Equipment determines brewing method"/>
+    <edge from="D11" to="D03" relationship="Café ops applies extraction science"/>
+    <edge from="D13" to="D03" relationship="Formulas quantify extraction"/>
+    <edge from="D13" to="D07" relationship="Formulas quantify water chemistry"/>
+    <edge from="D13" to="D08" relationship="Formulas quantify roast parameters"/>
+    <edge from="D13" to="D11" relationship="Formulas quantify café economics"/>
+    <edge from="D01" to="D02" relationship="History shaped origin development"/>
+    <edge from="D02" to="D08" relationship="Bean character determines roast approach"/>
+    <edge from="D02" to="D03" relationship="Bean density affects extraction parameters"/>
+  </cross_domain_edges>
+
+  <!-- ═══════════════════════════════════
+       QUICK LOOKUP: TOPIC TO FILE
+  ═══════════════════════════════════ -->
+  <topic_index>
+    <topic name="Extraction Yield (EY)" primary_file="F23" also_in="F80"/>
+    <topic name="TDS measurement" primary_file="F23" also_in="F54d, F80"/>
+    <topic name="Brew ratio" primary_file="F23" also_in="F80"/>
+    <topic name="Dialing in espresso" primary_file="F26" also_in="F25, F27"/>
+    <topic name="Channeling" primary_file="F27" also_in="F25, F24"/>
+    <topic name="Pre-infusion" primary_file="F24" also_in="F29"/>
+    <topic name="Maillard reaction" primary_file="F42" also_in="F47, F41"/>
+    <topic name="First crack" primary_file="F47" also_in="F48"/>
+    <topic name="DTR (Development Time Ratio)" primary_file="F47" also_in="F48, F80"/>
+    <topic name="SCA cupping protocol" primary_file="F55" also_in="F57"/>
+    <topic name="Flavour wheel" primary_file="F56" also_in="F55"/>
+    <topic name="Water hardness" primary_file="F50" also_in="F80, F52b"/>
+    <topic name="Magnesium in water" primary_file="F50" also_in="F52b"/>
+    <topic name="RO filtration" primary_file="F52" also_in="F52b"/>
+    <topic name="BWT Bestmax" primary_file="F52" also_in="F52b"/>
+    <topic name="Agtron / roast color" primary_file="F49c" also_in="F54d"/>
+    <topic name="Green coffee defects" primary_file="F20" also_in="F49"/>
+    <topic name="Terroir" primary_file="F22" also_in="F08"/>
+    <topic name="Natural processing" primary_file="F21" also_in="F08"/>
+    <topic name="Anaerobic processing" primary_file="F21"/>
+    <topic name="Monsooned Malabar" primary_file="F16" also_in="F21"/>
+    <topic name="Yirgacheffe" primary_file="F13"/>
+    <topic name="Gesha/Geisha" primary_file="F09" also_in="F17"/>
+    <topic name="SL-28" primary_file="F09" also_in="F17"/>
+    <topic name="Potato defect" primary_file="F17" also_in="F18"/>
+    <topic name="Beverage cost" primary_file="F61" also_in="F80"/>
+    <topic name="Prime cost" primary_file="F61" also_in="F80"/>
+    <topic name="Latte art" primary_file="F40" also_in="F39"/>
+    <topic name="Microfoam" primary_file="F38" also_in="F39"/>
+    <topic name="WBC competition" primary_file="F71"/>
+    <topic name="Q Grader exam" primary_file="F72" also_in="F57"/>
+    <topic name="SCA certification" primary_file="F73" also_in="F70"/>
+    <topic name="Cold brew" primary_file="F34"/>
+    <topic name="V60 recipe" primary_file="F31"/>
+    <topic name="AeroPress recipe" primary_file="F33"/>
+    <topic name="PID controller" primary_file="F29" also_in="F44"/>
+    <topic name="E61 group head" primary_file="F29"/>
+    <topic name="CO2 degassing" primary_file="F45" also_in="F47"/>
+    <topic name="Coffee and health" primary_file="F46"/>
+    <topic name="Climate change coffee" primary_file="F06"/>
+    <topic name="Direct trade" primary_file="F07" also_in="F03"/>
+    <topic name="Espresso blending" primary_file="F28"/>
+    <topic name="Roastery business" primary_file="F49b"/>
+    <topic name="Café design" primary_file="F66"/>
+    <topic name="Inventory FIFO" primary_file="F64"/>
+    <topic name="Staff training" primary_file="F62"/>
+    <topic name="Menu engineering" primary_file="F61" also_in="F63"/>
+  </topic_index>
+
+</coffee_knowledge_graph>

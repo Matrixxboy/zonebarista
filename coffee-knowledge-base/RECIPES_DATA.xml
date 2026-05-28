@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coffee_recipes_database version="1.0" standard="SCA-aligned" created="2025">
+
+  <metadata>
+    <title>Coffee Recipes &amp; Brew Parameters Database</title>
+    <description>Structured data for all brewing recipes, water profiles, espresso parameters, and roast references</description>
+    <total_recipes>42</total_recipes>
+  </metadata>
+
+  <!-- ═══════════════════════════════════
+       ESPRESSO RECIPES
+  ═══════════════════════════════════ -->
+  <espresso_recipes>
+
+    <recipe id="esp-001" name="Standard Specialty Espresso">
+      <dose unit="g">18</dose>
+      <yield unit="g">36</yield>
+      <ratio>1:2</ratio>
+      <time unit="seconds">25–32</time>
+      <temperature unit="celsius">93</temperature>
+      <pressure unit="bar">9</pressure>
+      <EY_target unit="percent">18–22</EY_target>
+      <TDS_target unit="percent">8–12</TDS_target>
+      <style>Standard double espresso</style>
+      <notes>SCA and WBC baseline. Adjust grind to hit time window.</notes>
+    </recipe>
+
+    <recipe id="esp-002" name="Ristretto">
+      <dose unit="g">18</dose>
+      <yield unit="g">22–27</yield>
+      <ratio>1:1.2–1.5</ratio>
+      <time unit="seconds">20–28</time>
+      <temperature unit="celsius">92</temperature>
+      <pressure unit="bar">9</pressure>
+      <notes>Short, concentrated. Sweeter, less bitter than standard. Used for flat whites and milk drinks.</notes>
+    </recipe>
+
+    <recipe id="esp-003" name="Lungo">
+      <dose unit="g">18</dose>
+      <yield unit="g">54–72</yield>
+      <ratio>1:3–4</ratio>
+      <time unit="seconds">35–50</time>
+      <temperature unit="celsius">94</temperature>
+      <pressure unit="bar">9</pressure>
+      <notes>Long pull. More bitter than standard. Less common in specialty.</notes>
+    </recipe>
+
+    <recipe id="esp-004" name="Turbo Shot">
+      <dose unit="g">18</dose>
+      <yield unit="g">45–60</yield>
+      <ratio>1:2.5–3</ratio>
+      <time unit="seconds">10–15</time>
+      <temperature unit="celsius">93</temperature>
+      <pressure unit="bar">9</pressure>
+      <grind_note>Much coarser than standard — counter-intuitive</grind_note>
+      <notes>Fast, high-flow, coarse grind. Clean, bright, filter-like espresso. Competition-popular.</notes>
+    </recipe>
+
+    <recipe id="esp-005" name="Competition Profile Espresso (Declining Pressure)">
+      <dose unit="g">20</dose>
+      <yield unit="g">42–46</yield>
+      <ratio>1:2.1–2.3</ratio>
+      <time unit="seconds">28–36</time>
+      <temperature unit="celsius">94</temperature>
+      <pressure_profile>
+        <phase name="pre-infusion">3–4 bar for 8–12s</phase>
+        <phase name="ramp">Ramp to 9 bar over 5s</phase>
+        <phase name="decline">Decline from 9 to 5–6 bar over 15s</phase>
+      </pressure_profile>
+      <notes>Used by WBC finalists. Reduces harsh extraction at end of shot.</notes>
+    </recipe>
+
+  </espresso_recipes>
+
+  <!-- ═══════════════════════════════════
+       MILK DRINK RECIPES
+  ═══════════════════════════════════ -->
+  <milk_drink_recipes>
+
+    <recipe id="mlk-001" name="Flat White">
+      <espresso>Double ristretto (18g / 22–27g yield)</espresso>
+      <milk unit="mL">100–120</milk>
+      <cup_size unit="oz">5–6</cup_size>
+      <milk_texture>Microfoam — silky, minimal stretch</milk_texture>
+      <temperature unit="celsius">60–65</temperature>
+      <latte_art>Heart or simple rosetta</latte_art>
+      <origin>Australia/New Zealand</origin>
+      <notes>Strong espresso-to-milk ratio. Espresso flavour dominant. Full microfoam texture.</notes>
+    </recipe>
+
+    <recipe id="mlk-002" name="Latte (Flat/Café Latte)">
+      <espresso>Double espresso (18g / 36g yield)</espresso>
+      <milk unit="mL">180–240</milk>
+      <cup_size unit="oz">8–12</cup_size>
+      <milk_texture>Silky microfoam — moderate stretch</milk_texture>
+      <temperature unit="celsius">60–65</temperature>
+      <latte_art>Rosetta, tulip, or heart</latte_art>
+      <notes>Most popular café drink globally. Balanced espresso + milk. Smooth and approachable.</notes>
+    </recipe>
+
+    <recipe id="mlk-003" name="Cappuccino">
+      <espresso>Double espresso (18g / 36g yield)</espresso>
+      <milk unit="mL">80–100</milk>
+      <cup_size unit="oz">5–6</cup_size>
+      <milk_texture>Thick microfoam — maximum stretch (40–50% volume increase)</milk_texture>
+      <temperature unit="celsius">60–65</temperature>
+      <foam_to_liquid_ratio>1:1 foam to steamed milk</foam_to_liquid_ratio>
+      <notes>Traditional Italian: equal thirds espresso, steamed milk, foam. Modern specialty: all microfoam.</notes>
+    </recipe>
+
+    <recipe id="mlk-004" name="Cortado">
+      <espresso>Double espresso (18g / 36g yield)</espresso>
+      <milk unit="mL">30–40</milk>
+      <cup_size unit="oz">3–4</cup_size>
+      <milk_texture>Minimal stretch — just to cut espresso bitterness</milk_texture>
+      <notes>Spanish origin. "Cortado" = cut. Equal parts espresso and milk. Bold, minimal.</notes>
+    </recipe>
+
+    <recipe id="mlk-005" name="Macchiato (Espresso)">
+      <espresso>Double espresso (18g / 36g yield)</espresso>
+      <milk unit="mL">10–15</milk>
+      <cup_size unit="oz">3</cup_size>
+      <milk_texture>Dollop of microfoam on top</milk_texture>
+      <notes>"Macchiato" = stained. Espresso stained with small amount of foam.</notes>
+    </recipe>
+
+    <recipe id="mlk-006" name="Piccolo Latte">
+      <espresso>Single ristretto (18g / 22g yield)</espresso>
+      <milk unit="mL">80–90</milk>
+      <cup_size unit="oz">3.5–4</cup_size>
+      <milk_texture>Silky microfoam</milk_texture>
+      <notes>Australian origin. Similar to cortado but stronger milk-to-espresso balance.</notes>
+    </recipe>
+
+  </milk_drink_recipes>
+
+  <!-- ═══════════════════════════════════
+       FILTER BREW RECIPES
+  ═══════════════════════════════════ -->
+  <filter_recipes>
+
+    <recipe id="flt-001" name="Hario V60 — James Hoffman Method">
+      <dose unit="g">15</dose>
+      <water unit="g">250</water>
+      <ratio>1:16.7</ratio>
+      <grind>Medium-fine</grind>
+      <temperature unit="celsius">93</temperature>
+      <total_time>3:00–3:30</total_time>
+      <steps>
+        <step time="0:00">Rinse filter; add 15g coffee</step>
+        <step time="0:00">Pour 50g bloom water; swirl gently</step>
+        <step time="0:45">Continue to 150g in slow spiral pour</step>
+        <step time="1:30">Continue to 250g total</step>
+        <step time="3:00–3:30">Drawdown complete; flat coffee bed</step>
+      </steps>
+    </recipe>
+
+    <recipe id="flt-002" name="Chemex — Standard Recipe">
+      <dose unit="g">30</dose>
+      <water unit="g">500</water>
+      <ratio>1:16.7</ratio>
+      <grind>Medium-coarse</grind>
+      <temperature unit="celsius">93</temperature>
+      <total_time>4:00–5:30</total_time>
+      <steps>
+        <step time="0:00">Pre-fold and rinse Chemex filter</step>
+        <step time="0:00">Add 30g coffee</step>
+        <step time="0:00">Bloom: 90g water; wait 45s</step>
+        <step time="0:45">Pour to 180g</step>
+        <step time="1:30">Pour to 320g</step>
+        <step time="2:30">Pour to 500g total</step>
+        <step time="4:30–5:30">Drawdown complete</step>
+      </steps>
+    </recipe>
+
+    <recipe id="flt-003" name="French Press — Hoffman Long Steep">
+      <dose unit="g">30</dose>
+      <water unit="g">500</water>
+      <ratio>1:16.7</ratio>
+      <grind>Coarse</grind>
+      <temperature unit="celsius">93</temperature>
+      <total_time>9:00–10:00</total_time>
+      <steps>
+        <step time="0:00">Add coffee; pour all 500g water</step>
+        <step time="4:00">Break crust; remove floating grounds</step>
+        <step time="9:00">Slowly lower plunger just below surface</step>
+        <step time="9:00">Pour immediately without pressing fully</step>
+      </steps>
+    </recipe>
+
+    <recipe id="flt-004" name="AeroPress — Hoffman All-Rounder">
+      <dose unit="g">11</dose>
+      <water unit="g">200</water>
+      <ratio>1:18</ratio>
+      <grind>Medium-fine</grind>
+      <temperature unit="celsius">90</temperature>
+      <total_time>2:30</total_time>
+      <steps>
+        <step time="0:00">Standard orientation; wet filter; add coffee</step>
+        <step time="0:00">Pour all 200g water</step>
+        <step time="0:10">Stir 10× at top of chamber</step>
+        <step time="0:15">Place cap and filter immediately</step>
+        <step time="2:00">Flip; press slowly over 30 seconds</step>
+        <step time="2:30">Stop at first hiss</step>
+      </steps>
+    </recipe>
+
+    <recipe id="flt-005" name="Cold Brew Concentrate">
+      <dose unit="g">100</dose>
+      <water unit="g">800</water>
+      <ratio>1:8</ratio>
+      <grind>Extra coarse</grind>
+      <temperature unit="celsius">4</temperature>
+      <total_time>18–24 hours</total_time>
+      <yield_notes>Dilute 1:1 to 1:3 before serving</yield_notes>
+      <steps>
+        <step>Combine coffee and cold water; stir</step>
+        <step>Cover; refrigerate 18–24 hours</step>
+        <step>Filter through mesh then paper filter</step>
+        <step>Store sealed up to 14 days refrigerated</step>
+      </steps>
+    </recipe>
+
+    <recipe id="flt-006" name="Moka Pot — Standard">
+      <dose_note>Fill basket level; do not tamp</dose_note>
+      <water_note>Fill to below safety valve; use pre-boiled water</water_note>
+      <grind>Fine-medium</grind>
+      <heat>Medium-low</heat>
+      <total_time>5–8 minutes</total_time>
+      <steps>
+        <step>Fill bottom with pre-boiled water to valve</step>
+        <step>Fill basket with coffee; level only</step>
+        <step>Assemble; place on medium-low heat</step>
+        <step>Remove before final gurgling rush</step>
+        <step>Stir brewed coffee before pouring</step>
+      </steps>
+    </recipe>
+
+    <recipe id="flt-007" name="Siphon — Standard">
+      <dose unit="g">25</dose>
+      <water unit="g">400</water>
+      <ratio>1:16</ratio>
+      <grind>Medium</grind>
+      <temperature unit="celsius">92</temperature>
+      <upper_chamber_steep unit="seconds">60–90</upper_chamber_steep>
+      <steps>
+        <step>Fill bottom chamber with 400g hot water</step>
+        <step>Attach top chamber; apply heat</step>
+        <step>Add coffee when water rises to top</step>
+        <step>Stir gently; steep 60–90s</step>
+        <step>Remove heat; wait for draw-down</step>
+        <step>Serve immediately from lower chamber</step>
+      </steps>
+    </recipe>
+
+    <recipe id="flt-008" name="Batch Brew — SCA Golden Cup">
+      <dose unit="g_per_litre">65</dose>
+      <water unit="g">1000</water>
+      <ratio>1:15.4</ratio>
+      <grind>Medium</grind>
+      <temperature unit="celsius">93</temperature>
+      <brew_time>4–6 minutes</brew_time>
+      <hold_temperature unit="celsius">80–85</hold_temperature>
+      <freshness_window>45 minutes in thermal carafe</freshness_window>
+    </recipe>
+
+  </filter_recipes>
+
+  <!-- ═══════════════════════════════════
+       WATER PROFILES
+  ═══════════════════════════════════ -->
+  <water_profiles>
+
+    <profile id="wtr-001" name="SCA Benchmark">
+      <TDS unit="mg_per_L">150</TDS>
+      <pH>7.0</pH>
+      <total_hardness unit="mg_per_L_CaCO3">50–175</total_hardness>
+      <alkalinity unit="mg_per_L_CaCO3">40</alkalinity>
+      <calcium unit="mg_per_L">40–80</calcium>
+      <magnesium unit="mg_per_L">10–30</magnesium>
+      <sodium unit="mg_per_L">0–10</sodium>
+      <chlorine unit="mg_per_L">0</chlorine>
+      <source>SCA Water Standards 2018</source>
+    </profile>
+
+    <profile id="wtr-002" name="SCA Benchmark Recipe (1L RO water)">
+      <ingredient name="Magnesium Sulfate (Epsom Salt)" formula="MgSO4·7H2O" amount_g="0.59"/>
+      <ingredient name="Sodium Bicarbonate (Baking Soda)" formula="NaHCO3" amount_g="0.17"/>
+      <resulting_TDS unit="mg_per_L">~150</resulting_TDS>
+      <resulting_Mg unit="mg_per_L">~29</resulting_Mg>
+      <resulting_alkalinity unit="mg_per_L_CaCO3">~40</resulting_alkalinity>
+    </profile>
+
+    <profile id="wtr-003" name="Barista Hustle Aqua Magica Concentrate">
+      <use>Add 1mL per 100mL RO water</use>
+      <ingredient name="Magnesium Chloride" formula="MgCl2·6H2O" amount_g_per_100mL="13.2"/>
+      <ingredient name="Sodium Bicarbonate" formula="NaHCO3" amount_g_per_100mL="5.0"/>
+      <ingredient name="Potassium Bicarbonate" formula="KHCO3" amount_g_per_100mL="2.0"/>
+      <resulting_Mg unit="mg_per_L">~17</resulting_Mg>
+      <resulting_Na unit="mg_per_L">~9</resulting_Na>
+      <resulting_alkalinity unit="mg_per_L_CaCO3">~65</resulting_alkalinity>
+    </profile>
+
+    <profile id="wtr-004" name="Espresso Optimised (1L RO water)">
+      <ingredient name="Magnesium Sulfate" formula="MgSO4·7H2O" amount_g="0.80"/>
+      <ingredient name="Calcium Chloride" formula="CaCl2" amount_g="0.50"/>
+      <ingredient name="Sodium Bicarbonate" formula="NaHCO3" amount_g="0.25"/>
+      <resulting_TDS unit="mg_per_L">~200</resulting_TDS>
+      <resulting_Mg unit="mg_per_L">~39</resulting_Mg>
+      <resulting_Ca unit="mg_per_L">~18</resulting_Ca>
+      <use>Higher mineral for espresso body and crema</use>
+    </profile>
+
+  </water_profiles>
+
+  <!-- ═══════════════════════════════════
+       CUPPING RATIOS & SCORING
+  ═══════════════════════════════════ -->
+  <cupping_standards>
+
+    <sca_cupping_protocol>
+      <coffee_to_water_ratio unit="g_per_mL">8.25 per 150mL</coffee_to_water_ratio>
+      <grind>Medium-coarse</grind>
+      <water_temperature unit="celsius">93</water_temperature>
+      <steep_time unit="minutes">4</steep_time>
+      <cups_per_sample>5 minimum</cups_per_sample>
+      <crust_break_time unit="minutes">4</crust_break_time>
+      <evaluation_temperatures>70°C (warm), 50°C (cool)</evaluation_temperatures>
+    </sca_cupping_protocol>
+
+    <sca_score_attributes>
+      <attribute name="Fragrance/Aroma" max="10"/>
+      <attribute name="Flavor" max="10"/>
+      <attribute name="Aftertaste" max="10"/>
+      <attribute name="Acidity" max="10"/>
+      <attribute name="Body" max="10"/>
+      <attribute name="Balance" max="10"/>
+      <attribute name="Uniformity" max="10"/>
+      <attribute name="Clean Cup" max="10"/>
+      <attribute name="Sweetness" max="10"/>
+      <attribute name="Overall" max="10"/>
+      <defect_penalty type="taint">-2 per cup</defect_penalty>
+      <defect_penalty type="fault">-4 per cup</defect_penalty>
+      <specialty_threshold>80.00</specialty_threshold>
+    </sca_score_attributes>
+
+    <score_ranges>
+      <range min="90" max="100" label="Outstanding"/>
+      <range min="85" max="89.99" label="Excellent"/>
+      <range min="80" max="84.99" label="Specialty"/>
+      <range min="75" max="79.99" label="Premium"/>
+      <range min="0" max="74.99" label="Commodity/Below Standard"/>
+    </score_ranges>
+
+  </cupping_standards>
+
+  <!-- ═══════════════════════════════════
+       ROAST REFERENCE DATA
+  ═══════════════════════════════════ -->
+  <roast_reference>
+
+    <roast_levels>
+      <level name="Very Light" agtron_min="85" agtron_max="100" drop_temp_c="193–196" notes="Raw/grassy notes possible; origin-forward"/>
+      <level name="Light" agtron_min="75" agtron_max="84" drop_temp_c="196–205" notes="Floral, fruity, bright; specialty standard"/>
+      <level name="Medium-Light" agtron_min="65" agtron_max="74" drop_temp_c="205–210" notes="Balanced; some caramel; origin + roast"/>
+      <level name="Medium" agtron_min="55" agtron_max="64" drop_temp_c="210–218" notes="Classic balance; caramel, chocolate"/>
+      <level name="Medium-Dark" agtron_min="45" agtron_max="54" drop_temp_c="218–225" notes="Bittersweet; low acidity; espresso classic"/>
+      <level name="Dark" agtron_min="25" agtron_max="44" drop_temp_c="225–240" notes="Roast dominant; smoky; bold"/>
+      <level name="Very Dark / French" agtron_min="0" agtron_max="24" drop_temp_c="240+" notes="Carbonised; bitter; oils visible"/>
+    </roast_levels>
+
+    <key_temperatures>
+      <point name="Drying phase start" temp_c="100–160" description="Moisture evaporation"/>
+      <point name="Yellowing" temp_c="~155–165" description="Maillard begins; colour changes"/>
+      <point name="First crack onset" temp_c="196–200" description="Audible popping; endothermic"/>
+      <point name="First crack full" temp_c="200–205" description="Rapid cracking"/>
+      <point name="Development zone" temp_c="200–220" description="Post-crack; DTR target 20–25%"/>
+      <point name="Second crack onset" temp_c="224–227" description="Continuous cracking; oily surface"/>
+      <point name="Second crack full" temp_c="228–232" description="Dark roast; pyrolysis dominant"/>
+    </key_temperatures>
+
+    <dtr_targets>
+      <target roast="Light" DTR_percent_min="15" DTR_percent_max="20"/>
+      <target roast="Medium-Light" DTR_percent_min="18" DTR_percent_max="23"/>
+      <target roast="Medium" DTR_percent_min="20" DTR_percent_max="25"/>
+      <target roast="Medium-Dark" DTR_percent_min="22" DTR_percent_max="28"/>
+    </dtr_targets>
+
+  </roast_reference>
+
+  <!-- ═══════════════════════════════════
+       CAFÉ OPERATIONS DATA
+  ═══════════════════════════════════ -->
+  <cafe_operations_benchmarks>
+
+    <kpis>
+      <kpi name="Beverage Cost %" target="25–35" unit="percent" formula="COGS/Revenue×100"/>
+      <kpi name="Labor Cost %" target="28–35" unit="percent" formula="Labor/Revenue×100"/>
+      <kpi name="Prime Cost %" target="less than 65" unit="percent" formula="(COGS+Labor)/Revenue×100"/>
+      <kpi name="Net Profit Margin" target="10–20" unit="percent" formula="Net Profit/Revenue×100"/>
+      <kpi name="Revenue per Labor Hour" target="40–80+" unit="USD" formula="Revenue/Labor Hours"/>
+      <kpi name="Average Transaction Value" target="6–10" unit="USD" formula="Revenue/Transactions"/>
+    </kpis>
+
+    <drink_benchmarks>
+      <drink name="Latte (12oz)" typical_cogs_usd="1.05–1.30" typical_price_usd="4.50–5.50" margin_percent="~75"/>
+      <drink name="Cappuccino (6oz)" typical_cogs_usd="0.90–1.10" typical_price_usd="4.00–5.00" margin_percent="~78"/>
+      <drink name="Flat White (6oz)" typical_cogs_usd="0.85–1.05" typical_price_usd="4.00–5.00" margin_percent="~79"/>
+      <drink name="Cold Brew (12oz)" typical_cogs_usd="0.75–0.95" typical_price_usd="5.00–6.00" margin_percent="~84"/>
+      <drink name="Espresso (2oz)" typical_cogs_usd="0.60–0.80" typical_price_usd="3.00–4.00" margin_percent="~78"/>
+      <drink name="Drip/Filter (12oz)" typical_cogs_usd="0.30–0.50" typical_price_usd="2.50–3.50" margin_percent="~86"/>
+    </drink_benchmarks>
+
+  </cafe_operations_benchmarks>
+
+</coffee_recipes_database>

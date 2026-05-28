@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee Intelligence OS — Hand-Drawn AI Workspace</title>
+  
+  <!-- Premium Handwritten Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Highlight.js for beautiful code syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+  
+  <!-- KaTeX for high-performance math formulas rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+</head>
+<body>
+
+  <!-- Sketched Doodle Background & Canvas -->
+  <canvas id="ambient-particles"></canvas>
+  <div class="sketch-background-grain"></div>
+
+
+
+  <!-- Loading Screen Overlay (Hand-Drawn Style) -->
+  <div class="loader-overlay" id="loader">
+    <div class="loader-content glass-card">
+      <div class="dripper-icon">✏️</div>
+      <h3 class="loader-title">Sketching Intelligence...</h3>
+      <div class="loader-progress-bar">
+        <div class="loader-progress-fill" id="loader-fill"></div>
+      </div>
+      <p class="loader-status" id="loader-status">Preheating the coffee pot...</p>
+    </div>
+  </div>
+
+  <!-- Command Palette Modal (Wobbly Paper Sheet) -->
+  <div class="search-modal-backdrop" id="search-modal">
+    <div class="search-modal-box paper-sheet">
+      <!-- Thumbtack pin decoration -->
+      <div class="paper-thumbtack red-tack"></div>
+      <div class="search-modal-header">
+        <i data-lucide="search" class="search-icon-pencil"></i>
+        <input type="text" id="search-input" placeholder="Type a scribble to search topics..." autocomplete="off">
+        <span class="search-esc-badge">ESC</span>
+      </div>
+      <div class="search-results-container" id="search-results">
+        <div class="search-result-placeholder">
+          Start writing to find sketches... Use <kbd>↑</kbd> <kbd>↓</kbd> to pick, <kbd>Enter</kbd> to open.
+        </div>
+      </div>
+      <div class="search-modal-footer">
+        <div class="search-help-item"><kbd>⌘K</kbd> Open search</div>
+        <div class="search-help-item"><kbd>⏎</kbd> Navigate</div>
+        <div class="search-help-item"><kbd>Esc</kbd> Close</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Master Layout -->
+  <div class="app-container">
+
+    <!-- COLLAPSIBLE SIDEBAR (Yellow Legal Pad / Ruled Paper Grid) -->
+    <aside class="sidebar-container legal-pad" id="app-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-box">
+          <span class="brand-coffee-icon">✏️</span>
+          <div class="brand-texts">
+            <span class="brand-title">ZONE BARISTA</span>
+            <span class="brand-subtitle">Coffee Intel OS v2.0</span>
+          </div>
+        </div>
+        <button class="sidebar-collapse-btn" id="sidebar-toggle" title="Collapse Sidebar">
+          <i data-lucide="chevron-left"></i>
+        </button>
+      </div>
+
+      <!-- Quick Action Menu -->
+      <div class="sidebar-actions">
+        <button class="sidebar-action-button wobbly-btn" id="sidebar-search-trigger">
+          <i data-lucide="search"></i>
+          <span>Search Notebook</span>
+          <span class="sidebar-badge">⌘K</span>
+        </button>
+      </div>
+
+      <!-- Scrollable Navigation Tree -->
+      <nav class="sidebar-nav-tree" id="navigation-tree">
+        <div class="tree-section-header">🧠 Coffee Sketches</div>
+        
+        <!-- Root Index File -->
+        <a href="/" class="tree-item active" data-path="INDEX.md" id="root-index-item">
+          <i data-lucide="compass" class="tree-icon"></i>
+          <span>Main Sketchboard</span>
+        </a>
+
+        <!-- Structured Folders & File Groups -->
+        <div class="tree-group" id="tree-folders-root">
+          <div class="tree-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Sidebar Footer / Taped Credit Note -->
+      <div class="sidebar-footer">
+        <div class="credits-box taped-note">
+          <div class="paper-tape"></div>
+          <span class="credits-text">Sketched by</span>
+          <a href="https://github.com/matrixxboy/" target="_blank" class="credits-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="github-icon"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A4.8 4.8 0 0 0 8 18v4"></path></svg>
+            <span>Utsav Lankapati</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN VIEWPORT -->
+    <main class="viewport-main">
+      
+      <!-- TOP STATUS BAR -->
+      <header class="viewport-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-expand-btn hidden" id="sidebar-expand-toggle" title="Expand Sidebar">
+            <i data-lucide="menu"></i>
+          </button>
+          <div class="breadcrumb-trail" id="breadcrumbs">
+            <span>System</span>
+            <i data-lucide="chevron-right" class="bread-sep"></i>
+            <span class="active">Main Sketchboard</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="system-status-indicator marker-blue-highlight">
+            <span class="indicator-dot pulse-blue"></span>
+            <span class="indicator-text">Ink Ready</span>
+          </div>
+          
+          <div class="control-actions">
+            <button class="control-btn" id="btn-toggle-focus" title="Toggle Clean Focus Mode">
+              <i data-lucide="maximize-2"></i>
+            </button>
+            <button class="control-btn" id="btn-toggle-theme" title="Switch Pencil Colors">
+              <i data-lucide="sparkles"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- VIEWPORT PANELS -->
+      <div class="panels-grid-container">
+
+        <!-- DYNAMIC PANEL 1: ANALYTICS DASHBOARD (Home Page) -->
+        <div class="dashboard-panel active" id="dashboard-viewport">
+          
+          <!-- Hero Section (Giant Sketchboard) -->
+          <section class="dashboard-hero paper-card-hero">
+            <div class="paper-thumbtack red-tack"></div>
+            <div class="hero-scribble-decor">☕</div>
+            <h1 class="hero-title">Coffee Intelligence</h1>
+            <p class="hero-description">
+              An authentic, scientifically rigorous coffee intelligence operating system designed to catalog extraction metrics, bean terroirs, roasting profiles, and café logistics.
+            </p>
+          </section>
+
+          <!-- Metrics Grid (Interactive Post-It Notes) -->
+          <section class="metrics-grid">
+            
+            <div class="metric-card postit-card rotate-1 animate-fade-in">
+              <div class="paper-thumbtack red-tack"></div>
+              <div class="metric-header">
+                <span class="metric-title">Notebook Files</span>
+                <i data-lucide="file-text" class="metric-icon"></i>
+              </div>
+              <div class="metric-value" id="stat-files">83</div>
+              <p class="metric-subtext">Sketched articles</p>
+            </div>
+            
+            <div class="metric-card postit-card rotate-neg-1 animate-fade-in" style="animation-delay: 0.1s;">
+              <div class="paper-thumbtack blue-tack"></div>
+              <div class="metric-header">
+                <span class="metric-title">Scribble Lines</span>
+                <i data-lucide="edit-3" class="metric-icon"></i>
+              </div>
+              <div class="metric-value" id="stat-lines">~22,500</div>
+              <p class="metric-subtext">Calculated data values</p>
+            </div>
+
+            <div class="metric-card postit-card rotate-2 animate-fade-in" style="animation-delay: 0.2s;">
+              <div class="paper-thumbtack red-tack"></div>
+              <div class="metric-header">
+                <span class="metric-title">SCA Score Standard</span>
+                <i data-lucide="award" class="metric-icon"></i>
+              </div>
+              <div class="metric-value">98.4%</div>
+              <p class="metric-subtext">Scientific alignment</p>
+            </div>
+
+            <div class="metric-card postit-card rotate-neg-2 animate-fade-in" style="animation-delay: 0.3s;">
+              <div class="paper-thumbtack blue-tack"></div>
+              <div class="metric-header">
+                <span class="metric-title">RAG AI Status</span>
+                <i data-lucide="pencil" class="metric-icon"></i>
+              </div>
+              <div class="metric-value">Calculated</div>
+              <p class="metric-subtext">Indexed & vector ready</p>
+            </div>
+          </section>
+
+          <!-- Core Analytical Diagrams -->
+          <section class="dashboard-visuals-row">
+            
+            <!-- Category Distribution Diagram -->
+            <div class="visual-panel-card paper-card rotate-neg-1 col-6">
+              <div class="paper-tape"></div>
+              <h3 class="panel-card-title">
+                <i data-lucide="bar-chart-2" class="title-icon"></i>
+                Domain Distribution Density
+              </h3>
+              <div class="chart-container">
+                <canvas id="category-density-chart"></canvas>
+              </div>
+            </div>
+
+            <!-- Specialty Coffee Radar Profile -->
+            <div class="visual-panel-card paper-card rotate-1 col-6">
+              <div class="paper-tape"></div>
+              <h3 class="panel-card-title">
+                <i data-lucide="activity" class="title-icon"></i>
+                SCA Evaluation Standards Profile
+              </h3>
+              <div class="chart-container">
+                <canvas id="sca-radar-chart"></canvas>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- KNOWLEDGE CONSTELLATION GRAPH SECTION -->
+          <section class="visual-panel-card paper-card graph-panel-section rotate-1">
+            <div class="paper-thumbtack red-tack"></div>
+            <div class="graph-panel-header">
+              <div class="graph-title-box">
+                <h3 class="panel-card-title">
+                  <i data-lucide="network" class="title-icon"></i>
+                  Knowledge Constellation Map
+                </h3>
+                <p class="graph-subtitle">Drag floating ink spot nodes representing files. Click any node to extract and display detailed sketches.</p>
+              </div>
+              <div class="graph-legend">
+                <span class="legend-item"><span class="legend-dot root"></span>Root</span>
+                <span class="legend-item"><span class="legend-dot beginner"></span>Beginner</span>
+                <span class="legend-item"><span class="legend-dot intermediate"></span>Intermediate</span>
+                <span class="legend-item"><span class="legend-dot advanced"></span>Advanced</span>
+                <span class="legend-item"><span class="legend-dot data"></span>XML Data</span>
+              </div>
+            </div>
+            
+            <div class="graph-canvas-wrapper" id="graph-wrapper">
+              <svg id="knowledge-constellation-graph" width="100%" height="500"></svg>
+              <div class="graph-zoom-controls">
+                <button class="zoom-btn" id="graph-zoom-in" title="Zoom In"><i data-lucide="plus"></i></button>
+                <button class="zoom-btn" id="graph-zoom-out" title="Zoom Out"><i data-lucide="minus"></i></button>
+                <button class="zoom-btn" id="graph-zoom-reset" title="Recenter Constellation"><i data-lucide="minimize"></i></button>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- DYNAMIC PANEL 2: IMMERSIVE READING EXPERIENCES -->
+        <div class="reading-viewport-panel" id="reading-viewport">
+          
+          <!-- Document Header (Pinned Note Sheet) -->
+          <div class="document-reading-header">
+            <div class="doc-header-details">
+              <div class="doc-meta-tags" id="doc-meta-tags-container">
+                <span class="doc-meta-tag tag-difficulty">Intermediate</span>
+                <span class="doc-meta-tag tag-domain">Brewing Methods</span>
+              </div>
+              <h1 class="document-reading-title" id="doc-title">Moka Pot — Complete Guide</h1>
+            </div>
+            <div class="doc-header-actions">
+              <button class="doc-action-btn wobbly-btn" id="btn-toc-toggle" title="Toggle Document Outline">
+                <i data-lucide="list"></i>
+                <span>Outline</span>
+              </button>
+              <button class="doc-action-btn wobbly-btn" id="btn-fullscreen-toggle" title="Toggle Clean Focus">
+                <i data-lucide="eye"></i>
+                <span>Focus</span>
+              </button>
+              <button class="doc-action-btn close-btn wobbly-btn" id="btn-close-reading" title="Back to Sketchboard">
+                <i data-lucide="x"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Reading Progress Bar -->
+          <div class="reading-progress-track">
+            <div class="reading-progress-fill" id="reading-progress-indicator"></div>
+          </div>
+
+          <!-- Reading Columns Layout -->
+          <div class="reading-columns-layout">
+            
+            <!-- Dynamic Content Output Pane (Handwritten Paper Sheet) -->
+            <article class="markdown-body-content ruled-sheet" id="markdown-output-pane">
+              <!-- Dynamically populated HTML goes here -->
+            </article>
+
+            <!-- Table of Contents Sidebar (Taped Note Sheet) -->
+            <aside class="document-toc-sidebar pinned-sheet" id="document-toc">
+              <div class="paper-tape"></div>
+              <div class="toc-header">
+                <i data-lucide="square-menu" class="toc-icon"></i>
+                <span>OUTLINE</span>
+              </div>
+              <div class="toc-links-tree" id="toc-tree">
+                <!-- TOC anchors dynamically inserted here -->
+              </div>
+            </aside>
+
+          </div>
+
+          <!-- Document Footer Navigation -->
+          <footer class="document-reading-footer">
+            <div class="doc-nav-prev" id="doc-prev-link">
+              <span class="nav-label">Previous Sketch</span>
+              <a href="#" class="nav-title-link">← Siphon Brewing Guide</a>
+            </div>
+            <div class="doc-nav-next" id="doc-next-link">
+              <span class="nav-label">Next Sketch</span>
+              <a href="#" class="nav-title-link">Espresso Shot Diagnosis →</a>
+            </div>
+          </footer>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Third-party CDN Libraries -->
+  <!-- D3.js for the dynamic knowledge graph constellation -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  
+  <!-- Chart.js for premium analytics visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Fuse.js for high-speed fuzzy search engine -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+  
+  <!-- Marked.js for fast markdown parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
+  <!-- KaTeX for formula formatting support -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Highlight.js for beautiful, premium syntax highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  
+  <!-- Mermaid.js for advanced architecture diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.2.4/dist/mermaid.min.js"></script>
+
+  <!-- Lucide Icons library -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Core Javascript Application Logic -->
+  <script src="app.js?v=2"></script>
+
+</body>
+</html>

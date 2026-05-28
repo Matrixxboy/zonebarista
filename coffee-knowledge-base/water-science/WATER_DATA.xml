@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<water_science_database version="1.0" standard="SCA-aligned" created="2025">
+
+  <metadata>
+    <title>Coffee Water Science — Structured Data</title>
+    <description>Complete structured data for water chemistry, SCA standards, mineral profiles, filtration systems, and water recipes for coffee brewing</description>
+    <sources>
+      <source>SCA Water Standards (2018)</source>
+      <source>Hendon, C.H. et al. (2014). Role of dissolved cations in coffee extraction. JACS.</source>
+      <source>Colonna-Dashwood, M. &amp; Hendon, C. (2015). Water for Coffee.</source>
+      <source>BWT Water+More — filtration documentation</source>
+    </sources>
+  </metadata>
+
+  <!-- ═══════════════════════════════════
+       SCA WATER STANDARDS
+  ═══════════════════════════════════ -->
+  <sca_water_standards>
+    <standard name="SCA Brewing Water Standard" year="2018">
+      <parameters>
+        <parameter name="TDS" unit="mg/L" target="150" acceptable_min="75" acceptable_max="250"/>
+        <parameter name="Total Hardness" unit="mg/L as CaCO3" target="50-175" note="Calcium + Magnesium combined"/>
+        <parameter name="Calcium Hardness" unit="mg/L as CaCO3" target="50-175"/>
+        <parameter name="Total Alkalinity" unit="mg/L as CaCO3" target="40" acceptable_min="40" acceptable_max="75"/>
+        <parameter name="pH" target="7.0" acceptable_min="6.5" acceptable_max="7.5"/>
+        <parameter name="Sodium" unit="mg/L" target="10" maximum="10"/>
+        <parameter name="Chlorine" unit="mg/L" target="0" note="Must be zero — use carbon filtration"/>
+        <parameter name="Chloramine" unit="mg/L" target="0" note="Must be zero — requires catalytic carbon"/>
+      </parameters>
+      <notes>
+        <note>Water outside these parameters should be treated before use</note>
+        <note>Distilled or reverse osmosis water must be remineralised</note>
+        <note>High chlorine destroys coffee volatile aromatics</note>
+      </notes>
+    </standard>
+  </sca_water_standards>
+
+  <!-- ═══════════════════════════════════
+       MINERAL PROFILES
+  ═══════════════════════════════════ -->
+  <minerals>
+
+    <mineral id="magnesium">
+      <name>Magnesium</name>
+      <symbol>Mg²⁺</symbol>
+      <optimal_range_mg_per_L min="10" max="30"/>
+      <sca_note>Most effective extraction mineral per unit</sca_note>
+      <extraction_role>
+        Forms stronger complexes with coffee flavor compounds (chlorogenic acids, caffeine, melanoidins) due to smaller ionic radius and higher charge density relative to size. Significantly more effective than calcium at extracting desirable flavor compounds.
+      </extraction_role>
+      <sensory_impact>Brightness, clarity, sweetness, complexity</sensory_impact>
+      <scale_risk>Lower than calcium</scale_risk>
+      <source_compound>Magnesium Sulfate (MgSO4·7H2O — Epsom Salt) for remineralisation</source_compound>
+      <research_reference>Hendon et al. (2014) JACS — demonstrated Mg2+ extracts significantly more flavor per unit than Ca2+</research_reference>
+    </mineral>
+
+    <mineral id="calcium">
+      <name>Calcium</name>
+      <symbol>Ca²⁺</symbol>
+      <optimal_range_mg_per_L min="40" max="80"/>
+      <extraction_role>Contributes to hardness; aids extraction; provides body and structure to cup</extraction_role>
+      <sensory_impact>Body, structure</sensory_impact>
+      <scale_risk>HIGH — forms calcium carbonate (CaCO3) scale at high temperature</scale_risk>
+      <scale_reaction>Ca²⁺ + 2HCO₃⁻ → CaCO₃↓ + H₂O + CO₂ (under heat)</scale_reaction>
+      <source_compound>Calcium Chloride (CaCl2) or Calcium Sulfate (CaSO4) for remineralisation</source_compound>
+    </mineral>
+
+    <mineral id="bicarbonate">
+      <name>Bicarbonate</name>
+      <symbol>HCO₃⁻</symbol>
+      <optimal_range_mg_per_L min="40" max="80"/>
+      <sca_target_as_CaCO3>40</sca_target_as_CaCO3>
+      <extraction_role>
+        Primary buffer — neutralises acids in coffee. Too high = flat, dull cup (acids neutralised). Too low = sharp, sour cup (no buffering). Target maintains acid balance.
+      </extraction_role>
+      <buffer_equation>HCO₃⁻ + H⁺ ⇌ H₂CO₃ ⇌ H₂O + CO₂</buffer_equation>
+      <sensory_impact_high>Flat, dull, chalk-like, muted acidity</sensory_impact_high>
+      <sensory_impact_low>Sharp, sour, harsh acidity</sensory_impact_low>
+      <sensory_impact_optimal>Balanced, clean acidity</sensory_impact_optimal>
+      <source_compound>Sodium Bicarbonate (NaHCO3) or Potassium Bicarbonate (KHCO3) for remineralisation</source_compound>
+    </mineral>
+
+    <mineral id="sodium">
+      <name>Sodium</name>
+      <symbol>Na⁺</symbol>
+      <optimal_range_mg_per_L min="0" max="10"/>
+      <sca_maximum_mg_per_L>10</sca_maximum_mg_per_L>
+      <extraction_role>Minor extraction role; low amounts enhance sweetness perception</extraction_role>
+      <sensory_impact_low>Slight sweetness enhancement</sensory_impact_low>
+      <sensory_impact_high>Salty taste; undesirable</sensory_impact_high>
+      <concern>Ion exchange softeners raise sodium by replacing Ca2+/Mg2+ — not recommended for specialty coffee flavor</concern>
+    </mineral>
+
+    <mineral id="potassium">
+      <name>Potassium</name>
+      <symbol>K⁺</symbol>
+      <optimal_range_mg_per_L min="0" max="10"/>
+      <extraction_role>Minor; similar to sodium in small amounts; some evidence of flavor enhancement</extraction_role>
+      <note>Used in some advanced water recipes (Aqua Magica) as alkalinity source with less Na+ impact</note>
+    </mineral>
+
+    <mineral id="chloride">
+      <name>Chloride</name>
+      <symbol>Cl⁻</symbol>
+      <optimal_range_mg_per_L min="0" max="25"/>
+      <extraction_role>Enhances sweetness at low levels; can enhance extraction efficiency</extraction_role>
+      <note>Different from Chlorine (Cl2) — chloride ion is the anion from calcium chloride remineralisation, not the disinfectant</note>
+    </mineral>
+
+    <mineral id="sulfate">
+      <name>Sulfate</name>
+      <symbol>SO₄²⁻</symbol>
+      <optimal_range_mg_per_L min="0" max="50"/>
+      <extraction_role>Accentuates bitterness and dryness at higher levels; provides counterion for Mg2+ in remineralisation</extraction_role>
+      <note>Present when using Epsom Salt (MgSO4) as magnesium source. Higher sulfate-to-chloride ratio = more bitter/dry character (borrowed from brewing water science)</note>
+    </mineral>
+
+  </minerals>
+
+  <!-- ═══════════════════════════════════
+       HARDNESS CLASSIFICATION
+  ═══════════════════════════════════ -->
+  <hardness_classification>
+    <class name="Soft" total_hardness_CaCO3_max="60" description="Low mineral content; risk of flat extraction; corrosive to equipment"/>
+    <class name="Moderately Soft" total_hardness_CaCO3_min="61" total_hardness_CaCO3_max="120" description="Good for coffee; low scale risk"/>
+    <class name="Slightly Hard" total_hardness_CaCO3_min="121" total_hardness_CaCO3_max="180" description="SCA acceptable range upper"/>
+    <class name="Hard" total_hardness_CaCO3_min="181" total_hardness_CaCO3_max="250" description="Scale risk increasing; filtration recommended"/>
+    <class name="Very Hard" total_hardness_CaCO3_min="251" description="Significant scale risk; full treatment required"/>
+
+    <hardness_formula>
+      Total Hardness (as CaCO3) = (Ca²⁺ × 2.497) + (Mg²⁺ × 4.118)
+      Where Ca²⁺ and Mg²⁺ are in mg/L
+    </hardness_formula>
+  </hardness_classification>
+
+  <!-- ═══════════════════════════════════
+       WATER RECIPES
+  ═══════════════════════════════════ -->
+  <water_recipes>
+
+    <recipe id="sca-benchmark" name="SCA Benchmark Water">
+      <base>1 litre RO or distilled water</base>
+      <ingredients>
+        <ingredient name="Magnesium Sulfate (Epsom Salt)" formula="MgSO4·7H2O" amount_g="0.59"/>
+        <ingredient name="Sodium Bicarbonate (Baking Soda)" formula="NaHCO3" amount_g="0.17"/>
+      </ingredients>
+      <resulting_profile>
+        <TDS unit="mg/L">~150</TDS>
+        <Mg unit="mg/L">~29</Mg>
+        <alkalinity unit="mg/L as CaCO3">~40</alkalinity>
+        <pH>~7.0</pH>
+      </resulting_profile>
+      <best_for>Filter coffee, pour-over, AeroPress; general SCA-standard brewing</best_for>
+    </recipe>
+
+    <recipe id="aqua-magica" name="Barista Hustle Aqua Magica (Concentrate)">
+      <base>100mL concentrate — add 1mL per 100mL RO water</base>
+      <ingredients>
+        <ingredient name="Magnesium Chloride" formula="MgCl2·6H2O" amount_g_per_100mL_concentrate="13.2"/>
+        <ingredient name="Sodium Bicarbonate" formula="NaHCO3" amount_g_per_100mL_concentrate="5.0"/>
+        <ingredient name="Potassium Bicarbonate" formula="KHCO3" amount_g_per_100mL_concentrate="2.0"/>
+      </ingredients>
+      <resulting_profile_per_litre_brewed>
+        <Mg unit="mg/L">~17</Mg>
+        <Na unit="mg/L">~9</Na>
+        <K unit="mg/L">~6</K>
+        <alkalinity unit="mg/L as CaCO3">~65</alkalinity>
+        <TDS unit="mg/L">~120</TDS>
+      </resulting_profile_per_litre_brewed>
+      <best_for>Specialty espresso; competition; bright filter coffees</best_for>
+    </recipe>
+
+    <recipe id="espresso-optimised" name="Espresso Optimised Water">
+      <base>1 litre RO or distilled water</base>
+      <ingredients>
+        <ingredient name="Magnesium Sulfate" formula="MgSO4·7H2O" amount_g="0.80"/>
+        <ingredient name="Calcium Chloride (food grade)" formula="CaCl2" amount_g="0.50"/>
+        <ingredient name="Sodium Bicarbonate" formula="NaHCO3" amount_g="0.25"/>
+      </ingredients>
+      <resulting_profile>
+        <TDS unit="mg/L">~200</TDS>
+        <Mg unit="mg/L">~39</Mg>
+        <Ca unit="mg/L">~18</Ca>
+        <alkalinity unit="mg/L as CaCO3">~55</alkalinity>
+      </resulting_profile>
+      <best_for>Espresso where body and crema are priority; milk-based drinks</best_for>
+    </recipe>
+
+  </water_recipes>
+
+  <!-- ═══════════════════════════════════
+       FILTRATION SYSTEMS
+  ═══════════════════════════════════ -->
+  <filtration_systems>
+
+    <system id="activated-carbon">
+      <name>Activated Carbon Block Filter</name>
+      <removes>Chlorine, chloramine, VOCs, sediment, taste/odour compounds</removes>
+      <retains>All minerals (hardness unchanged)</retains>
+      <coffee_suitability>Essential minimum for any coffee application</coffee_suitability>
+      <replacement_months min="3" max="6"/>
+      <commercial_examples>
+        <product brand="BWT" model="Bestmax (carbon stage)"/>
+        <product brand="Everpure" model="PBS400"/>
+        <product brand="Pentair" model="Everpure Claris"/>
+      </commercial_examples>
+    </system>
+
+    <system id="tac-scale-inhibitor">
+      <name>Template Assisted Crystallisation (TAC) Scale Inhibitor</name>
+      <mechanism>Converts dissolved Ca/Mg ions to micro-crystals that cannot adhere to boiler/pipe surfaces</mechanism>
+      <removes>Nothing (minerals remain dissolved)</removes>
+      <prevents>Scale adhesion to equipment surfaces</prevents>
+      <coffee_suitability>Excellent — preserves brewing minerals while protecting equipment</coffee_suitability>
+      <commercial_examples>
+        <product brand="BWT" model="Bestmax Premium (TAC stage)"/>
+        <product brand="Watts" model="OneFlow"/>
+      </commercial_examples>
+    </system>
+
+    <system id="reverse-osmosis">
+      <name>Reverse Osmosis (RO)</name>
+      <mechanism>Semi-permeable membrane at 40-80 PSI rejects 90-99% of dissolved minerals</mechanism>
+      <removes>90-99% of all dissolved minerals, bacteria, heavy metals</removes>
+      <output_TDS_mg_per_L>less than 20</output_TDS_mg_per_L>
+      <coffee_suitability>Requires remineralisation — pure RO water is corrosive and produces flat extraction</coffee_suitability>
+      <waste_ratio>2-4 litres waste per litre product water</waste_ratio>
+      <best_for>Very hard water; competition preparation; precise water control</best_for>
+    </system>
+
+    <system id="ion-exchange-softener">
+      <name>Ion Exchange Softener</name>
+      <mechanism>Resin beads exchange Ca2+/Mg2+ for Na+ ions</mechanism>
+      <removes>Calcium and Magnesium hardness</removes>
+      <adds>Sodium (proportional to hardness removed)</adds>
+      <coffee_suitability>POOR for flavor — removes beneficial Mg2+; raises sodium above SCA limit. Use only for machine protection, with separate flavor-grade filter for brew water</coffee_suitability>
+    </system>
+
+    <system id="bwt-bestmax">
+      <name>BWT Bestmax System (Commercial Standard)</name>
+      <mechanism>Multi-stage: Mg-enriched ion exchange + activated carbon + TAC</mechanism>
+      <unique_feature>Replaces Ca2+ with Mg2+ (beneficial exchange — improves extraction vs standard softener)</unique_feature>
+      <models>
+        <model name="Bestmax S" capacity_litres_min="1200" capacity_litres_max="2200" for_water_hardness="Soft (less than 10 degrees dH)"/>
+        <model name="Bestmax M" capacity_litres_min="3000" capacity_litres_max="5000" for_water_hardness="Medium"/>
+        <model name="Bestmax L" capacity_litres_min="4500" capacity_litres_max="7500" for_water_hardness="Medium-Hard"/>
+        <model name="Bestmax XL" capacity_litres_min="8000" capacity_litres_max="12000" for_water_hardness="Hard"/>
+      </models>
+      <coffee_suitability>Excellent — industry standard for specialty cafés</coffee_suitability>
+    </system>
+
+  </filtration_systems>
+
+  <!-- ═══════════════════════════════════
+       SCALE FORMATION DATA
+  ═══════════════════════════════════ -->
+  <scale_science>
+    <scale_reaction>
+      Ca²⁺ + 2HCO₃⁻ → CaCO₃↓ + H₂O + CO₂ (at elevated temperature)
+    </scale_reaction>
+    <scale_impact>
+      <impact>0.1mm scale = approximately 10% more energy to heat boiler</impact>
+      <impact>Alters extraction temperature (insulating effect)</impact>
+      <impact>Blocks flow restrictors and group head screens</impact>
+      <impact>Reduces machine lifespan significantly</impact>
+    </scale_impact>
+    <descaling_frequency>
+      <frequency water_hardness="Soft (less than 100 mg/L TDS, filtered)" months_between="6-12"/>
+      <frequency water_hardness="Medium (100-200 mg/L)" months_between="3-6"/>
+      <frequency water_hardness="Hard (200-300 mg/L)" months_between="1-3"/>
+      <frequency water_hardness="Very Hard (greater than 300 mg/L)" months_between="Monthly"/>
+    </descaling_frequency>
+    <descalers>
+      <descaler name="Urnex Dezcal" form="Powder" use="Espresso machines, batch brewers"/>
+      <descaler name="Puly Descaler" form="Liquid" use="Commercial espresso machines"/>
+      <descaler name="Cafiza D" form="Powder" use="Commercial group heads"/>
+    </descalers>
+    <warning>Never use vinegar on espresso machines — acetic acid corrodes brass fittings and O-rings</warning>
+  </scale_scale>
+
+  <!-- ═══════════════════════════════════
+       TESTING TOOLS
+  ═══════════════════════════════════ -->
+  <water_testing_tools>
+    <tool name="TDS/EC Pen (HM Digital)" measures="Total dissolved solids" accuracy_percent="2" cost_usd_approx="15-30" notes="Approximation via conductivity; not as precise as refractometer"/>
+    <tool name="pH Meter (Apera AI209)" measures="pH" accuracy="0.01 pH units" cost_usd_approx="50" notes="Calibrate with buffer solutions before each use"/>
+    <tool name="Alkalinity Drop Kit (Salifert)" measures="KH/Total Alkalinity" accuracy_mg_per_L="5" cost_usd_approx="15-20"/>
+    <tool name="Hardness Test Kit (API)" measures="Total Hardness (Ca+Mg)" accuracy_mg_per_L="5" cost_usd_approx="15"/>
+    <tool name="ICP-MS Lab Analysis" measures="All mineral ions precisely" accuracy_mg_per_L="1" cost_usd_approx="80-150" notes="Third-party lab; most accurate; best for competition or precision setup"/>
+  </water_testing_tools>
+
+  <!-- ═══════════════════════════════════
+       WATER PROPERTIES TABLE
+  ═══════════════════════════════════ -->
+  <water_physical_properties>
+    <property temperature_celsius="20" density_kg_per_m3="998.2" viscosity_mPa_s="1.002" surface_tension_mN_per_m="72.8"/>
+    <property temperature_celsius="40" density_kg_per_m3="992.2" viscosity_mPa_s="0.653" surface_tension_mN_per_m="69.6"/>
+    <property temperature_celsius="60" density_kg_per_m3="983.2" viscosity_mPa_s="0.466" surface_tension_mN_per_m="66.2"/>
+    <property temperature_celsius="80" density_kg_per_m3="971.8" viscosity_mPa_s="0.355" surface_tension_mN_per_m="62.6"/>
+    <property temperature_celsius="93" density_kg_per_m3="963.1" viscosity_mPa_s="0.313" surface_tension_mN_per_m="60.0"/>
+    <property temperature_celsius="100" density_kg_per_m3="958.4" viscosity_mPa_s="0.282" surface_tension_mN_per_m="58.9"/>
+    <notes>
+      Lower viscosity at higher temperature = water flows more easily through puck; affects grind setting.
+      Lower surface tension = better pore wetting = more even puck saturation.
+    </notes>
+  </water_physical_properties>
+
+</water_science_database>
