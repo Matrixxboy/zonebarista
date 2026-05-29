@@ -105,6 +105,15 @@ body::before {
   }
 }
 
+@keyframes shine {
+  from {
+    background-position: 200% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
 a {
   @apply transition-colors duration-150 ease-linear;
   text-decoration: none;
@@ -128,4 +137,172 @@ input, textarea, select {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/* Hardcoded Markdown Styles for Swiss Theme */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 4px solid #000000;
+  margin: 2rem 0;
+  background: white;
+}
+
+.prose th {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 1rem;
+  text-align: left;
+  border: 2px solid #000000;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.prose td {
+  padding: 1rem;
+  border: 2px solid #000000;
+  font-weight: 500;
+}
+
+.prose tr:nth-child(even) td {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.prose blockquote {
+  border-left: 8px solid #000000;
+  background-color: #f3f4f6;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.prose ul {
+  list-style-type: square;
+  padding-left: 1.5rem;
+}
+
+.prose ul li::marker {
+  color: #FF3000;
+}
+
+.prose a {
+  color: #FF3000;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.prose a:hover {
+  color: #000000;
+}
+
+/* Markdown ASCII Charts and Code Blocks */
+.prose pre {
+  background-color: #000000;
+  color: #ffffff;
+  border: 4px solid #000000;
+  padding: 2rem;
+  margin: 2rem 0;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1rem;
+  line-height: 1.1; /* Tight line-height makes ASCII chart pieces connect */
+  letter-spacing: 0;
+}
+
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+/* Inline code blocks */
+.prose :not(pre) > code {
+  background-color: #f3f4f6;
+  padding: 0.2rem 0.4rem;
+  border: 2px solid #000000;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+/* KaTeX Math Formula Styling */
+.prose .katex-display {
+  margin: 2.5rem 0 !important;
+  padding: 2rem;
+  background-color: #ffffff;
+  border: 4px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: 1.5rem; /* Make formulas bigger and more legible */
+}
+
+/* Fallback Typography (Overrides Tailwind Reset) */
+.prose p {
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+
+.prose h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-bottom: 4px solid black;
+  padding-bottom: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  letter-spacing: -0.05em;
+}
+
+.prose h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-bottom: 2px solid black;
+  padding-bottom: 0.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose ul {
+  list-style-type: square;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.prose li::marker {
+  color: #FF3000;
+  font-weight: bold;
+}
+
+.prose hr {
+  border: none;
+  border-top: 4px solid black;
+  margin: 3rem 0;
 }

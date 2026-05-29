@@ -31,7 +31,15 @@ function Developer() {
           <h1 className="heading-display text-6xl md:text-8xl mb-8">
             UTSAV<br />LANKAPATI
           </h1>
-          <p className="text-lg mb-8 leading-relaxed max-w-xl flush-left">
+          <div className="mb-8 relative max-w-sm group">
+            <div className="absolute inset-0 bg-accent translate-x-3 translate-y-3 border-4 border-black transition-transform group-hover:translate-x-4 group-hover:translate-y-4"></div>
+            <img 
+              src="https://github.com/Matrixxboy.png" 
+              alt="Utsav Lankapati" 
+              className="relative z-10 w-full border-4 border-black filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 object-cover aspect-square"
+            />
+          </div>
+          <p className="text-lg mb-8 leading-relaxed max-w-xl flush-left bg-muted p-6 border-l-8 border-black">
             Engineer, creator, and coffee science enthusiast. Building tools that translate complex formulas into interactive learning systems.
           </p>
         </div>

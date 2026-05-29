@@ -7,10 +7,11 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'LEARNING', href: '/' },
+    { label: 'HOME', href: '/' },
+    { label: 'LEARNING PATHS', href: '/learning-paths' },
+    { label: 'KNOWLEDGE BASE', href: '/knowledge-base' },
     { label: 'CALCULATORS', href: '/calculators' },
     { label: 'EXPLAINERS', href: '/explainers' },
-    { label: 'DEVELOPER', href: '/developer' },
   ];
 
   return (

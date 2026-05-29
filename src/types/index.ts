@@ -9,6 +9,7 @@ export interface Example {
   description: string;
   inputs: Record<string, number>;
   output: number;
+  explanation?: string;
 }
 
 export interface Formula {

@@ -22,6 +22,7 @@ export const formulas: Formula[] = [
         description: 'Espresso pull: 18g dose, 36g yield',
         inputs: { Y: 36, D: 18 },
         output: 2,
+        explanation: '1. Identify Yield (Y) = 36g\n2. Identify Dose (D) = 18g\n3. Divide Yield by Dose: 36 / 18 = 2\n4. The ratio is 1:2. This is a standard espresso ratio.'
       },
       {
         description: 'Filter coffee: 30g dose, 500g yield',
@@ -52,6 +53,7 @@ export const formulas: Formula[] = [
         description: 'Optimal espresso: 10% TDS, 36g yield, 18g dose',
         inputs: { TDS: 10, BM: 36, DCM: 18 },
         output: 20,
+        explanation: '1. Calculate Dissolved Solids: 10% of 36g = 3.6g of coffee solids in the cup.\n2. Divide solids by original dry dose: 3.6g / 18g = 0.20\n3. Multiply by 100 for percentage: 20% EY.\nThis falls squarely in the optimal 18-22% range.'
       },
     ],
     sources: ['VST Extraction Yield Calculations', 'SCA Brewing Standards'],
@@ -96,7 +98,8 @@ export const formulas: Formula[] = [
       {
         description: 'Ca²⁺ = 40 mg/L, Mg²⁺ = 15 mg/L',
         inputs: { Ca: 40, Mg: 15 },
-        output: 160.65,
+        output: 161.65,
+        explanation: '1. Calcium contribution: 40 × 2.497 = 99.88 mg/L as CaCO3\n2. Magnesium contribution: 15 × 4.118 = 61.77 mg/L as CaCO3\n3. Total Hardness: 99.88 + 61.77 = 161.65 mg/L.\nThis is on the higher end of the SCA target (hard water), which may mute acidity.'
       },
     ],
     sources: ['Colonna-Dashwood & Hendon (2015). Water for Coffee.'],
