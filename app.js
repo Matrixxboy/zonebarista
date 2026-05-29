@@ -963,6 +963,12 @@ document.addEventListener('DOMContentLoaded', () => {
       configureFooterNavigation(filePath);
       showReadingView();
       
+      // Auto-collapse sidebar on mobile after selection
+      if (window.innerWidth <= 900) {
+        document.getElementById('app-sidebar').classList.add('collapsed');
+        document.getElementById('sidebar-expand-toggle').classList.remove('hidden');
+      }
+      
       AppState.currentFile = filePath;
       AppState.navigationHistory.push(filePath);
       
@@ -1043,6 +1049,12 @@ document.addEventListener('DOMContentLoaded', () => {
         showDashboard();
       });
       if (window.lucide) lucide.createIcons();
+    }
+
+    // Auto-collapse sidebar on mobile after selection
+    if (window.innerWidth <= 900) {
+      document.getElementById('app-sidebar').classList.add('collapsed');
+      document.getElementById('sidebar-expand-toggle').classList.remove('hidden');
     }
   }
 
@@ -1158,6 +1170,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('app-sidebar');
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const sidebarExpandToggle = document.getElementById('sidebar-expand-toggle');
+
+    // Initialize collapsed on mobile
+    if (window.innerWidth <= 900) {
+      sidebar.classList.add('collapsed');
+      sidebarExpandToggle.classList.remove('hidden');
+    }
 
     sidebarToggle?.addEventListener('click', () => {
       sidebar.classList.add('collapsed');
