@@ -45,3 +45,14 @@ export interface ContentPage {
   title: string;
   content: string;
 }
+
+export interface LabSOP {
+  id: string;
+  title: string;
+  category: 'brewing' | 'espresso' | 'water' | 'roasting' | 'sensory';
+  objective: string;
+  equipment: string[];
+  variables: string[];
+  procedure: string[];
+  analysis: string;
+}

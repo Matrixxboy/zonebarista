@@ -1,6 +1,5 @@
 import { Formula } from '@/types';
 import { formulasByCategory } from '@/data/formulas';
-import Card from '../common/Card';
 
 interface FormulaGridProps {
   onSelect: (formula: Formula) => void;

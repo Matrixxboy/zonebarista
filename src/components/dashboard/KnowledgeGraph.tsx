@@ -85,7 +85,7 @@ export default function KnowledgeGraph({ onNodeClick }: Props) {
         .on('drag', dragged)
         .on('end', dragended));
 
-    node.on('mouseover', function(event, d) {
+    node.on('mouseover', function(_event, d) {
       d3.select(this).select('circle')
         .transition().duration(150)
         .attr('r', d.type === 'index' ? 16 : 14)
@@ -97,7 +97,7 @@ export default function KnowledgeGraph({ onNodeClick }: Props) {
         .attr('stroke-width', l => (l.source.id === d.id || l.target.id === d.id) ? 3 : 2)
         .attr('stroke-dasharray', l => (l.source.id === d.id || l.target.id === d.id) ? 'none' : '4, 4');
     })
-    .on('mouseout', function(event, d) {
+    .on('mouseout', function(_event, d) {
       d3.select(this).select('circle')
         .transition().duration(150)
         .attr('r', d.type === 'index' ? 12 : 10)
@@ -109,7 +109,7 @@ export default function KnowledgeGraph({ onNodeClick }: Props) {
         .attr('stroke-width', 2)
         .attr('stroke-dasharray', '4, 4');
     })
-    .on('click', (event, d) => {
+    .on('click', (_event, d) => {
       if (onNodeClick) onNodeClick(d.id);
     });
 

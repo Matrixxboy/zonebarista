@@ -63,11 +63,11 @@ export default function AnalyticsCharts() {
     scales: {
       y: {
         beginAtZero: true,
-        ticks: { font: { family: 'monospace', weight: 'bold' } },
+        ticks: { font: { family: 'monospace', weight: 'bold' as const } },
         grid: { color: 'rgba(0,0,0,0.1)', tickLength: 0 }
       },
       x: {
-        ticks: { font: { family: 'monospace', size: 10, weight: 'bold' }, maxRotation: 45, minRotation: 45 },
+        ticks: { font: { family: 'monospace', size: 10, weight: 'bold' as const }, maxRotation: 45, minRotation: 45 },
         grid: { display: false }
       }
     }
@@ -113,7 +113,7 @@ export default function AnalyticsCharts() {
         angleLines: { color: 'rgba(0,0,0,0.3)' },
         grid: { color: 'rgba(0,0,0,0.3)', circular: false },
         pointLabels: {
-          font: { family: 'monospace', size: 11, weight: 'bold' },
+          font: { family: 'monospace', size: 11, weight: 'bold' as const },
           color: '#000000',
         },
         ticks: {

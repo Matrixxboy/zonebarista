@@ -43,7 +43,7 @@ export function useCalculator() {
     const { formula, inputs } = state;
     const variables = formula.variables.map((v) => v.symbol);
 
-    if (variables.some((v) => inputs[v] === 0 || inputs[v] === undefined)) {
+    if (variables.some((v) => inputs[v] === undefined || Number.isNaN(inputs[v]))) {
       return null;
     }
 

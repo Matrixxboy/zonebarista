@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Formula } from '@/types';
 import { formulas } from '@/data/formulas';
@@ -8,7 +8,7 @@ import Card from '@/components/common/Card';
 import SectionLabel from '@/components/common/SectionLabel';
 import Button from '@/components/common/Button';
 import { useStorage } from '@/hooks/useStorage';
-import { generateCSV, downloadCSV } from '@/utils/export';
+import { downloadCSV } from '@/utils/export';
 
 type CategoryType = 'brewing' | 'water' | 'roasting' | 'business' | 'sensory';
 

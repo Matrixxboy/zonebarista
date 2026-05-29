@@ -11,6 +11,7 @@ function Header() {
     { label: 'LEARNING PATHS', href: '/learning-paths' },
     { label: 'KNOWLEDGE BASE', href: '/knowledge-base' },
     { label: 'CALCULATORS', href: '/calculators' },
+    { label: 'LAB SOPs', href: '/lab-sops' },
     { label: 'EXPLAINERS', href: '/explainers' },
   ];
 

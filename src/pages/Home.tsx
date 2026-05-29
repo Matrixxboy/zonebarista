@@ -3,7 +3,7 @@ import GridPattern from '@/components/common/GridPattern';
 import Card from '@/components/common/Card';
 import SectionLabel from '@/components/common/SectionLabel';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Database, Sigma, Beaker, CheckCircle2, Star, Lightbulb, User } from 'lucide-react';
+import { ArrowRight, Database, Sigma, Beaker, CheckCircle2, Lightbulb, User } from 'lucide-react';
 import { files, domains } from '@/data/knowledge';
 import { formulas } from '@/data/formulas';
 

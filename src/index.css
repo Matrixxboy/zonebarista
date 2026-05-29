@@ -17,6 +17,12 @@ body {
   overflow-x: hidden;
 }
 
+::selection {
+  background-color: #FF3000;
+  opacity: 0.5;
+  color: #FFFFFF;
+}
+
 body::before {
   content: '';
   position: fixed;

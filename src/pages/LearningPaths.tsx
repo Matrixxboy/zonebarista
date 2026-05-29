@@ -21,7 +21,7 @@ export default function LearningPaths() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {learningFiles.map((file, index) => (
-          <Card key={file.id} variant={index === 0 ? "solid" : "default"} className="flex flex-col h-full">
+          <Card key={file.id} variant={index === 0 ? "default" : "outline"} className="flex flex-col h-full">
             <SectionLabel number={index + 1} text={file.difficulty === 'all' ? 'FOUNDATION' : 'ADVANCED'} className="mb-4" />
             <h2 className="text-2xl font-bold uppercase mb-3 flex-1">{file.title}</h2>
             <p className="text-sm leading-relaxed mb-6 border-l-4 border-black pl-4">

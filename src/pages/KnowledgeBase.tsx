@@ -8,7 +8,7 @@ import remarkMath from 'remark-math';
 import 'highlight.js/styles/github.css';
 import 'katex/dist/katex.min.css';
 import mermaid from 'mermaid';
-import { ChevronRight, Folder, FileText, Database, BookOpen, Coffee, Flame, Droplet, Beaker, Briefcase, GraduationCap, Sigma, Wine, ChevronDown, Activity } from 'lucide-react';
+import { ChevronRight, Folder, FileText, Database, BookOpen, Coffee, Flame, Droplet, Beaker, Briefcase, GraduationCap, Sigma, Wine, ChevronDown } from 'lucide-react';
 import { domains, files, KnowledgeFile } from '@/data/knowledge';
 import GridPattern from '@/components/common/GridPattern';
 import AnalyticsDashboard from '@/components/dashboard/AnalyticsDashboard';

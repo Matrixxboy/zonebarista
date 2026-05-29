@@ -7,6 +7,7 @@ import Explainers from './pages/Explainers';
 import KnowledgeBase from './pages/KnowledgeBase';
 import LearningPaths from './pages/LearningPaths';
 import Developer from './pages/Developer';
+import LabSOPs from './pages/LabSOPs';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/knowledge-base" element={<KnowledgeBase />} />
           <Route path="/learning-paths" element={<LearningPaths />} />
           <Route path="/developer" element={<Developer />} />
+          <Route path="/lab-sops" element={<LabSOPs />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
         </Route>

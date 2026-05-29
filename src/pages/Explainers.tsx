@@ -2,7 +2,7 @@ import GridPattern from '@/components/common/GridPattern';
 import Card from '@/components/common/Card';
 import { formulas } from '@/data/formulas';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Beaker, Droplet, Flame, Sigma, Briefcase, Wine } from 'lucide-react';
+import { ArrowRight, Beaker, Droplet, Flame, Briefcase, Wine } from 'lucide-react';
 
 export default function Explainers() {
   const getCategoryIcon = (category: string) => {
