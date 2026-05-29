@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Formula } from '@/types';
 import { formulas } from '@/data/formulas';
 import FormulaGrid from '@/components/calculators/FormulaGrid';
@@ -20,12 +21,26 @@ const categoryDescriptions: Record<CategoryType, string> = {
 };
 
 function Calculators() {
-  const [selectedCategory, setSelectedCategory] = useState<CategoryType>('brewing');
-  const [selectedFormula, setSelectedFormula] = useState<Formula | null>(null);
+  const location = useLocation();
+  const initialFormulaId = location.state?.selectedFormulaId;
+  const initialFormula = initialFormulaId ? formulas.find(f => f.id === initialFormulaId) : null;
+
+  const [selectedCategory, setSelectedCategory] = useState<CategoryType>(initialFormula ? initialFormula.category : 'brewing');
+  const [selectedFormula, setSelectedFormula] = useState<Formula | null>(initialFormula || null);
   const [result, setResult] = useState<number | null>(null);
   const { exportCSV } = useStorage();
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const categories: CategoryType[] = ['brewing', 'water', 'roasting', 'business', 'sensory'];
+
+  const handleFormulaSelect = (formula: Formula) => {
+    setSelectedFormula(formula);
+    if (window.innerWidth < 1024) {
+      setTimeout(() => {
+        panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  };
 
   const handleExport = () => {
     const csv = exportCSV();
@@ -34,7 +49,7 @@ function Calculators() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
-      <h1 className="heading-display text-6xl md:text-8xl mb-12">
+      <h1 className="heading-display text-[12vw] sm:text-6xl md:text-8xl mb-12 leading-none break-words">
         FORMULA<br />CALCULATORS
       </h1>
 
@@ -74,13 +89,13 @@ function Calculators() {
             <SectionLabel number={3} text="SELECT FORMULA" className="mb-4" />
             <FormulaGrid
               category={selectedCategory}
-              onSelect={setSelectedFormula}
+              onSelect={handleFormulaSelect}
               selectedId={selectedFormula?.id}
             />
           </div>
 
           {selectedFormula && (
-            <div className="border-t-4 border-black pt-8">
+            <div ref={panelRef} className="border-t-4 border-black pt-8 scroll-mt-24">
               <CalculatorPanel
                 formula={selectedFormula}
                 onResult={setResult}

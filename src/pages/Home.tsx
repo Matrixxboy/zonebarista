@@ -56,7 +56,7 @@ function Home() {
             {/* Background Coffee Beans */}
             <div className="absolute inset-0 pointer-events-none">
               <img
-                src="/beans.jpg"
+                src="/beans.png"
                 alt="Coffee Beans"
                 className="absolute -top-20 -right-20 w-[400px] md:w-[600px] opacity-[0.08] rotate-12 transition-all duration-700 group-hover:scale-110 group-hover:rotate-6"
               />
@@ -69,7 +69,7 @@ function Home() {
 
             <div className="relative z-20 flex flex-col lg:flex-row justify-between gap-12 items-start lg:items-end">
               <div className="max-w-4xl">
-                <h1 className="heading-display uppercase leading-[0.9] tracking-[-0.06em] text-6xl md:text-8xl lg:text-[9rem] font-black mb-8">
+                <h1 className="heading-display uppercase leading-[0.9] tracking-[-0.06em] text-[15vw] sm:text-6xl md:text-8xl lg:text-[9rem] font-black mb-8 break-words">
                   ZONE<br />BARISTA
                 </h1>
                 <div className="max-w-2xl border-l-4 border-black pl-6">
@@ -88,15 +88,15 @@ function Home() {
       <section className="border-y-4 border-black py-12 bg-[#fdfbf7]">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y-4 md:divide-y-0 md:divide-x-4 divide-black">
           <div className="flex flex-col items-center justify-center p-4">
-            <span className="text-6xl md:text-7xl font-black text-accent mb-2">{totalFiles}</span>
+            <span className="text-[15vw] sm:text-6xl md:text-7xl font-black text-accent mb-2">{totalFiles}</span>
             <span className="font-mono text-sm font-bold tracking-widest uppercase">Files Indexed</span>
           </div>
           <div className="flex flex-col items-center justify-center p-4">
-            <span className="text-6xl md:text-7xl font-black text-accent mb-2">{totalDomains}</span>
+            <span className="text-[15vw] sm:text-6xl md:text-7xl font-black text-accent mb-2">{totalDomains}</span>
             <span className="font-mono text-sm font-bold tracking-widest uppercase">Core Domains</span>
           </div>
           <div className="flex flex-col items-center justify-center p-4">
-            <span className="text-6xl md:text-7xl font-black text-accent mb-2">{totalFormulas}</span>
+            <span className="text-[15vw] sm:text-6xl md:text-7xl font-black text-accent mb-2">{totalFormulas}</span>
             <span className="font-mono text-sm font-bold tracking-widest uppercase">Active Formulas</span>
           </div>
         </div>
@@ -198,16 +198,21 @@ function Home() {
       </section>
 
       {/* 7. About Creator + Mission */}
-      <section className="border-4 border-black p-8 md:p-12 bg-white relative">
+      <section className="border-4 border-black p-4 sm:p-6 md:p-12 bg-white relative">
         <SectionLabel number={5} text="CREATOR & MISSION" className="mb-8" />
-        <div className="flex flex-col md:flex-row gap-12 items-start">
-          <div className="flex-1">
-            <h2 className="heading-display text-4xl md:text-5xl uppercase mb-6">Democratizing<br />Coffee Science</h2>
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
+          <div className="flex-1 min-w-0">
+            <h2 className="heading-display text-3xl sm:text-5xl md:text-6xl uppercase mb-6 leading-none">
+              Democratizing
+              <span className="block text-accent">
+                Coffee Science
+              </span>
+            </h2>
             <p className="text-lg leading-relaxed font-medium mb-6">
               Zone Barista was engineered to bridge the gap between abstract coffee science and practical barista application. The mission is to provide an open-source, mathematically rigorous platform for professionals to elevate their craft.
             </p>
           </div>
-          <div className="md:w-1/3 border-l-4 border-black pl-8">
+          <div className="w-full md:w-1/3 border-t-4 md:border-t-0 md:border-l-4 border-black pt-8 md:pt-0 md:pl-8">
             <User size={48} className="mb-4 text-accent" />
             <p className="text-xs uppercase tracking-[0.25em] text-gray-500 mb-2">
               Created & Maintained By

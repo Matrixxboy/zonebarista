@@ -11,7 +11,7 @@ export default function LearningPaths() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
       <GridPattern className="mb-16 p-12" opacity={3}>
-        <h1 className="heading-display text-6xl md:text-8xl mb-6 uppercase">
+        <h1 className="heading-display text-[12vw] sm:text-6xl md:text-8xl mb-6 uppercase break-words leading-none">
           PERFECT<br />LEARNING
         </h1>
         <p className="text-lg max-w-2xl flush-left leading-relaxed">

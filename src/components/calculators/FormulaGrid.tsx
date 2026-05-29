@@ -38,7 +38,7 @@ function FormulaGrid({ onSelect, selectedId, category = 'brewing' }: FormulaGrid
           `}
         >
           <p className="font-bold text-sm uppercase tracking-tight">{formula.name}</p>
-          <p className={`text-xs mt-2 ${selectedId === formula.id ? 'opacity-90' : 'text-muted'}`}>
+          <p className={`text-xs mt-2 font-medium ${selectedId === formula.id ? 'opacity-100' : 'text-black'}`}>
             {formula.variables.length} variables
           </p>
         </button>

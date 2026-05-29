@@ -5,6 +5,8 @@ import { formatNumber } from '@/utils/formatters';
 import Input from '../common/Input';
 import Button from '../common/Button';
 import SectionLabel from '../common/SectionLabel';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 interface CalculatorPanelProps {
   formula: Formula;
@@ -40,9 +42,17 @@ function CalculatorPanel({ formula, onResult }: CalculatorPanelProps) {
       </div>
 
       {formula.description && (
-        <p className="text-xl font-medium leading-relaxed flush-left bg-[#fdfbf7] p-8 border-l-8 border-black text-black">
-          {formula.description}
-        </p>
+        <div className="bg-[#fdfbf7] border-l-8 border-black p-8 text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]">
+          <p className="text-xl font-medium leading-relaxed flush-left mb-6">
+            {formula.description}
+          </p>
+          <Link 
+            to={`/formulas/${formula.id}`}
+            className="inline-flex items-center gap-2 font-mono uppercase text-sm font-bold hover:text-accent transition-colors group"
+          >
+            READ IN-DEPTH SCIENCE EXPLAINER <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
       )}
 
       <div className="bg-black text-white p-8 border-4 border-black relative overflow-hidden group shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)]">
@@ -50,7 +60,7 @@ function CalculatorPanel({ formula, onResult }: CalculatorPanelProps) {
           ƒ
         </div>
         <p className="text-sm tracking-widest text-gray-300 mb-6 font-mono font-bold uppercase">System Equation</p>
-        <div className="font-mono text-2xl md:text-4xl overflow-x-auto whitespace-nowrap pb-4">
+        <div className="font-mono text-2xl md:text-3xl lg:text-4xl whitespace-normal break-words pb-4 leading-normal">
           {formula.equation.split('=').map((part, index) => (
             index === 0 ? (
               <span key={index} className="text-accent font-black">{part} =</span>
@@ -73,6 +83,7 @@ function CalculatorPanel({ formula, onResult }: CalculatorPanelProps) {
               onChange={(e) => setInput(variable.symbol, parseFloat(e.target.value) || 0)}
               placeholder="0.00"
               helperText={`${variable.unit}${variable.notes ? ` • ${variable.notes}` : ''}`}
+              helperTextClassName="text-black"
             />
           ))}
         </div>

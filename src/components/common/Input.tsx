@@ -4,12 +4,14 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
   helperText?: string;
+  helperTextClassName?: string;
 }
 
 function Input({
   label,
   error,
   helperText,
+  helperTextClassName = '',
   className = '',
   ...props
 }: InputProps) {
@@ -34,7 +36,7 @@ function Input({
         </p>
       )}
       {helperText && !error && (
-        <p className="text-muted text-xs mt-1">
+        <p className={`text-xs mt-1 ${helperTextClassName || 'text-muted'}`}>
           {helperText}
         </p>
       )}

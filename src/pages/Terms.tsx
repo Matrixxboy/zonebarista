@@ -1,7 +1,7 @@
 function Terms() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
-      <h1 className="heading-display text-6xl md:text-7xl mb-12">TERMS OF SERVICE</h1>
+      <h1 className="heading-display text-[12vw] sm:text-6xl md:text-7xl mb-12 break-words">TERMS OF SERVICE</h1>
 
       <div className="space-y-8 flush-left">
         <section>

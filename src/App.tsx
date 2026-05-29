@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
 import Home from './pages/Home';
 import Calculators from './pages/Calculators';
+import FormulaExplainer from './pages/FormulaExplainer';
 import Explainers from './pages/Explainers';
 import KnowledgeBase from './pages/KnowledgeBase';
 import LearningPaths from './pages/LearningPaths';
@@ -16,6 +17,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/calculators" element={<Calculators />} />
+          <Route path="/formulas/:id" element={<FormulaExplainer />} />
           <Route path="/explainers" element={<Explainers />} />
           <Route path="/knowledge-base" element={<KnowledgeBase />} />
           <Route path="/learning-paths" element={<LearningPaths />} />

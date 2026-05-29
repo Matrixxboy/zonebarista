@@ -70,6 +70,7 @@ export default function KnowledgeBase() {
   const [markdownContent, setMarkdownContent] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     // Select Master Index by default
@@ -111,9 +112,15 @@ export default function KnowledgeBase() {
 
   const renderSidebar = () => {
     return (
-      <div className="w-full md:w-80 border-r-4 border-black bg-[#fdfbf7] flex-shrink-0 flex flex-col h-full overflow-hidden relative z-10">
+      <div className={`w-full md:w-80 border-r-0 md:border-r-4 border-black bg-[#fdfbf7] flex-shrink-0 flex-col h-full overflow-hidden relative z-10 md:flex ${isSidebarOpen ? 'flex' : 'hidden'}`}>
         <div className="p-4 border-b-4 border-black bg-black text-white font-mono uppercase tracking-wider text-sm flex items-center justify-between">
           <span>Notebook Index</span>
+          <button 
+            className="md:hidden text-white hover:text-accent font-bold"
+            onClick={() => setIsSidebarOpen(false)}
+          >
+            CLOSE
+          </button>
         </div>
         
         <div className="border-b-4 border-black bg-white p-3">
@@ -222,8 +229,8 @@ export default function KnowledgeBase() {
     <div className="flex flex-col md:flex-row h-[calc(100vh-80px)] border-t-4 border-black">
       {renderSidebar()}
       
-      <div className="flex-1 overflow-y-auto bg-white relative">
-        <GridPattern opacity={4} className="min-h-full p-8 md:p-12">
+      <div className={`flex-1 overflow-y-auto bg-white relative ${isSidebarOpen ? 'hidden md:block' : 'block'}`}>
+        <GridPattern opacity={4} className="min-h-full p-4 sm:p-6 md:p-12">
           {isLoading ? (
             <div className="flex items-center justify-center h-[50vh]">
               <span className="font-mono text-xl uppercase tracking-widest animate-pulse">Loading Document...</span>
@@ -231,17 +238,36 @@ export default function KnowledgeBase() {
           ) : (
             <div className="w-full h-full max-w-none">
               {selectedFile?.id === 'F00' ? (
-                <AnalyticsDashboard onNodeClick={(id) => {
-                  const targetFile = files.find(f => f.id === id);
+                <div className="w-full h-full flex flex-col">
+                  <div className="md:hidden mb-6 flex-shrink-0">
+                    <button 
+                      className="w-full bg-black text-white px-4 py-4 font-mono font-bold tracking-widest text-sm hover:bg-accent hover:text-black transition-colors border-4 border-black"
+                      onClick={() => setIsSidebarOpen(true)}
+                    >
+                      OPEN NOTEBOOK INDEX
+                    </button>
+                  </div>
+                  <div className="flex-1 min-h-0">
+                    <AnalyticsDashboard onNodeClick={(id) => {
+                      const targetFile = files.find(f => f.id === id);
                   if (targetFile) {
                     handleFileSelect(targetFile);
                     setOpenDomains(prev => ({ ...prev, [targetFile.domainId]: true }));
+                    setIsSidebarOpen(false); // Close sidebar on mobile after selection
                   }
-                }} />
+                    }} />
+                  </div>
+                </div>
               ) : (
-                <div className="prose prose-lg max-w-4xl mx-auto prose-headings:font-bold prose-headings:uppercase prose-headings:tracking-tight prose-h1:text-5xl prose-h1:border-b-4 prose-h1:border-black prose-h1:pb-4 prose-h1:mb-8 prose-h2:text-3xl prose-h2:border-b-2 prose-h2:border-black prose-h2:pb-2 prose-h2:mt-12 prose-h3:text-2xl prose-a:text-accent hover:prose-a:text-black prose-a:font-bold prose-img:border-4 prose-img:border-black prose-img:w-full prose-pre:bg-gray-100 prose-pre:border-4 prose-pre:border-black prose-pre:text-black prose-pre:rounded-none prose-table:border-4 prose-table:border-black prose-th:bg-black prose-th:text-white prose-th:border-2 prose-th:border-black prose-th:p-3 prose-td:border-2 prose-td:border-black prose-td:p-3 prose-blockquote:border-l-8 prose-blockquote:border-black prose-blockquote:bg-muted prose-blockquote:p-6 prose-blockquote:font-medium prose-blockquote:not-italic prose-li:marker:text-black text-black">
+                <div className="prose prose-lg max-w-4xl mx-auto prose-headings:font-bold prose-headings:uppercase prose-headings:tracking-tight prose-h1:text-4xl md:prose-h1:text-5xl prose-h1:border-b-4 prose-h1:border-black prose-h1:pb-4 prose-h1:mb-8 prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:border-b-2 prose-h2:border-black prose-h2:pb-2 prose-h2:mt-12 prose-h3:text-xl md:prose-h3:text-2xl prose-a:text-accent hover:prose-a:text-black prose-a:font-bold prose-img:border-4 prose-img:border-black prose-img:w-full prose-pre:bg-gray-100 prose-pre:border-4 prose-pre:border-black prose-pre:text-black prose-pre:rounded-none prose-table:border-4 prose-table:border-black prose-th:bg-black prose-th:text-white prose-th:border-2 prose-th:border-black prose-th:p-1 sm:prose-th:p-3 prose-td:border-2 prose-td:border-black prose-td:p-1 sm:prose-td:p-3 prose-blockquote:border-l-8 prose-blockquote:border-black prose-blockquote:bg-muted prose-blockquote:p-6 prose-blockquote:font-medium prose-blockquote:not-italic prose-li:marker:text-black text-black">
                   <div className="mb-8 pb-4 border-b-4 border-black font-mono text-sm uppercase flex flex-col gap-2">
                     <div className="flex gap-4 items-center">
+                      <button 
+                        className="md:hidden bg-black text-white px-3 py-1 font-bold hover:bg-accent hover:text-black transition-colors"
+                        onClick={() => setIsSidebarOpen(true)}
+                      >
+                        VIEW INDEX
+                      </button>
                       <span className="bg-black text-white px-3 py-1 font-bold">{selectedFile?.domainId}</span>
                       <span className="font-bold tracking-widest">{domains.find(d => d.id === selectedFile?.domainId)?.label}</span>
                     </div>
@@ -251,8 +277,13 @@ export default function KnowledgeBase() {
                   
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm, remarkMath]}
-                    rehypePlugins={[rehypeRaw, rehypeKatex, rehypeHighlight]}
+                    rehypePlugins={[rehypeRaw, [rehypeKatex, { strict: false }], rehypeHighlight]}
                     components={{
+                      table: ({node, ...props}) => (
+                        <div className="w-full mb-8 overflow-x-auto">
+                          <table className="w-full text-xs sm:text-sm md:text-base" {...props} />
+                        </div>
+                      ),
                       code(props) {
                         const {children, className, node, ...rest} = props;
                         const match = /language-(\w+)/.exec(className || '');

@@ -28,7 +28,7 @@ function Developer() {
     <div className="max-w-7xl mx-auto px-6 py-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
         <div>
-          <h1 className="heading-display text-6xl md:text-8xl mb-8">
+          <h1 className="heading-display text-[12vw] sm:text-6xl md:text-8xl mb-8 leading-none break-words">
             UTSAV<br />LANKAPATI
           </h1>
           <div className="mb-8 relative max-w-sm group">

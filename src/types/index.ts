@@ -22,6 +22,7 @@ export interface Formula {
   examples: Example[];
   sources: string[];
   description?: string;
+  inDepth?: string;
 }
 
 export interface Calculation {

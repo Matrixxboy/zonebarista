@@ -171,17 +171,15 @@ flowchart LR
 
 ### Pattern Library
 
-#### 1. Heart
-
-```
-     ██████
-   ██      ██
-  ██        ██
-   ██      ██
-     ██████
-       ██
-        ██
-```
+#### **1. Heart**
+<br/>
+<div>
+  <img
+    src="https://github.com/Matrixxboy/zonebarista/blob/main/public/rose.png?raw=true"
+    alt="Heart Rosetta Latte Art"
+  />
+</div>
+<br/>
 
 **Technique:**
 1. Fill cup 40% with milk (no art yet — hold high)
@@ -193,13 +191,14 @@ flowchart LR
 
 #### 2. Rosetta (Fern)
 
-```
-      ↑
-    ╱│╲
-   ╱ │ ╲
-  ╱  │  ╲
- ╱   │   ╲
-```
+<br/>
+<div>
+  <img
+    src="https://github.com/Matrixxboy/zonebarista/blob/main/public/Rosetta.png?raw=true"
+    alt="Rosetta Latte Art"
+  />
+</div>
+<br/>
 
 **Technique:**
 1. Fill 40% (high pour)
@@ -211,13 +210,14 @@ flowchart LR
 
 #### 3. Tulip
 
-```
-    ○
-   ○ ○
-  ○   ○
-   ○ ○
-    ─
-```
+<br/>
+<div>
+  <img
+    src="https://github.com/Matrixxboy/zonebarista/blob/main/public/tulip.png?raw=true"
+    alt="Tulip Latte Art"
+  />
+</div>
+<br/>
 
 **Technique:**
 1. High pour to fill 30%
