@@ -59,6 +59,8 @@ function Home() {
                 src="/beans.png"
                 alt="Coffee Beans"
                 className="absolute -top-20 -right-20 w-[400px] md:w-[600px] opacity-[0.08] rotate-12 transition-all duration-700 group-hover:scale-110 group-hover:rotate-6"
+                fetchPriority="high"
+                loading="eager"
               />
             </div>
 
@@ -218,9 +220,9 @@ function Home() {
               Created & Maintained By
             </p>
             <h3 className="text-2xl font-black tracking-tight mb-2">
-              <a href="/developer" className="text-black hover:text-accent transition-colors">
+              <Link to="/developer" className="text-black hover:text-accent transition-colors">
                 Utsav Lankapati
-              </a>
+              </Link>
             </h3>
             <p className="text-sm font-bold text-gray-600 leading-relaxed">
               Computer Engineer • AI/ML Developer

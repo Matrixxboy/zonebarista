@@ -72,7 +72,7 @@ function SearchModal() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-2 px-4 py-2 text-sm text-muted hover:text-text transition-colors"
+        className="flex items-center gap-2 px-4 py-2 text-gray-400 hover:text-text transition-colors"
       >
         <Search size={16} />
         <span className="hidden sm:inline">⌘K</span>

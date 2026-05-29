@@ -37,7 +37,10 @@ function Developer() {
               src="https://github.com/Matrixxboy.png" 
               alt="Utsav Lankapati" 
               className="relative z-10 w-full border-4 border-black filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 object-cover aspect-square"
+              fetchPriority="high"
+              loading="eager"
             />
+
           </div>
           <p className="text-lg mb-8 leading-relaxed max-w-xl flush-left bg-muted p-6 border-l-8 border-black">
             Engineer, creator, and coffee science enthusiast. Building tools that translate complex formulas into interactive learning systems.
