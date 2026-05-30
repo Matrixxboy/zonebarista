@@ -61,7 +61,7 @@ function Header() {
                   <div className="bg-white border-2 border-accent w-56 p-2 flex flex-col gap-1">
                     {cat.links.map(link => (
                       <Link
-                        key={link.href}
+                      
                         to={link.href}
                         className="block px-3 py-2 text-sm font-bold uppercase hover:bg-black hover:text-white transition-colors"
                       >

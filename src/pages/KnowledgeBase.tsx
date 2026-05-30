@@ -9,6 +9,7 @@ import remarkMath from 'remark-math';
 import 'highlight.js/styles/github.css';
 import 'katex/dist/katex.min.css';
 import mermaid from 'mermaid';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { ChevronRight, Folder, FileText, Database, BookOpen, Coffee, Flame, Droplet, Beaker, Briefcase, GraduationCap, Sigma, Wine, ChevronDown } from 'lucide-react';
 import { domains, files, KnowledgeFile } from '@/data/knowledge';
 import GridPattern from '@/components/common/GridPattern';
@@ -21,8 +22,18 @@ const MermaidChart = ({ chart }: { chart: string }) => {
     mermaid.initialize({ 
       startOnLoad: false, 
       theme: 'base',
+      securityLevel: 'loose',
+      flowchart: {
+        htmlLabels: true,
+        padding: 20
+      },
+      sequence: {
+        // @ts-ignore
+        htmlLabels: true
+      },
       themeVariables: {
         fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+        fontSize: '18px', // Trick Mermaid into calculating larger bounding boxes
         primaryColor: '#ffffff',
         primaryTextColor: '#000000',
         primaryBorderColor: '#000000',
@@ -45,10 +56,84 @@ const MermaidChart = ({ chart }: { chart: string }) => {
   }, [chart]);
 
   return (
-    <div 
-      className="my-8 flex justify-center bg-[#fdfbf7] p-6 border-4 border-black overflow-x-auto" 
-      dangerouslySetInnerHTML={{ __html: svg }} 
-    />
+    <div className="my-8 relative bg-[#fdfbf7] border-4 border-black group">
+      <style>{`
+        .mermaid-chart svg { max-width: 100%; height: auto; font-size: 14px !important; overflow: visible; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important; }
+        
+        /* Brutalist Nodes */
+        .mermaid-chart .node rect, 
+        .mermaid-chart .node circle, 
+        .mermaid-chart .node ellipse, 
+        .mermaid-chart .node polygon, 
+        .mermaid-chart .node path { 
+          stroke-width: 4px !important; 
+          stroke: #000 !important;
+          fill: #fff !important;
+          rx: 0 !important; /* Square corners for brutalism */
+          ry: 0 !important;
+        }
+
+        /* Prevent text cutoff inside nodes */
+        .mermaid-chart .nodeLabel { 
+          color: #000 !important;
+          line-height: 1.2 !important; /* Tighter line height ensures text doesn't hit the bottom edge */
+        }
+        
+        .mermaid-chart foreignObject {
+          overflow: visible !important;
+        }
+
+        /* Edges */
+        .mermaid-chart .edgePath .path { stroke-width: 3px !important; stroke: #000 !important; }
+        .mermaid-chart .marker { fill: #000 !important; stroke: #000 !important; }
+        
+        /* Edge Labels */
+        .mermaid-chart .edgeLabel { background-color: #fff !important; border: 2px solid #000 !important; padding: 2px 6px !important; }
+      `}</style>
+      
+      <TransformWrapper
+        initialScale={1}
+        minScale={0.5}
+        maxScale={4}
+        centerOnInit={true}
+        wheel={{ step: 0.1 }}
+      >
+        {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+          <>
+            <div className="absolute top-2 right-2 z-10 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <button 
+                onClick={() => zoomIn()} 
+                className="w-8 h-8 flex items-center justify-center bg-black text-white font-bold text-lg hover:bg-accent hover:text-black transition-colors"
+                title="Zoom In"
+              >
+                +
+              </button>
+              <button 
+                onClick={() => zoomOut()} 
+                className="w-8 h-8 flex items-center justify-center bg-black text-white font-bold text-lg hover:bg-accent hover:text-black transition-colors"
+                title="Zoom Out"
+              >
+                -
+              </button>
+              <button 
+                onClick={() => resetTransform()} 
+                className="w-8 h-8 flex items-center justify-center bg-black text-white font-bold text-xs hover:bg-accent hover:text-black transition-colors"
+                title="Reset Zoom"
+              >
+                R
+              </button>
+            </div>
+            
+            <TransformComponent wrapperStyle={{ width: "100%", height: "auto", overflow: "hidden", minHeight: "400px" }}>
+              <div 
+                className="mermaid-chart flex items-center justify-center w-full p-6 cursor-move" 
+                dangerouslySetInnerHTML={{ __html: svg }} 
+              />
+            </TransformComponent>
+          </>
+        )}
+      </TransformWrapper>
+    </div>
   );
 };
 
