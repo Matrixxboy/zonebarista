@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -65,6 +66,9 @@ const getDomainIcon = (label: string) => {
 };
 
 export default function KnowledgeBase() {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+
   const [openDomains, setOpenDomains] = useState<Record<string, boolean>>({});
   const [selectedFile, setSelectedFile] = useState<KnowledgeFile | null>(null);
   const [markdownContent, setMarkdownContent] = useState<string>('');
@@ -73,16 +77,25 @@ export default function KnowledgeBase() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
-    // Select Master Index by default
-    const indexFile = files.find(f => f.id === 'F00');
-    if (indexFile) handleFileSelect(indexFile);
-  }, []);
+    const targetId = id || 'F00';
+    const file = files.find(f => f.id === targetId);
+    if (file) {
+      loadFileContent(file);
+      if (file.domainId !== 'root') {
+        setOpenDomains(prev => ({ ...prev, [file.domainId]: true }));
+      }
+    } else {
+      // Fallback if id is invalid
+      const indexFile = files.find(f => f.id === 'F00');
+      if (indexFile) loadFileContent(indexFile);
+    }
+  }, [id]);
 
   const toggleDomain = (domainId: string) => {
     setOpenDomains(prev => ({ ...prev, [domainId]: !prev[domainId] }));
   };
 
-  const handleFileSelect = async (file: KnowledgeFile) => {
+  const loadFileContent = async (file: KnowledgeFile) => {
     if (file.id === 'F00' || file.type === 'index' || file.type === 'data') {
       setSelectedFile(file);
       setMarkdownContent('');
@@ -97,7 +110,6 @@ export default function KnowledgeBase() {
       if (!response.ok) throw new Error('File not found');
       let text = await response.text();
       
-      // Strip YAML frontmatter
       const yamlRegex = /^---([\s\S]*?)---/;
       text = text.replace(yamlRegex, '');
       
@@ -108,6 +120,10 @@ export default function KnowledgeBase() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleFileSelect = (file: KnowledgeFile) => {
+    navigate(`/knowledge-base/${file.id}`);
   };
 
   const renderSidebar = () => {
