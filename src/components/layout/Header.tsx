@@ -38,9 +38,9 @@ function Header() {
 
   return (
     <header className="border-b-2 border-black bg-white sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-6">
+      <div className="max-w-7xl mx-auto px-4 py-4 md:px-6 md:py-6">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-black tracking-tighter uppercase">
+          <Link to="/" className="text-xl md:text-2xl font-black tracking-tighter uppercase">
             <span className="text-accent">01.</span> ZONE BARISTA
           </Link>
 
@@ -61,7 +61,7 @@ function Header() {
                   <div className="bg-white border-2 border-accent w-56 p-2 flex flex-col gap-1">
                     {cat.links.map(link => (
                       <Link
-                      
+                        key={link.href}
                         to={link.href}
                         className="block px-3 py-2 text-sm font-bold uppercase hover:bg-black hover:text-white transition-colors"
                       >
@@ -80,6 +80,9 @@ function Header() {
 
         {isMenuOpen && (
           <nav className="md:hidden mt-4 space-y-6 border-t border-black pt-6 pb-2">
+            <div className="pb-4 border-b border-black">
+              <SearchModal />
+            </div>
             {navCategories.map((cat) => (
               <div key={cat.label} className="space-y-3">
                 <div className="text-xs font-black text-gray-400 tracking-widest">{cat.label}</div>

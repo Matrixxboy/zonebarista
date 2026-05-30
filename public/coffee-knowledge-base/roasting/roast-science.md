@@ -51,6 +51,7 @@ Roasting transforms **green coffee** (essentially seeds) into **roasted coffee**
 gantt
     title Coffee Roast Timeline
     dateFormat mm:ss
+    axisFormat %M:%S
     section Temperature Phases
     Drying Phase (100–160°C)         :a1, 00:00, 4m
     Maillard Reaction (160–196°C)    :a2, 04:00, 4m

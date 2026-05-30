@@ -9,8 +9,6 @@ const PUNS = [
   "Espresso yourself!",
   "I'm feeling purr-colated.",
   "That shot was purr-fect.",
-
-  // Coffee + Cat
   "Brew me once, shame on you.",
   "Keep calm and meow on.",
   "Life happens, coffee helps.",
@@ -31,8 +29,6 @@ const PUNS = [
   "Coffee first. Meowing later.",
   "Roasted to purr-fection.",
   "You're pawsitively amazing.",
-
-  // Playful Barista
   "Brewing happiness since five seconds ago.",
   "Warning: Contents may improve mornings.",
   "Fresh beans. Fresh dreams.",
@@ -48,8 +44,6 @@ const PUNS = [
   "Brew-tiful things take time.",
   "Stay cozy, stay caffeinated.",
   "One sip closer to greatness.",
-
-  // Knowledge Base Style
   "Searching the coffee archives...",
   "Brewing fresh knowledge...",
   "Grinding data into wisdom...",
@@ -80,14 +74,13 @@ export default function CafeCat() {
     
     setTimeout(() => setIsWiggling(false), 500);
     
-    // Hide bubble after 3 seconds
     setTimeout(() => {
       setIsVisible(false);
-    }, 3000);
+    }, 4000);
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-none">
+    <div className="fixed bottom-2 right-2 md:bottom-6 md:right-6 z-50 flex flex-col items-end pointer-events-none scale-75 md:scale-100 origin-bottom-right">
       
       {/* Speech Bubble */}
       <div 

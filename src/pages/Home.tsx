@@ -50,7 +50,7 @@ function Home() {
       {/* 1. HERO */}
       <section>
         <GridPattern
-            className="relative overflow-hidden border-4 border-black bg-white px-8 py-16 md:px-16 md:py-24 group"
+            className="relative overflow-hidden border-4 border-black bg-white px-4 py-10 md:px-16 md:py-24 group"
             opacity={4}
           >
             {/* Background Coffee Beans */}
@@ -58,24 +58,24 @@ function Home() {
               <img
                 src="/beans.png"
                 alt="Coffee Beans"
-                className="absolute -top-20 -right-20 w-[400px] md:w-[600px] opacity-[0.08] rotate-12 transition-all duration-700 group-hover:scale-110 group-hover:rotate-6"
+                className="absolute -top-20 -right-20 w-[300px] md:w-[600px] opacity-[0.08] rotate-12 transition-all duration-700 group-hover:scale-110 group-hover:rotate-6"
                 fetchPriority="high"
                 loading="eager"
               />
             </div>
 
             {/* Decorative Label */}
-            <div className="absolute top-0 left-0 border-r-2 border-b-2 border-black bg-black text-white px-4 py-2 font-mono text-xs tracking-[0.3em] uppercase z-10">
+            <div className="absolute top-0 left-0 border-r-2 border-b-2 border-black bg-black text-white px-3 py-1 md:px-4 md:py-2 font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase z-10">
               Coffee Engineering Platform
             </div>
 
-            <div className="relative z-20 flex flex-col lg:flex-row justify-between gap-12 items-start lg:items-end">
+            <div className="relative z-20 flex flex-col lg:flex-row justify-between gap-8 md:gap-12 items-start lg:items-end">
               <div className="max-w-4xl">
-                <h1 className="heading-display uppercase leading-[0.9] tracking-[-0.06em] text-[15vw] sm:text-6xl md:text-8xl lg:text-[9rem] font-black mb-8 break-words">
+                <h1 className="heading-display uppercase leading-[0.9] tracking-[-0.06em] text-[18vw] sm:text-[12vw] md:text-8xl lg:text-[9rem] font-black mb-6 md:mb-8 break-words">
                   ZONE<br />BARISTA
                 </h1>
-                <div className="max-w-2xl border-l-4 border-black pl-6">
-                  <p className="text-lg md:text-2xl leading-relaxed font-medium">
+                <div className="max-w-2xl border-l-4 border-black pl-4 md:pl-6">
+                  <p className="text-base md:text-2xl leading-relaxed font-medium">
                     A science-first knowledge base, brewing calculator,
                     and engineering platform built for specialty coffee
                     professionals, researchers, and enthusiasts.

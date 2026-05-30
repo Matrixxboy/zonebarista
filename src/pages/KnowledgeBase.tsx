@@ -89,6 +89,12 @@ const MermaidChart = ({ chart }: { chart: string }) => {
         
         /* Edge Labels */
         .mermaid-chart .edgeLabel { background-color: #fff !important; border: 2px solid #000 !important; padding: 2px 6px !important; }
+
+        /* Gantt Charts */
+        .mermaid-chart .task { stroke-width: 4px !important; stroke: #000 !important; fill: #fff !important; rx: 0 !important; ry: 0 !important; }
+        .mermaid-chart .task.active0, .mermaid-chart .task.active1, .mermaid-chart .task.active2, .mermaid-chart .task.active3 { stroke: #000 !important; fill: #fff !important; }
+        .mermaid-chart .task.crit0, .mermaid-chart .task.crit1, .mermaid-chart .task.crit2, .mermaid-chart .task.crit3 { stroke: #000 !important; fill: #f97316 !important; } /* Orange for critical */
+        .mermaid-chart .taskText, .mermaid-chart .taskTextOutsideRight, .mermaid-chart .taskTextOutsideLeft { fill: #000 !important; font-weight: 900 !important; font-size: 14px !important; text-transform: uppercase; }
       `}</style>
       
       <TransformWrapper
@@ -159,7 +165,7 @@ export default function KnowledgeBase() {
   const [markdownContent, setMarkdownContent] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(!id || id === 'F00');
 
   useEffect(() => {
     const targetId = id || 'F00';
@@ -345,7 +351,7 @@ export default function KnowledgeBase() {
                       className="w-full bg-black text-white px-4 py-4 font-mono font-bold tracking-widest text-sm hover:bg-accent hover:text-black transition-colors border-4 border-black"
                       onClick={() => setIsSidebarOpen(true)}
                     >
-                      OPEN NOTEBOOK INDEX
+                      📖 BROWSE TOPICS
                     </button>
                   </div>
                   <div className="flex-1 min-h-0">
@@ -364,10 +370,10 @@ export default function KnowledgeBase() {
                   <div className="mb-8 pb-4 border-b-4 border-black font-mono text-sm uppercase flex flex-col gap-2">
                     <div className="flex gap-4 items-center">
                       <button 
-                        className="md:hidden bg-black text-white px-3 py-1 font-bold hover:bg-accent hover:text-black transition-colors"
+                        className="md:hidden flex items-center gap-2 bg-black text-white px-3 py-1 font-bold hover:bg-accent hover:text-black transition-colors"
                         onClick={() => setIsSidebarOpen(true)}
                       >
-                        VIEW INDEX
+                        <ChevronRight className="rotate-180" size={16} /> BROWSE TOPICS
                       </button>
                       <span className="bg-black text-white px-3 py-1 font-bold">{selectedFile?.domainId}</span>
                       <span className="font-bold tracking-widest">{domains.find(d => d.id === selectedFile?.domainId)?.label}</span>
