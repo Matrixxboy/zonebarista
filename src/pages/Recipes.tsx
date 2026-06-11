@@ -3,7 +3,7 @@ import { ArrowRight, Search } from 'lucide-react';
 import SectionLabel from '../components/common/SectionLabel';
 import RecipeModal from '../components/recipes/RecipeModal';
 import RecipeMatchmaker from '../components/recipes/RecipeMatchmaker';
-import { top20Recipes, categorizedRecipeNames } from '../data/recipes';
+import { top20Recipes, categorizedRecipeNames, spiritsRecipes, coldRecipes, globalRecipes, spicedRecipes, dessertRecipes, experimentalRecipes, luxuryRecipes } from '../data/recipes';
 import { CoffeeRecipe } from '../types';
 
 function Recipes() {
@@ -19,19 +19,19 @@ function Recipes() {
       <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
         <SectionLabel number={number} text={title} className="mb-8" />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filteredRecipes.map((recipe, rIdx) => {
-          // Check if this recipe exists in the Top 20 so we can make it clickable
-          const fullRecipe = top20Recipes.find(r => r.name === recipe);
+          {filteredRecipes.map((recipeName, rIdx) => {
+          // Check if this recipe exists in the Top 20 or expanded batches so we can make it clickable
+          const fullRecipe = [...top20Recipes, ...spiritsRecipes, ...coldRecipes, ...globalRecipes, ...spicedRecipes, ...dessertRecipes, ...experimentalRecipes, ...luxuryRecipes].find(r => r.name === recipeName);
           
           if (fullRecipe) {
             return (
               <button 
                 key={rIdx} 
                 onClick={() => setSelectedRecipe(fullRecipe)}
-                className="bg-black text-white text-left p-6 border-2 border-black hover:bg-accent hover:border-accent hover:-translate-y-1 transition-all duration-300 group shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between"
+                className="bg-white text-left text-black hover:text-white p-6 border-2 border-black hover:bg-accent hover:border-accent hover:-translate-y-1 transition-all duration-300 group shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between"
               >
-                <p className="font-bold text-lg leading-tight mb-4">{recipe}</p>
-                <span className="font-mono text-xs uppercase tracking-widest text-white/50 group-hover:text-white flex items-center gap-1">
+                <p className="font-bold text-lg leading-tight mb-4">{recipeName}</p>
+                <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold group-hover:text-white flex items-center gap-1">
                   View Recipe <ArrowRight size={12} />
                 </span>
               </button>
@@ -43,7 +43,7 @@ function Recipes() {
               key={rIdx} 
               className="bg-white p-6 border-2 border-black hover:bg-gray-100 transition-colors group shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-default"
             >
-              <p className="font-bold text-lg leading-tight">{recipe}</p>
+              <p className="font-bold text-lg leading-tight">{recipeName}</p>
             </div>
           );
         })}

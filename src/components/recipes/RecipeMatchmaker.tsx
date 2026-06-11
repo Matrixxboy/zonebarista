@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { CoffeeRecipe } from '@/types';
-import { top20Recipes, categorizedRecipeNames } from '@/data/recipes';
+import { top20Recipes, categorizedRecipeNames, spiritsRecipes, coldRecipes, globalRecipes, spicedRecipes, dessertRecipes, experimentalRecipes, luxuryRecipes } from '@/data/recipes';
 import { ArrowRight, Sparkles, RefreshCcw } from 'lucide-react';
 
 interface RecipeMatchmakerProps {
@@ -60,7 +60,7 @@ function RecipeMatchmaker({ onSelectRecipe }: RecipeMatchmakerProps) {
 
   // Generate a unified list of all 100+ recipes to search through
   const allRecipesOracle = useMemo(() => {
-    const all: CoffeeRecipe[] = [...top20Recipes];
+    const all: CoffeeRecipe[] = [...top20Recipes, ...spiritsRecipes, ...coldRecipes, ...globalRecipes, ...spicedRecipes, ...dessertRecipes, ...experimentalRecipes, ...luxuryRecipes];
     
     const mapCategory = (arr: string[], catName: string, defaultOccasion: string, defaultSeason: string, defaultMood: string) => {
       arr.forEach(name => {

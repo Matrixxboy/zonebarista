@@ -1,4 +1,13 @@
 import { CoffeeRecipe } from '@/types';
+import { spiritsRecipes } from './recipes_spirits';
+import { coldRecipes } from './recipes_cold';
+import { globalRecipes } from './recipes_global';
+import { spicedRecipes } from './recipes_spiced';
+import { dessertRecipes } from './recipes_dessert';
+import { experimentalRecipes } from './recipes_experimental';
+import { luxuryRecipes } from './recipes_luxury';
+
+export { spiritsRecipes, coldRecipes, globalRecipes, spicedRecipes, dessertRecipes, experimentalRecipes, luxuryRecipes };
 
 export const top20Recipes: CoffeeRecipe[] = [
   {
@@ -384,63 +393,31 @@ export const top20Recipes: CoffeeRecipe[] = [
 
 export const categorizedRecipeNames = {
   spirits: [
-    'Spiced Butter Rum Coffee', 'Cold Brew Whisky Highball', 'Irish Coffee',
-    'Spanish Carajillo (Espresso + Licor 43)', 'Espresso Martini', 'Coffee Old Fashioned',
-    'Bourbon Maple Coffee', 'Smoked Coffee Manhattan', 'Coffee Negroni',
-    'Black Russian Coffee', 'Coffee Mojito', 'Coffee Mule',
-    'Coffee Sour', 'Espresso Tonic', 'Coffee Sangria', 'Coffee Gin Fizz',
-    'Cold Brew Spritz', 'Coffee Amaretto', 'Coffee Baileys Float', 'Coffee Rum Punch'
+    'Spiced Butter Rum Coffee', 'Cold Brew Whisky Highball', 'Coffee Mojito', 'Smoked Coffee Manhattan',
+    ...spiritsRecipes.map(r => r.name)
   ],
   cold: [
-    'Nitro Cold Brew', 'Orange Espresso Tonic', 'Yuzu Cold Brew',
-    'Coconut Cold Brew', 'Vanilla Bean Cold Brew', 'Honey Cinnamon Cold Brew',
-    'Salted Caramel Cold Brew', 'Lavender Cold Brew', 'Rose Cardamom Cold Brew',
-    'Brown Sugar Shaken Espresso', 'Cream Soda Coffee', 'Sparkling Cold Brew',
-    'Coffee Lemonade', 'Cascara Coffee Cooler', 'Mint Chocolate Cold Brew',
-    'Affogato Float', 'Peanut Butter Cold Brew', 'Banana Cream Coffee',
-    'Tiramisu Iced Latte', 'Matcha Espresso Fusion'
+    'Orange Espresso Tonic', 'Coconut Cold Brew', 'Rose Cardamom Cold Brew', 'Coffee Lemonade', 'Nitro Orange Espresso',
+    ...coldRecipes.map(r => r.name)
   ],
   global: [
-    'Turkish Coffee', 'Arabic Qahwa', 'Greek Coffee', 'Vietnamese Egg Coffee',
-    'Vietnamese Coconut Coffee', 'Indian Filter Coffee', 'South Indian Jaggery Coffee',
-    'Ethiopian Spiced Coffee', 'Moroccan Spiced Coffee', 'Mexican Café de Olla',
-    'Cuban Café Cubano', 'Swedish Kaffeost', 'Austrian Einspänner',
-    'Italian Affogato', 'Spanish Café Bombón', 'Korean Dalgona Coffee',
-    'Indonesian Kopi Tubruk', 'Thai Iced Coffee', 'Japanese Kyoto Cold Brew',
-    'Scandinavian Egg Coffee'
+    'Vietnamese Egg Coffee', 'Mexican Café de Olla',
+    ...globalRecipes.map(r => r.name)
   ],
   spiced: [
-    'Cardamom Coffee', 'Cinnamon Honey Coffee', 'Saffron Pistachio Latte',
-    'Gingerbread Coffee', 'Chai-Spiced Coffee', 'Star Anise Coffee',
-    'Clove & Nutmeg Coffee', 'Turmeric Latte Coffee', 'Black Pepper Coffee',
-    'Rose Petal Coffee', 'Lavender Honey Latte', 'Vanilla Cardamom Latte',
-    'Orange Peel Coffee', 'Maple Cinnamon Coffee', 'Chili Mocha',
-    'Smoked Cinnamon Coffee', 'Basil Coffee Cooler', 'Rosemary Vanilla Coffee',
-    'Mint Espresso', 'Masala Coffee'
+    'Saffron Pistachio Latte', 'Lavender Honey Latte',
+    ...spicedRecipes.map(r => r.name)
   ],
   dessert: [
-    'Tiramisu Coffee', 'Crème Brûlée Latte', 'Cheesecake Latte',
-    'Chocolate Hazelnut Mocha', 'Cookies & Cream Latte', 'Salted Caramel Mocha',
-    'Red Velvet Latte', 'Ferrero Rocher Coffee', 'S\'mores Latte',
-    'Banoffee Coffee', 'Almond Croissant Latte', 'Brownie Espresso Shake',
-    'White Chocolate Raspberry Mocha', 'Pistachio Cream Latte', 'Biscoff Latte',
-    'Oreo Mocha', 'Coconut Cream Affogato', 'Carrot Cake Latte',
-    'Black Forest Mocha', 'Peanut Butter Cup Latte'
+    ...dessertRecipes.map(r => r.name)
   ],
   experimental: [
-    'Charcoal Cold Brew', 'Butter Coffee (Bulletproof)', 'Mushroom Coffee',
-    'Protein Cold Brew', 'Avocado Coffee', 'Cheese Foam Coffee',
-    'Sea Salt Coffee', 'Activated Coconut Coffee', 'Espresso & Tonic with Grapefruit',
-    'Nitro Espresso Float', 'Smoked Maple Cold Brew', 'Coffee Kombucha',
-    'Espresso Cola', 'Cold Brew Energy Tonic', 'Coffee Matcha Sparkler',
-    'Coffee Tea Fusion', 'Coffee Shrub Mocktail', 'Nitro Orange Espresso',
-    'Coffee Kefir', 'Coffee Milk Punch'
+    'Sea Salt Coffee', 'Espresso & Tonic with Grapefruit', 'Smoked Maple Cold Brew',
+    'Coffee Kombucha', 'Nitro Orange Espresso', 'Coffee Milk Punch',
+    ...experimentalRecipes.map(r => r.name)
   ],
   luxury: [
-    'Saffron Gold Latte', 'Rose Pistachio Latte', 'Black Truffle Coffee',
-    'Vanilla Bean Bourbon Latte', 'Salted Honey Espresso', 'Toasted Marshmallow Mocha',
-    'Dark Chocolate Orange Espresso', 'Smoked Oak Coffee', 'Coconut Caramel Affogato',
-    'Hazelnut Praline Latte', 'Almond Rose Cold Brew', 'Maple Pecan Latte',
-    'Honey Lavender Cappuccino', 'White Chocolate Pistachio Mocha', 'Spiced Orange Mocha'
+    'Almond Rose Cold Brew', 'Honey Lavender Cappuccino',
+    ...luxuryRecipes.map(r => r.name)
   ]
 };
