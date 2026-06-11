@@ -3,10 +3,11 @@ import GridPattern from '@/components/common/GridPattern';
 import Card from '@/components/common/Card';
 import SectionLabel from '@/components/common/SectionLabel';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Database, Sigma, Beaker, CheckCircle2, Lightbulb, User } from 'lucide-react';
+import { ArrowRight, Database, Sigma, Beaker, CheckCircle2, Lightbulb} from 'lucide-react';
+import { FaUserGraduate } from 'react-icons/fa';
 import { files, domains } from '@/data/knowledge';
 import { formulas } from '@/data/formulas';
-
+import CountUp from '@/components/calculators/CountUp';
 const didYouKnowFacts = [
   {
     title: "Water composition can drastically change the flavor of coffee.",
@@ -88,19 +89,44 @@ function Home() {
 
       {/* 2. System Statistics */}
       <section className="border-y-4 border-black py-12 bg-[#fdfbf7]">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y-4 md:divide-y-0 md:divide-x-4 divide-black">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center divide-y-4 md:divide-y-0 md:divide-x-4 divide-black">
+
           <div className="flex flex-col items-center justify-center p-4">
-            <span className="text-[15vw] sm:text-6xl md:text-7xl font-black text-accent mb-2">{totalFiles}</span>
-            <span className="font-mono text-sm font-bold tracking-widest uppercase">Files Indexed</span>
+            <span className="text-[15vw] sm:text-6xl md:text-7xl font-black text-accent mb-2">
+              <CountUp end={totalFiles} />
+            </span>
+            <span className="font-mono text-sm font-bold tracking-widest uppercase">
+              Files Indexed
+            </span>
           </div>
+
           <div className="flex flex-col items-center justify-center p-4">
-            <span className="text-[15vw] sm:text-6xl md:text-7xl font-black text-accent mb-2">{totalDomains}</span>
-            <span className="font-mono text-sm font-bold tracking-widest uppercase">Core Domains</span>
+            <span className="text-[15vw] sm:text-6xl md:text-7xl font-black text-accent mb-2">
+              <CountUp end={totalDomains} />
+            </span>
+            <span className="font-mono text-sm font-bold tracking-widest uppercase">
+              Core Domains
+            </span>
           </div>
+
           <div className="flex flex-col items-center justify-center p-4">
-            <span className="text-[15vw] sm:text-6xl md:text-7xl font-black text-accent mb-2">{totalFormulas}</span>
-            <span className="font-mono text-sm font-bold tracking-widest uppercase">Active Formulas</span>
+            <span className="text-[15vw] sm:text-6xl md:text-7xl font-black text-accent mb-2">
+              <CountUp end={totalFormulas} />
+            </span>
+            <span className="font-mono text-sm font-bold tracking-widest uppercase">
+              Active Formulas
+            </span>
           </div>
+
+          <div className="flex flex-col items-center justify-center p-4">
+            <span className="text-[15vw] sm:text-6xl md:text-7xl font-black text-accent mb-2">
+              <CountUp end={100} suffix="+" />
+            </span>
+            <span className="font-mono text-sm font-bold tracking-widest uppercase">
+              Recipes
+            </span>
+          </div>
+
         </div>
       </section>
 
@@ -114,10 +140,10 @@ function Home() {
             { title: 'Roasting Science', desc: 'Thermal dynamics, Maillard reactions, and DTR.' },
             { title: 'Sensory Analysis', desc: 'SCA cupping protocols and defect identification.' }
           ].map((item, idx) => (
-            <div key={idx} className="border-4 border-black p-6 bg-white hover:-translate-y-1 transition-transform">
-              <CheckCircle2 size={32} className="text-accent mb-4" />
-              <h3 className="font-bold text-xl uppercase mb-2">{item.title}</h3>
-              <p className="text-sm text-gray-700 font-medium">{item.desc}</p>
+            <div key={idx} className="border-4 border-black p-6 bg-white hover:-translate-y-1 transition-transform hover:bg-black group">
+              <CheckCircle2 size={32} className="text-accent mb-4 group-hover:text-white transition-colors" />
+              <h3 className="font-bold text-xl uppercase mb-2 group-hover:text-white transition-colors">{item.title}</h3>
+              <p className="text-sm text-gray-700 group-hover:text-accent font-medium">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -215,7 +241,7 @@ function Home() {
             </p>
           </div>
           <div className="w-full md:w-1/3 border-t-4 md:border-t-0 md:border-l-4 border-black pt-8 md:pt-0 md:pl-8">
-            <User size={48} className="mb-4 text-accent" />
+            <FaUserGraduate size={48} className="mb-4 text-accent" />
             <p className="text-xs uppercase tracking-[0.25em] text-gray-500 mb-2">
               Created & Maintained By
             </p>
@@ -224,8 +250,11 @@ function Home() {
                 Utsav Lankapati
               </Link>
             </h3>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Diploama in Computer Science
+            </p>
             <p className="text-sm font-bold text-gray-600 leading-relaxed">
-              Computer Engineer • AI/ML Developer
+              Computer Engineer • Data Analyst • Web Developer • AI/ML Developer
             </p>
           </div>
         </div>
