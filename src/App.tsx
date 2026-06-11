@@ -10,6 +10,7 @@ import Developer from './pages/Developer';
 import LabSOPs from './pages/LabSOPs';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import Recipes from './pages/Recipes';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/learning-paths" element={<LearningPaths />} />
           <Route path="/developer" element={<Developer />} />
           <Route path="/lab-sops" element={<LabSOPs />} />
+          <Route path="/recipes" element={<Recipes />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="*" element={<NotFound />} />

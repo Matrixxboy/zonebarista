@@ -56,3 +56,22 @@ export interface LabSOP {
   procedure: string[];
   analysis: string;
 }
+
+export interface Ingredient {
+  name: string;
+  volume: string; // e.g. "1 tbsp"
+  weight: string; // e.g. "15g"
+}
+
+export interface CoffeeRecipe {
+  id: string;
+  name: string;
+  category: string;
+  ingredients: Ingredient[];
+  steps: string[];
+  metadata: {
+    occasion: string;
+    season: string;
+    mood: string;
+  };
+}

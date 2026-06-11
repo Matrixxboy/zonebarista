@@ -11,6 +11,7 @@ function Header() {
       label: 'DISCOVER',
       links: [
         { label: 'HOME', href: '/' },
+        { label: 'RECIPES', href: '/recipes' },
       ]
     },
     {
