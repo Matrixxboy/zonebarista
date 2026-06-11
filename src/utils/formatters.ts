@@ -35,3 +35,18 @@ export function formatTime(ms: number): string {
 export function truncate(text: string, length: number): string {
   return text.length > length ? `${text.slice(0, length)}...` : text;
 }
+
+export function getResultPrefix(id: string): string {
+  if (id === 'f-01') return '1:';
+  if (id === 'f-15') return '$';
+  return '';
+}
+
+export function getResultSuffix(id: string): string {
+  if (['f-02', 'f-11', 'f-12', 'f-14', 'f-18'].includes(id)) return '%';
+  if (id === 'f-03') return 'g';
+  if (['f-07', 'f-08'].includes(id)) return ' mg/L';
+  if (id === 'f-13') return ' °C/min';
+  if (id === 'f-23') return ' pts';
+  return '';
+}

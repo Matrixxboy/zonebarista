@@ -1,12 +1,42 @@
 import { useEffect } from 'react';
 import { Formula } from '@/types';
 import { useCalculator } from '@/hooks/useCalculator';
-import { formatNumber } from '@/utils/formatters';
+import { formatNumber, getResultPrefix, getResultSuffix } from '@/utils/formatters';
+import { evaluateResult } from '@/utils/evaluators';
 import Input from '../common/Input';
 import Button from '../common/Button';
 import SectionLabel from '../common/SectionLabel';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  RadialLinearScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+} from 'chart.js';
+import { Bar, Doughnut, Line, Radar, Pie } from 'react-chartjs-2';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  RadialLinearScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+);
 
 interface CalculatorPanelProps {
   formula: Formula;
@@ -14,7 +44,7 @@ interface CalculatorPanelProps {
 }
 
 function CalculatorPanel({ formula, onResult }: CalculatorPanelProps) {
-  const { inputs, result, setFormula, setInput, calculate, reset } = useCalculator();
+  const { inputs, rawInputs, result, setFormula, setInput, calculate, reset } = useCalculator();
 
   useEffect(() => {
     setFormula(formula);
@@ -25,6 +55,121 @@ function CalculatorPanel({ formula, onResult }: CalculatorPanelProps) {
     if (res !== null && onResult) {
       onResult(res);
     }
+  };
+
+  const renderDynamicChart = () => {
+    const commonOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom' as const, labels: { color: '#000', font: { family: 'monospace' as const, size: 10 } } }
+      }
+    };
+
+    // ALWAYS show the exact actual inserted values to fulfill user request
+    const labels = [...formula.variables.map(v => v.name), 'Result'];
+    const data = [...formula.variables.map(v => inputs[v.symbol] || 0), result || 0];
+    const bgColors = ['#3498DB', '#E74C3C', '#F39C12', '#2ECC71', '#9B59B6'];
+
+    if (formula.category === 'business') {
+      return (
+        <Doughnut
+          data={{
+            labels,
+            datasets: [{
+              data,
+              backgroundColor: bgColors,
+              borderWidth: 2,
+              borderColor: '#000'
+            }]
+          }}
+          options={commonOptions}
+        />
+      );
+    } else if (formula.category === 'roasting') {
+      if (formula.id === 'f-13') { // RoR
+        return (
+          <Line
+            data={{
+              labels,
+              datasets: [{
+                label: 'Values',
+                data,
+                borderColor: '#E74C3C',
+                backgroundColor: 'rgba(231, 76, 60, 0.2)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4
+              }]
+            }}
+            options={{
+              responsive: true, maintainAspectRatio: false,
+              scales: { y: { grid: { color: '#e5e7eb' }, ticks: { font: { family: 'monospace' } } }, x: { grid: { display: false }, ticks: { font: { family: 'monospace' } } } },
+              plugins: { legend: { display: false } }
+            }}
+          />
+        );
+      }
+      return (
+        <Pie
+          data={{
+            labels,
+            datasets: [{
+              data,
+              backgroundColor: bgColors,
+              borderWidth: 2, borderColor: '#000'
+            }]
+          }}
+          options={commonOptions}
+        />
+      );
+    } else if (formula.category === 'sensory') {
+      return (
+        <Radar
+          data={{
+            labels,
+            datasets: [{
+              label: 'Values',
+              data,
+              backgroundColor: 'rgba(52, 152, 219, 0.2)',
+              borderColor: '#2980B9',
+              pointBackgroundColor: '#2980B9',
+              borderWidth: 2
+            }]
+          }}
+          options={{
+            responsive: true, maintainAspectRatio: false,
+            scales: { r: { min: 0, ticks: { display: false } } },
+            plugins: { legend: { display: false } }
+          }}
+        />
+      );
+    }
+
+    // Default Fallback Bar Chart for brewing & water
+    return (
+      <Bar 
+        data={{
+          labels,
+          datasets: [{
+            label: 'Actual Values',
+            data,
+            backgroundColor: bgColors,
+            borderWidth: 2,
+            borderColor: '#000'
+          }]
+        }} 
+        options={{
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: { 
+            y: { beginAtZero: true, grid: { color: '#e5e7eb' }, ticks: { color: '#000', font: { family: 'monospace' } } },
+            x: { grid: { display: false }, ticks: { color: '#000', font: { family: 'monospace', weight: 'bold' } } }
+          },
+          plugins: { legend: { display: false } }
+        }}
+      />
+    );
   };
 
   if (!formula) {
@@ -78,10 +223,10 @@ function CalculatorPanel({ formula, onResult }: CalculatorPanelProps) {
             <Input
               key={variable.symbol}
               label={`${variable.symbol} — ${variable.name}`}
-              type="number"
-              value={inputs[variable.symbol] || ''}
-              onChange={(e) => setInput(variable.symbol, parseFloat(e.target.value) || 0)}
-              placeholder="0.00"
+              type="text"
+              value={rawInputs[variable.symbol] || ''}
+              onChange={(e) => setInput(variable.symbol, e.target.value)}
+              placeholder="e.g. 8, 8.5, 9"
               helperText={`${variable.unit}${variable.notes ? ` • ${variable.notes}` : ''}`}
               helperTextClassName="text-black"
             />
@@ -101,14 +246,37 @@ function CalculatorPanel({ formula, onResult }: CalculatorPanelProps) {
       {result !== null && (
         <div className="bg-accent text-white p-8 border-4 border-black relative animate-in fade-in zoom-in-95">
           <p className="text-xs uppercase tracking-widest font-mono font-bold mb-4">CALCULATION OUTPUT</p>
-          <div className="flex items-baseline gap-4">
-            <span className="text-6xl md:text-8xl font-black tracking-tighter">
-              {formatNumber(result)}
-            </span>
+          <div className="flex flex-col lg:flex-row items-center gap-8">
+            <div className="flex-1">
+              <span className="text-6xl md:text-8xl font-black tracking-tighter flex items-baseline gap-2 flex-wrap">
+                {getResultPrefix(formula.id) && <span className="opacity-50">{getResultPrefix(formula.id)}</span>}
+                {formatNumber(result)}
+                {getResultSuffix(formula.id) && <span className="text-2xl md:text-4xl opacity-50 ml-1">{getResultSuffix(formula.id)}</span>}
+              </span>
+              <p className="text-sm opacity-90 mt-4 font-mono">
+                SUCCESSFUL EVALUATION OF [ {formula.id} ]
+              </p>
+              {(() => {
+                const evaluation = evaluateResult(formula.id, result);
+                if (!evaluation) return null;
+                const typeColors = {
+                  poor: 'bg-[#E74C3C] text-white',
+                  warning: 'bg-[#F39C12] text-black',
+                  neutral: 'bg-[#95A5A6] text-black',
+                  good: 'bg-[#3498DB] text-white',
+                  great: 'bg-[#2ECC71] text-black',
+                };
+                return (
+                  <div className={`mt-6 inline-block px-4 py-2 text-sm md:text-base font-mono font-bold uppercase tracking-wider ${typeColors[evaluation.type]} border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}>
+                    STATUS: {evaluation.text}
+                  </div>
+                );
+              })()}
+            </div>
+            <div className="w-full lg:w-1/2 h-56 bg-white text-black p-4 border-2 border-black">
+              {renderDynamicChart()}
+            </div>
           </div>
-          <p className="text-sm opacity-90 mt-4 font-mono">
-            SUCCESSFUL EVALUATION OF [ {formula.id} ]
-          </p>
         </div>
       )}
 
@@ -130,8 +298,10 @@ function CalculatorPanel({ formula, onResult }: CalculatorPanelProps) {
                 
                 <div className="mt-4 pt-4 border-t-2 border-dashed border-gray-300 flex items-center justify-between">
                   <p className="text-xs font-mono font-bold uppercase tracking-widest text-gray-600">Calculated Output:</p>
-                  <p className="text-2xl font-black text-accent">
+                  <p className="text-2xl font-black text-accent flex items-baseline gap-1">
+                    {getResultPrefix(formula.id) && <span className="opacity-50">{getResultPrefix(formula.id)}</span>}
                     {formatNumber(example.output)}
+                    {getResultSuffix(formula.id) && <span className="text-lg opacity-50">{getResultSuffix(formula.id)}</span>}
                   </p>
                 </div>
               </div>
